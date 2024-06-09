@@ -1,0 +1,15 @@
+{
+  "name": "announcer",
+  "version": "1.0.0",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.10",
+    "microsoft-cognitiveservices-speech-sdk": "^1.32.0",
+    "ts-node": "^10.9.1",
+    "web-audio-engine": "^0.13.4"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^18.16.0"
+  }
+}
