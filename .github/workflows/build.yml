@@ -1,0 +1,54 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      auto_deploy:
+        type: choice
+        description: Auto deploy to (NONE/UAT/PRD)
+        options:
+          - PRD
+          - UAT
+          - NONE
+        default: NONE
+        required: true
+      bump_version:
+        type: choice
+        description: Bump version
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+        required: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+
+      - name: Build
+        id: build
+        run: ./scripts/build.sh
+        shell: bash
+        env:
+          BUMP_VERSION: ${{ inputs.bump_version }}
+
+      - name: Release
+        if: ${{ inputs.auto_deploy == 'UAT' || inputs.auto_deploy == 'PRD' }}
+        uses: railmapgen/releaser@main
+        with:
+          app_name: rma
+          version: ${{ steps.build.outputs.RMG_VER }}
+          environment: ${{ inputs.auto_deploy }}
+          dist: dist
+          github_token: ${{ secrets.RMG_BUILD_AND_RELEASE }}
+          gitlab_token: ${{ secrets.GITLAB_RELEASE }}
+          gitee_token: ${{ secrets.GITEE_RELEASE }}

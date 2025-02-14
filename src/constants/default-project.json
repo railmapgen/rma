@@ -1,0 +1,866 @@
+{
+  "style": "shmetro",
+  "baseVariants": {
+    "arr": {
+      "wuu-CN-XiaotongNeural": {
+        "terminal": "上海火车站",
+        "terminalPinyin": "上海火车站",
+        "doorDirection": "left"
+      },
+      "zh-CN-XiaoqiuNeural": {
+        "terminal": "上海火车站",
+        "terminalPinyin": "上海火车站",
+        "doorDirection": "left"
+      },
+      "wuu-CN-YunzheNeural": {
+        "terminal": "Shanghai Railway Station",
+        "terminalPinyin": "上海火车站",
+        "doorDirection": "left"
+      }
+    },
+    "dep": {
+      "wuu-CN-XiaotongNeural": {
+        "terminal": "上海火车站",
+        "terminalPinyin": "上海火车站",
+        "nextDoorDirection": "left",
+        "lineName": "1号线",
+        "lineNamePinyin": "1号线",
+        "noteLastTrain": true,
+        "loop": "none",
+        "loopTerminal": false
+      },
+      "zh-CN-XiaoqiuNeural": {
+        "terminal": "上海火车站",
+        "terminalPinyin": "上海火车站",
+        "nextDoorDirection": "left",
+        "lineName": "1号线",
+        "lineNamePinyin": "1号线",
+        "noteLastTrain": true,
+        "loop": "none",
+        "loopTerminal": false
+      },
+      "wuu-CN-YunzheNeural": {
+        "terminal": "Shanghai Railway Station",
+        "terminalPinyin": "Shanghai Railway Station",
+        "nextDoorDirection": "left",
+        "lineName": "Line 1",
+        "lineNamePinyin": "Line 1"
+      }
+    },
+    "mdw": {
+      "wuu-CN-XiaotongNeural": {
+        "caution": false
+      },
+      "zh-CN-XiaoqiuNeural": {
+        "caution": false
+      },
+      "wuu-CN-YunzheNeural": {}
+    }
+  },
+  "stations": {
+    "iwf6": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "外环路",
+          "nextPinyin": "外环路",
+          "int": []
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "外环路",
+          "nextPinyin": "外环路",
+          "int": []
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Waihuanlu",
+          "nextPinyin": "Waihuanlu",
+          "int": [],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "l1mz": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "外环路",
+          "namePinyin": "外环路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "外环路",
+          "namePinyin": "外环路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Waihuanlu",
+          "namePinyin": "Waihuanlu"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "莲花路",
+          "nextPinyin": "莲花路",
+          "int": []
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "莲花路",
+          "nextPinyin": "莲花路",
+          "int": []
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Lianhua Road ",
+          "nextPinyin": "Lianhua Road ",
+          "int": [],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "qzjx": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "莲花路",
+          "namePinyin": "莲花路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "莲花路",
+          "namePinyin": "莲花路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Lianhua Road ",
+          "namePinyin": "Lianhua Road "
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "锦江乐园",
+          "nextPinyin": "锦江乐园",
+          "int": []
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "锦江乐园",
+          "nextPinyin": "锦江乐园",
+          "int": []
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "JinJiang Park",
+          "nextPinyin": "JinJiang Park",
+          "int": [],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "jsat": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "锦江乐园",
+          "namePinyin": "锦江乐园"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "锦江乐园",
+          "namePinyin": "锦江乐园"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "JinJiang Park",
+          "namePinyin": "JinJiang Park"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "上海南站",
+          "nextPinyin": "上海南站",
+          "int": [
+            [
+              "3号线",
+              "15号线"
+            ],
+            [
+              "金山铁路"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "上海南站",
+          "nextPinyin": "上海南站",
+          "int": [
+            [
+              "3号线",
+              "15号线"
+            ],
+            [
+              "金山铁路"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Shanghai South Railway Station",
+          "nextPinyin": "Shanghai South Railway Station",
+          "int": [
+            [
+              "Line 3",
+              "Line 15"
+            ],
+            [
+              "Jingshan Railway"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "srpy": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "上海南站",
+          "namePinyin": "上海南站"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "上海南站",
+          "namePinyin": "上海南站"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Shanghai South Railway Station",
+          "namePinyin": "Shanghai South Railway Station"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "漕宝路",
+          "nextPinyin": "漕宝路",
+          "int": [
+            [
+              "12号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "漕宝路",
+          "nextPinyin": "漕宝路",
+          "int": [
+            [
+              "12号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Caobao Road",
+          "nextPinyin": "Caobao Road",
+          "int": [
+            [
+              "Line 12"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "x9gu": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "漕宝路",
+          "namePinyin": "漕宝路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "漕宝路",
+          "namePinyin": "漕宝路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Caobao Road",
+          "namePinyin": "Caobao Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "上海体育馆",
+          "nextPinyin": "上海体育馆",
+          "int": [
+            [
+              "4号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "上海体育馆",
+          "nextPinyin": "上海体育馆",
+          "int": [
+            [
+              "4号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Shanghai Indoor Stadium",
+          "nextPinyin": "Shanghai Indoor Stadium",
+          "int": [
+            [
+              "Line 4"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "k9k5": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "上海体育馆",
+          "namePinyin": "上海体育馆"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "上海体育馆",
+          "namePinyin": "上海体育馆"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Shanghai Indoor Stadium",
+          "namePinyin": "Shanghai Indoor Stadium"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "徐家汇",
+          "nextPinyin": "徐家汇",
+          "int": [
+            [
+              "9号线",
+              "11号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "徐家汇",
+          "nextPinyin": "徐家汇",
+          "int": [
+            [
+              "9号线",
+              "11号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Xujiahui",
+          "nextPinyin": "Xujiahui",
+          "int": [
+            [
+              "Line 9",
+              "Line 11"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "j2kn": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "徐家汇",
+          "namePinyin": "徐家汇"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "徐家汇",
+          "namePinyin": "徐家汇"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Xujiahui",
+          "namePinyin": "Xujiahui"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "衡山路",
+          "nextPinyin": "衡山路",
+          "int": []
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "衡山路",
+          "nextPinyin": "衡山路",
+          "int": []
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Hengshan Road",
+          "nextPinyin": "Hengshan Road",
+          "int": [],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "lcgp": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "衡山路",
+          "namePinyin": "衡山路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "衡山路",
+          "namePinyin": "衡山路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Hengshan Road",
+          "namePinyin": "Hengshan Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "常熟路",
+          "nextPinyin": "常熟路",
+          "int": [
+            [
+              "7号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "常熟路",
+          "nextPinyin": "常熟路",
+          "int": [
+            [
+              "7号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Changshu Road",
+          "nextPinyin": "Changshu Road",
+          "int": [
+            [
+              "Line 7"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "h3vs": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "常熟路",
+          "namePinyin": "常熟路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "常熟路",
+          "namePinyin": "常熟路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Changshu Road",
+          "namePinyin": "Changshu Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "陕西南路",
+          "nextPinyin": "陕西南路",
+          "int": [
+            [
+              "10号线",
+              "12号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "陕西南路",
+          "nextPinyin": "陕西南路",
+          "int": [
+            [
+              "10号线",
+              "12号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "South Shaanxi Road",
+          "nextPinyin": "South Shaanxi Road",
+          "int": [
+            [
+              "Line 10",
+              "Line 12"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "jjh7": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "陕西南路",
+          "namePinyin": "陕西南路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "陕西南路",
+          "namePinyin": "陕西南路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "South Shaanxi Road",
+          "namePinyin": "South Shaanxi Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "一大会址·黄陂南路",
+          "nextPinyin": "一大会址·黄陂南路",
+          "int": [
+            [
+              "14号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "一大会址·黄陂南路",
+          "nextPinyin": "一大会址·黄陂南路",
+          "int": [
+            [
+              "14号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Site of the First CPC National\\Congress · South Huangpi Road",
+          "nextPinyin": "Site of the First CPC National\\Congress · South Huangpi Road",
+          "int": [
+            [
+              "Line 14"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "wbtv": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "一大会址·黄陂南路",
+          "namePinyin": "一大会址·黄陂南路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "一大会址·黄陂南路",
+          "namePinyin": "一大会址·黄陂南路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Site of the First CPC National\\Congress · South Huangpi Road",
+          "namePinyin": "Site of the First CPC National\\Congress · South Huangpi Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "人民广场",
+          "nextPinyin": "人民广场",
+          "int": [
+            [
+              "2号线",
+              "8号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "人民广场",
+          "nextPinyin": "人民广场",
+          "int": [
+            [
+              "2号线",
+              "8号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "People's Square",
+          "nextPinyin": "People's Square",
+          "int": [
+            [
+              "Line 2",
+              "Line 8"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "kaxg": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "人民广场",
+          "namePinyin": "人民广场"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "人民广场",
+          "namePinyin": "人民广场"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "People's Square",
+          "namePinyin": "People's Square"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "新闸路",
+          "nextPinyin": "新闸路",
+          "int": []
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "新闸路",
+          "nextPinyin": "新闸路",
+          "int": []
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "XinZha Road",
+          "nextPinyin": "XinZha Road",
+          "int": [],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "7x7k": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "新闸路",
+          "namePinyin": "新闸路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "新闸路",
+          "namePinyin": "新闸路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "XinZha Road",
+          "namePinyin": "XinZha Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "汉中路",
+          "nextPinyin": "汉中路",
+          "int": [
+            [
+              "12号线",
+              "13号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "汉中路",
+          "nextPinyin": "汉中路",
+          "int": [
+            [
+              "12号线",
+              "13号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Hanzhong Road",
+          "nextPinyin": "Hanzhong Road",
+          "int": [
+            [
+              "Line 12",
+              "Line 13"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "qnbj": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "汉中路",
+          "namePinyin": "汉中路"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "汉中路",
+          "namePinyin": "汉中路"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Hanzhong Road",
+          "namePinyin": "Hanzhong Road"
+        }
+      },
+      "dep": {
+        "wuu-CN-XiaotongNeural": {
+          "next": "上海火车站",
+          "nextPinyin": "上海火车站",
+          "int": [
+            [
+              "3号线",
+              "4号线"
+            ]
+          ]
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "next": "上海火车站",
+          "nextPinyin": "上海火车站",
+          "int": [
+            [
+              "3号线",
+              "4号线"
+            ]
+          ]
+        },
+        "wuu-CN-YunzheNeural": {
+          "welcomeAbroad": false,
+          "next": "Shanghai Railway Station",
+          "nextPinyin": "Shanghai Railway Station",
+          "int": [
+            [
+              "Line 3",
+              "Line 4"
+            ]
+          ],
+          "noteLastTrain": false
+        }
+      }
+    },
+    "sd6y": {
+      "mdw": {
+        "wuu-CN-XiaotongNeural": {},
+        "zh-CN-XiaoqiuNeural": {},
+        "wuu-CN-YunzheNeural": {}
+      },
+      "arr": {
+        "wuu-CN-XiaotongNeural": {
+          "name": "上海火车站",
+          "namePinyin": "上海火车站"
+        },
+        "zh-CN-XiaoqiuNeural": {
+          "name": "上海火车站",
+          "namePinyin": "上海火车站"
+        },
+        "wuu-CN-YunzheNeural": {
+          "name": "Shanghai Railway Station",
+          "namePinyin": "Shanghai Railway Station"
+        }
+      }
+    }
+  },
+  "metadata": {
+    "iwf6": {
+      "name": "莘庄"
+    },
+    "l1mz": {
+      "name": "外环路"
+    },
+    "qzjx": {
+      "name": "莲花路"
+    },
+    "jsat": {
+      "name": "锦江乐园"
+    },
+    "srpy": {
+      "name": "上海南站"
+    },
+    "x9gu": {
+      "name": "漕宝路"
+    },
+    "k9k5": {
+      "name": "上海体育馆"
+    },
+    "j2kn": {
+      "name": "徐家汇"
+    },
+    "lcgp": {
+      "name": "衡山路"
+    },
+    "h3vs": {
+      "name": "常熟路"
+    },
+    "jjh7": {
+      "name": "陕西南路"
+    },
+    "wbtv": {
+      "name": "一大会址·黄陂南路"
+    },
+    "kaxg": {
+      "name": "人民广场"
+    },
+    "7x7k": {
+      "name": "新闸路"
+    },
+    "qnbj": {
+      "name": "汉中路"
+    },
+    "sd6y": {
+      "name": "上海火车站"
+    }
+  }
+}
