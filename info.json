@@ -1,6 +1,6 @@
 {
-    "component": "rma",
-    "version": "9.9.9",
-    "environment": "DEV",
-    "instance": "localhost"
+  "component": "rma",
+  "version": "0.1.7",
+  "environment": "PRD",
+  "instance": "GitHub"
 }
