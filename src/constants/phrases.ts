@@ -8,6 +8,7 @@ export enum PhraseType {
 
 export interface BasePhrase {
     type: PhraseType;
+    // TODO: why this?
     voiceName: VoiceName;
     /**
      * Text is used in displaying the words.

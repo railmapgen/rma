@@ -4,12 +4,14 @@ import appReducer from './app/app-slice';
 import crawlReducer from './crawl/crawl-slice';
 import paramReducer from './param/param-slice';
 import runtimeReducer from './runtime/runtime-slice';
+import audioReducer from './audio/audio-slice';
 
 const rootReducer = combineReducers({
     app: appReducer,
     crawl: crawlReducer,
     param: paramReducer,
     runtime: runtimeReducer,
+    audio: audioReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
 

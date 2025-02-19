@@ -76,6 +76,32 @@ export const reconciledPhrasesToText = (r: ReconciledPhrases) => {
 };
 
 /**
+ * Simplified phrases for cloud audio generation.
+ */
+export const simplifyReconciledPhrases = (r: ReconciledPhrases) => {
+    const res = structuredClone(r) as {
+        [k: StnID]: {
+            [k in Stage]?: { [k in VoiceName]?: Exclude<BasePhrase, 'text'>[] };
+        };
+    };
+    for (const stn in r) {
+        for (const stage in r[stn]) {
+            for (const voiceName in r[stn][stage as Stage]) {
+                const phrases = r[stn]![stage as Stage]![voiceName as VoiceName]!;
+                const simplifiedPhrases = phrases.map(p => {
+                    const p_ = structuredClone(p);
+                    delete (p_ as any).text;
+                    delete (p_ as any).voiceName;
+                    return p_;
+                });
+                res[stn]![stage as Stage]![voiceName as VoiceName] = simplifiedPhrases;
+            }
+        }
+    }
+    return res;
+};
+
+/**
  * Contains the possible variants in each stage of each style.
  */
 export interface StyleVariants {
@@ -103,6 +129,7 @@ export interface StyleVariants {
 
 export enum LocalStorageKey {
     PARAM = 'param',
+    ACCOUNT = 'rmg-home__account',
 }
 
 export enum Events {

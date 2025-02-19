@@ -37,8 +37,10 @@ import {
     MdSave,
 } from 'react-icons/md';
 import { Events, reconciledPhrasesToText } from '../../constants/constants';
-import { useRootSelector } from '../../redux';
+import { useRootDispatch, useRootSelector } from '../../redux';
+import { closeAudioModal, openAudioModal } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
+import AudioModal from './audio-modal';
 import TermsAndConditionsModal from './terms-and-conditions';
 
 const R = 16;
@@ -49,9 +51,11 @@ export default function DownloadActions() {
     const {
         telemetry: { project: isAllowProjectTelemetry },
     } = useRootSelector(state => state.app);
+    const dispatch = useRootDispatch();
     const { content, columns, viewableColumns } = useRootSelector(state => state.crawl);
     const { project } = useRootSelector(state => state.param);
     const { reconciledPhrases } = useRootSelector(state => state.runtime);
+    const { isModalOpen: isAudioTaskModalOpen } = useRootSelector(state => state.audio);
     const { style, metadata } = project;
     const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
     const { t } = useTranslation();
@@ -167,8 +171,7 @@ export default function DownloadActions() {
             setTimeout(() => {
                 ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
                 canvas.toBlob(blob => {
-                    downloadBlobAs(`${content}.png`, blob!);
-                    // downloadBlobAs(`RMA_${new Date().valueOf()}.png`, blob!);
+                    downloadBlobAs(`RMA_${content}.png`, blob!);
                 }, 'image/png');
             }, 0);
         };
@@ -292,7 +295,14 @@ export default function DownloadActions() {
                             <Stack>
                                 <CardBody>{t('header.download.audio.server')}</CardBody>
                                 <CardFooter>
-                                    <Button variant="solid" colorScheme="blue" isDisabled>
+                                    <Button
+                                        variant="solid"
+                                        colorScheme="blue"
+                                        onClick={() => {
+                                            setIsAudioModalOpen(false);
+                                            dispatch(openAudioModal());
+                                        }}
+                                    >
                                         {t('header.download.audio.serverExport')}
                                     </Button>
                                 </CardFooter>
@@ -303,6 +313,8 @@ export default function DownloadActions() {
                     <ModalFooter />
                 </ModalContent>
             </Modal>
+
+            <AudioModal isOpen={isAudioTaskModalOpen} onClose={() => dispatch(closeAudioModal())} />
         </Menu>
     );
 }

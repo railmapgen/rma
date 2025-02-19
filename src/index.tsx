@@ -8,6 +8,7 @@ import { Events } from './constants/constants';
 import i18n from './i18n/config';
 import store from './redux';
 import initStore from './redux/init';
+import { onLocalStorageChangeRMT } from './util/token';
 
 let root: Root;
 
@@ -29,4 +30,6 @@ rmgRuntime.ready().then(() => {
     renderApp();
     rmgRuntime.injectUITools();
     rmgRuntime.event(Events.APP_LOAD, {});
+
+    onLocalStorageChangeRMT(store);
 });

@@ -13,6 +13,7 @@ interface RuntimeState {
     currentStationID: StnID;
     currentStage: Stage;
     currentVoice: VoiceName;
+    rmtToken?: string;
     globalAlerts: Partial<Record<AlertStatus, { message: string; url?: string; linkedApp?: string }>>;
 }
 
@@ -44,6 +45,12 @@ const runtimeSlice = createSlice({
         setCurrentVoice: (state, action: PayloadAction<VoiceName>) => {
             state.currentVoice = action.payload;
         },
+        setRmtToken: (state, action: PayloadAction<string>) => {
+            state.rmtToken = action.payload;
+        },
+        removeRmtToken: state => {
+            state.rmtToken = undefined;
+        },
         /**
          * If linkedApp is true, alert will try to open link in the current domain.
          * E.g. linkedApp=true, url='/rmp' will open https://railmapgen.github.io/rmp/
@@ -68,6 +75,8 @@ export const {
     setCurrentStationID,
     setCurrentStage,
     setCurrentVoice,
+    setRmtToken,
+    removeRmtToken,
     setGlobalAlert,
     closeGlobalAlert,
 } = runtimeSlice.actions;
