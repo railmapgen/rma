@@ -1,4 +1,4 @@
-import { Translation } from '@railmapgen/rmg-translate';
+import { LanguageCode, Translation } from '@railmapgen/rmg-translate';
 import { emptyProject, Stage, VoiceName } from '../constants/constants';
 import { Name, RMGParam } from '../constants/rmg';
 
@@ -82,6 +82,16 @@ const makeBaseVariants = (
     },
 });
 
+const replaceLineBreak = (localisedName: Partial<Record<LanguageCode, string>>) => {
+    for (const lng in localisedName) {
+        localisedName[lng as LanguageCode] = localisedName[lng as LanguageCode]!.replaceAll('\\', ' ').replaceAll(
+            '\n',
+            ' '
+        );
+    }
+    return localisedName;
+};
+
 export const makeProject = (rmg: RMGParam) => {
     const proj = structuredClone(emptyProject);
 
@@ -104,6 +114,7 @@ export const makeProject = (rmg: RMGParam) => {
     if (terminalID === '') throw new Error('Invalid RMG save!');
 
     const { localisedName: terminalName } = stnList[terminalID];
+    replaceLineBreak(terminalName);
     proj.baseVariants = makeBaseVariants(
         terminalName,
         lineName,
@@ -120,6 +131,7 @@ export const makeProject = (rmg: RMGParam) => {
     currentStnID = stnList['linestart'].children[0];
     while (currentStnID !== 'lineend') {
         const { localisedName: currentName } = stnList[currentStnID];
+        replaceLineBreak(currentName);
         proj.metadata[currentStnID] = { name: Object.values(currentName).at(0) ?? '' };
         proj.stations[currentStnID] = {};
 
@@ -144,6 +156,7 @@ export const makeProject = (rmg: RMGParam) => {
         if (nextID !== 'lineend' || loop) {
             const nextValidID = loop && nextID === 'lineend' ? stnList['linestart'].children[0] : nextID;
             const { localisedName: nextName } = stnList[nextValidID];
+            replaceLineBreak(nextName);
 
             const nextInt = stnList[nextValidID].transfer.groups
                 .map(g => g.lines?.map(l => l.name))
@@ -177,6 +190,7 @@ export const makeProject = (rmg: RMGParam) => {
     if (loop) {
         const firstID = stnList['linestart'].children[0];
         const { localisedName: currentName } = stnList[firstID];
+        replaceLineBreak(currentName);
         proj.stations[firstID][Stage.Arrival] = {
             [VoiceName.ChineseWuSimplifiedXiaotong]: {
                 name: currentName['zh'],
