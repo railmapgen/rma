@@ -14,8 +14,10 @@ export default function initStore(store: RootStore) {
         },
         effect: (_action, listenerApi) => {
             const { project } = listenerApi.getState().param;
+            // TODO: there is a lot of overhead here,
+            // better reconcile specific stnid-stage-voice in param/setVariant
             const reconciledPhrases = reconcile(project);
-            console.log(reconciledPhrases);
+            logger.debug(reconciledPhrases);
             listenerApi.dispatch(setReconciledPhrases(reconciledPhrases));
 
             const param = listenerApi.getState().param;

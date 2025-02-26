@@ -30,7 +30,7 @@ const makeBaseVariants = (
         },
         [VoiceName.ChineseWuSimplifiedYunzhe]: {
             terminal: terminal['en'],
-            terminalPinyin: terminal['zh'],
+            terminalPinyin: terminal['en'],
             doorDirection,
             thanksForTaking: railwayName?.at(1),
             thanksForTakingPinyin: railwayName?.at(1),

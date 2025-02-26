@@ -1,10 +1,4 @@
-import {
-    BasePhrase,
-    makePunctuationPhrase,
-    phrasesToText,
-    PhraseType,
-    PunctuationPhraseType,
-} from '../constants/phrases';
+import { BasePhrase, makePunctuationPhrase, PhraseType, PunctuationPhraseType } from '../constants/phrases';
 import { getPredefinedPhrases, PredefinedPhraseType } from '../constants/predefined-phrases';
 import { ReconciledPhrases, Stage, Project, StyleType, Variants, VoiceName } from '../constants/constants';
 
@@ -27,7 +21,6 @@ export const reconcile = (s: Project) => {
                 );
                 // @ts-expect-error This is a must have value.
                 res[stn][stage as Stage][voiceName as VoiceName] = phrases;
-                // res[stn][stage as Stage][voiceName as VoiceName].text = phrasesToText(phrases);
             }
         }
     }
@@ -175,8 +168,9 @@ const reconcileShanghaiMetro = (
         }
 
         const loop = variants.loop ?? baseVariants[Stage.Departure]![voiceName]!.loop;
-        const terminal = (variants.terminal ?? baseVariants[Stage.Arrival]![voiceName]!.terminal) as string;
-        const terminalPinyin = (variants.terminal ?? baseVariants[Stage.Arrival]![voiceName]!.terminalPinyin) as string;
+        const terminal = (variants.terminal ?? baseVariants[Stage.Departure]![voiceName]!.terminal) as string;
+        const terminalPinyin = (variants.terminal ??
+            baseVariants[Stage.Departure]![voiceName]!.terminalPinyin) as string;
         if (!loop) {
             res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.TheTerminalOfThisTrain));
             res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
