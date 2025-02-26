@@ -364,20 +364,20 @@ export const predefinedPhrases: {
             [PredefinedPhraseType.TheTerminalOfThisTrain]: {
                 type: PhraseType.Predefined,
                 voiceName: VoiceName.ChineseWuSimplifiedYunzhe,
-                text: 'The terminal is',
-                pinyin: 'The terminal is',
+                text: 'The terminal station',
+                pinyin: 'The terminal station',
             },
             [PredefinedPhraseType.NextStop]: {
                 type: PhraseType.Predefined,
                 voiceName: VoiceName.ChineseWuSimplifiedYunzhe,
-                text: 'Next station is',
-                pinyin: 'Next station is',
+                text: 'Next station',
+                pinyin: 'Next station',
             },
             [PredefinedPhraseType.NextStopTerminal]: {
                 type: PhraseType.Predefined,
                 voiceName: VoiceName.ChineseWuSimplifiedYunzhe,
-                text: 'the terminal station',
-                pinyin: 'the terminal station',
+                text: 'is the terminal station',
+                pinyin: 'is the terminal station',
             },
             [PredefinedPhraseType.DoorOpenLeft]: {
                 type: PhraseType.Predefined,
@@ -394,8 +394,8 @@ export const predefinedPhrases: {
             [PredefinedPhraseType.InterchangeAvailable]: {
                 type: PhraseType.Predefined,
                 voiceName: VoiceName.ChineseWuSimplifiedYunzhe,
-                text: 'Your can transfer to',
-                pinyin: 'Your can transfer to',
+                text: 'You can transfer to',
+                pinyin: 'You can transfer to',
             },
             [PredefinedPhraseType.OutOfStationInterchangeAvailable]: {
                 type: PhraseType.Predefined,
@@ -431,8 +431,8 @@ export const predefinedPhrases: {
             [PredefinedPhraseType.Caution]: {
                 type: PhraseType.Predefined,
                 voiceName: VoiceName.ChineseMandarinSimplified,
-                text: '列车运行时，请站稳扶好，不要玩手机，注意脚下安全。',
-                pinyin: '列车运行时，请站稳扶好，不要玩手机，注意脚下安全。',
+                text: '列车运行，请站稳扶好，不要看手机，注意脚下安全。',
+                pinyin: '列车运行，请站稳扶好，不要看手机，注意脚下安全。',
                 rate: '+18.00%',
             },
         },
