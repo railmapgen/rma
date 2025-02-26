@@ -33,7 +33,7 @@ export default function VariantsZHDeparture() {
     };
 
     const next = (currentVariants.next as string | undefined) ?? 'Next';
-    const nextPinyin = (currentVariants.nextPinyin as string | undefined) ?? 'Next';
+    // const nextPinyin = (currentVariants.nextPinyin as string | undefined) ?? 'Next';
     const nextDoorDirection = (currentVariants.nextDoorDirection as 'left' | 'right' | undefined) ?? 'left';
     const int = (variants.int as string[] | undefined) ?? [];
     const noteLastTrain = (currentVariants.noteLastTrain as boolean | undefined) ?? false;
@@ -44,6 +44,13 @@ export default function VariantsZHDeparture() {
             <RmgLabel label="下一站名">
                 <RmgOutput>{next}</RmgOutput>
             </RmgLabel>
+            {/* <RmgLabel label="下一站名拼音">
+                <RmgDebouncedInput
+                    defaultValue={nextPinyin}
+                    value={nextPinyin}
+                    onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
+                />
+            </RmgLabel> */}
             <RmgLabel label="下一站开门方向" oneLine>
                 <RadioGroup value={nextDoorDirection} onChange={val => handleVariantChange('nextDoorDirection', val)}>
                     <Radio value="left">左</Radio>

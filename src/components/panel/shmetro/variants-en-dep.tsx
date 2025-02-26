@@ -41,7 +41,6 @@ export default function VariantsENDeparture() {
             <RmgLabel label="Next station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={nextPinyin}
-                    value={nextPinyin}
                     onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
                 />
             </RmgLabel>

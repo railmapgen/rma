@@ -31,7 +31,7 @@ export default function VariantsZHArrival() {
     };
 
     const name = (currentVariants.name as string | undefined) ?? 'Name';
-    const namePinyin = (currentVariants.namePinyin as string | undefined) ?? 'Name';
+    // const namePinyin = (currentVariants.namePinyin as string | undefined) ?? 'Name';
     const doorDirection = (currentVariants.doorDirection as 'left' | 'right' | undefined) ?? 'left';
 
     return (
@@ -39,6 +39,13 @@ export default function VariantsZHArrival() {
             <RmgLabel label="本站名">
                 <RmgOutput>{name}</RmgOutput>
             </RmgLabel>
+            {/* <RmgLabel label="本站名拼音">
+                <RmgDebouncedInput
+                    defaultValue={namePinyin}
+                    value={namePinyin}
+                    onDebouncedChange={val => handleVariantChange('namePinyin', val)}
+                />
+            </RmgLabel> */}
             <RmgLabel label="开门方向" oneLine>
                 <RadioGroup value={doorDirection} onChange={val => handleVariantChange('doorDirection', val)}>
                     <Radio value="left">左</Radio>

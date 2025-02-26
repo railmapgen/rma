@@ -67,7 +67,6 @@ export default function VariantsDefault() {
                     <RmgLabel label="欢迎乘坐">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroad}
-                            value={welcomeAbroad}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
@@ -81,7 +80,6 @@ export default function VariantsDefault() {
                     <RmgLabel label="欢迎乘坐拼音">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroadPinyin}
-                            value={welcomeAbroadPinyin}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
@@ -98,7 +96,6 @@ export default function VariantsDefault() {
                     <RmgLabel label="终点站名拼音">
                         <RmgDebouncedInput
                             defaultValue={terminalPinyin}
-                            value={terminalPinyin}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
@@ -131,7 +128,6 @@ export default function VariantsDefault() {
                     <RmgLabel label="线路名拼音">
                         <RmgDebouncedInput
                             defaultValue={lineNamePinyin}
-                            value={lineNamePinyin}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
@@ -216,7 +212,6 @@ export default function VariantsDefault() {
                     <RmgLabel label="感谢乘坐">
                         <RmgDebouncedInput
                             defaultValue={thanksForTaking}
-                            value={thanksForTaking}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
@@ -230,7 +225,6 @@ export default function VariantsDefault() {
                     <RmgLabel label="感谢乘坐拼音">
                         <RmgDebouncedInput
                             defaultValue={thanksForTakingPinyin}
-                            value={thanksForTakingPinyin}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
@@ -275,12 +269,11 @@ export default function VariantsDefault() {
                     <RmgLabel label="Welcome abroad">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroadEN}
-                            value={welcomeAbroadEN}
                             onDebouncedChange={val =>
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'welcomeAbroadEN',
+                                    'welcomeAbroad',
                                     val
                                 )
                             }
@@ -289,12 +282,11 @@ export default function VariantsDefault() {
                     <RmgLabel label="Welcome abroad Pinyin">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroadPinyinEN}
-                            value={welcomeAbroadPinyinEN}
                             onDebouncedChange={val =>
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'welcomeAbroadPinyinEN',
+                                    'welcomeAbroadPinyin',
                                     val
                                 )
                             }
@@ -306,12 +298,11 @@ export default function VariantsDefault() {
                     <RmgLabel label="Terminal name Pinyin">
                         <RmgDebouncedInput
                             defaultValue={terminalPinyinEN}
-                            value={terminalPinyinEN}
                             onDebouncedChange={val =>
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'terminalPinyinEN',
+                                    'terminalPinyin',
                                     val
                                 )
                             }
@@ -324,7 +315,7 @@ export default function VariantsDefault() {
                                 handleVariantChange(
                                     Stage.Departure,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'nextDoorDirectionEN',
+                                    'nextDoorDirection',
                                     val
                                 )
                             }
@@ -339,10 +330,9 @@ export default function VariantsDefault() {
                     <RmgLabel label="Line name Pinyin">
                         <RmgDebouncedInput
                             defaultValue={lineNamePinyinEN}
-                            value={lineNamePinyinEN}
                             onDebouncedChange={val =>
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
                                     'lineNamePinyin',
                                     val
@@ -366,7 +356,7 @@ export default function VariantsDefault() {
                                 handleVariantChange(
                                     Stage.Arrival,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'doorDirectionEN',
+                                    'doorDirection',
                                     val
                                 )
                             }
@@ -378,12 +368,11 @@ export default function VariantsDefault() {
                     <RmgLabel label="Thanks for taking">
                         <RmgDebouncedInput
                             defaultValue={thanksForTakingEN}
-                            value={thanksForTakingEN}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'thanksForTakingEN',
+                                    'thanksForTaking',
                                     val
                                 )
                             }
@@ -392,12 +381,11 @@ export default function VariantsDefault() {
                     <RmgLabel label="Thanks for taking Pinyin">
                         <RmgDebouncedInput
                             defaultValue={thanksForTakingPinyinEN}
-                            value={thanksForTakingPinyinEN}
                             onDebouncedChange={val =>
                                 handleVariantChange(
                                     Stage.Arrival,
                                     VoiceName.ChineseWuSimplifiedYunzhe,
-                                    'thanksForTakingPinyinEN',
+                                    'thanksForTakingPinyin',
                                     val
                                 )
                             }

@@ -40,7 +40,6 @@ export default function VariantsENArrival() {
             <RmgLabel label="Current station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={namePinyin}
-                    value={namePinyin}
                     onDebouncedChange={val => handleVariantChange('namePinyin', val)}
                 />
             </RmgLabel>

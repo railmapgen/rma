@@ -11,10 +11,9 @@ export default function StationAgGrid() {
     const { t } = useTranslation();
     const dispatch = useRootDispatch();
 
-    const {
-        project: { metadata },
-    } = useRootSelector(state => state.param);
-    const { showDefaultVariants, currentStationID: selectedStationID } = useRootSelector(state => state.runtime);
+    const { project } = useRootSelector(state => state.param);
+    const { metadata } = project;
+    const { currentStationID: selectedStationID } = useRootSelector(state => state.runtime);
 
     const [rowData, setRowData] = useState<{ [k in StnID]: string }>({});
     useEffect(() => {
@@ -31,17 +30,10 @@ export default function StationAgGrid() {
         } else {
             dispatch(setShowDefaultVariants(false));
             dispatch(setCurrentStationID(selectedStationID));
-            dispatch(setCurrentStage(Stage.Departure));
+            const availableStage = Object.keys(project.stations[selectedStationID]).at(1) as Stage | undefined;
+            dispatch(setCurrentStage(availableStage ?? Stage.Departure));
         }
     };
-
-    const _ = (
-        <RmgSelect
-            value={showDefaultVariants ? 'default' : selectedStationID}
-            options={rowData}
-            onChange={({ target: { value } }) => handleSelectionChanged(value)}
-        />
-    );
 
     return (
         <TableContainer height="100%" overflowY="auto">
@@ -53,7 +45,12 @@ export default function StationAgGrid() {
                 </Thead>
                 <Tbody>
                     {Object.entries(rowData).map(([id, name]) => (
-                        <Tr key={id} onClick={() => handleSelectionChanged(id as StnID)}>
+                        <Tr
+                            key={id}
+                            bg={id === selectedStationID ? 'teal.100' : 'transparent'}
+                            _hover={{ bg: 'gray.100' }}
+                            onClick={() => handleSelectionChanged(id as StnID)}
+                        >
                             <Td>{name}</Td>
                         </Tr>
                     ))}
