@@ -1,8 +1,5 @@
 import {
     Button,
-    Card,
-    CardBody,
-    CardFooter,
     Checkbox,
     HStack,
     Icon,
@@ -19,7 +16,6 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    Stack,
     Text,
 } from '@chakra-ui/react';
 import { RmgFields, RmgFieldsField } from '@railmapgen/rmg-components';
@@ -27,15 +23,7 @@ import rmgRuntime from '@railmapgen/rmg-runtime';
 import canvasSize from 'canvas-size';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import {
-    MdDownload,
-    MdImage,
-    MdOpenInNew,
-    MdOutlineAudiotrack,
-    MdOutlineCloud,
-    MdOutlineTextSnippet,
-    MdSave,
-} from 'react-icons/md';
+import { MdDownload, MdImage, MdOpenInNew, MdOutlineAudiotrack, MdSave } from 'react-icons/md';
 import { Events, reconciledPhrasesToText } from '../../constants/constants';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { closeAudioModal, openAudioModal } from '../../redux/audio/audio-slice';
@@ -101,8 +89,6 @@ export default function DownloadActions() {
     const [isTermsAndConditionsModalOpen, setIsTermsAndConditionsModalOpen] = React.useState(false);
     const [isAttachSelected, setIsAttachSelected] = React.useState(false);
     const [isTermsAndConditionsSelected, setIsTermsAndConditionsSelected] = React.useState(false);
-
-    const [isAudioModalOpen, setIsAudioModalOpen] = React.useState(false);
 
     // calculate the max canvas area the current browser can support
     React.useEffect(() => {
@@ -188,7 +174,7 @@ export default function DownloadActions() {
                 <MenuItem icon={<MdImage />} onClick={() => setIsDownloadModalOpen(true)}>
                     {t('header.download.image')}
                 </MenuItem>
-                <MenuItem icon={<MdOutlineAudiotrack />} onClick={() => setIsAudioModalOpen(true)}>
+                <MenuItem icon={<MdOutlineAudiotrack />} onClick={() => dispatch(openAudioModal())}>
                     {t('header.download.audio')}
                 </MenuItem>
             </MenuList>
@@ -269,48 +255,6 @@ export default function DownloadActions() {
                         isOpen={isTermsAndConditionsModalOpen}
                         onClose={() => setIsTermsAndConditionsModalOpen(false)}
                     />
-                </ModalContent>
-            </Modal>
-
-            <Modal size="xl" isOpen={isAudioModalOpen} onClose={() => setIsAudioModalOpen(false)}>
-                <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>{t('header.download.audio.title')}</ModalHeader>
-                    <ModalCloseButton />
-
-                    <ModalBody>
-                        <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="outline">
-                            <Icon as={MdOutlineTextSnippet} boxSize={20} color="blue.500" ml="2.5" alignSelf="center" />
-                            <Stack>
-                                <CardBody>{t('header.download.audio.rawText')}</CardBody>
-                                <CardFooter>
-                                    <Button variant="solid" colorScheme="blue" onClick={handleDownloadText}>
-                                        {t('header.download.audio.rawTextExport')}
-                                    </Button>
-                                </CardFooter>
-                            </Stack>
-                        </Card>
-                        <Card direction={{ base: 'column', sm: 'row' }} overflow="hidden" variant="outline">
-                            <Icon as={MdOutlineCloud} boxSize={20} color="blue.500" ml="2.5" alignSelf="center" />
-                            <Stack>
-                                <CardBody>{t('header.download.audio.server')}</CardBody>
-                                <CardFooter>
-                                    <Button
-                                        variant="solid"
-                                        colorScheme="blue"
-                                        onClick={() => {
-                                            setIsAudioModalOpen(false);
-                                            dispatch(openAudioModal());
-                                        }}
-                                    >
-                                        {t('header.download.audio.serverExport')}
-                                    </Button>
-                                </CardFooter>
-                            </Stack>
-                        </Card>
-                    </ModalBody>
-
-                    <ModalFooter />
                 </ModalContent>
             </Modal>
 

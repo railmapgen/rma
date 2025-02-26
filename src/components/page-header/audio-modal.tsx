@@ -1,29 +1,49 @@
 import {
-    Box,
-    Button,
+    Flex,
+    IconButton,
+    Link,
     Modal,
     ModalBody,
     ModalCloseButton,
     ModalContent,
     ModalHeader,
     ModalOverlay,
+    Table,
+    TableContainer,
+    Tbody,
+    Td,
     Text,
+    Th,
+    Thead,
+    Tr,
+    useColorModeValue,
     VStack,
 } from '@chakra-ui/react';
+import rmgRuntime from '@railmapgen/rmg-runtime';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { MdOutlineCancel, MdOutlineDownload, MdOutlinePayments, MdOutlineUpload } from 'react-icons/md';
 import { AudioTaskStatus } from '../../constants/audio';
+import { Events, reconciledPhrasesToText } from '../../constants/constants';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { cancelTask, fetchAudioTasks, newTask } from '../../redux/audio/audio-slice';
-import { downloadBlobAs } from '../../util/download';
+import { downloadAs, downloadBlobAs } from '../../util/download';
 import { API_ENDPOINT, apiFetch } from '../../util/token';
 
 const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
     const { t } = useTranslation();
     const dispatch = useRootDispatch();
+    const {
+        telemetry: { project: isAllowProjectTelemetry },
+    } = useRootSelector(state => state.app);
     const { tasks } = useRootSelector(state => state.audio);
-    const { rmtToken } = useRootSelector(state => state.runtime);
+    const { rmtToken, reconciledPhrases } = useRootSelector(state => state.runtime);
+    const { project } = useRootSelector(state => state.param);
+    const { style, metadata } = project;
+    const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
+
+    const linkColour = useColorModeValue('primary.500', 'primary.300');
 
     React.useEffect(() => {
         if (!isOpen) return;
@@ -40,43 +60,100 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
         downloadBlobAs(`${taskId}.zip`, await response.blob());
     };
 
+    const handleDownloadText = () => {
+        if (isAllowAppTelemetry)
+            rmgRuntime.event(
+                Events.DOWNLOAD_TEXT,
+                isAllowProjectTelemetry ? { style, '#stations': Object.keys(metadata).length } : {}
+            );
+        const text = reconciledPhrasesToText(reconciledPhrases);
+        downloadAs(`RMA_${new Date().valueOf()}.txt`, 'text/plain', text.join('\n'));
+    };
+
     return (
-        <Modal isOpen={isOpen} onClose={onClose} size="xl" scrollBehavior="inside">
+        <Modal isOpen={isOpen} onClose={onClose} size="4xl" scrollBehavior="inside">
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>{t('header.audioTask.title')}</ModalHeader>
                 <ModalCloseButton />
 
                 <ModalBody paddingBottom={10}>
-                    <VStack spacing={4} align="stretch">
-                        <Text>{rmtToken ? 'Task List' : 'Please login first'}</Text>
-                        {tasks.map(task => (
-                            <Box key={task.id} border="1px" borderColor="gray.300" p={4} borderRadius="md">
-                                <Text>ID: {task.id}</Text>
-                                <Text>Status: {task.status}</Text>
-                                <Text>Created At: {new Date(task.createdAt).toLocaleString()}</Text>
-                                <Text>Updated At: {new Date(task.updatedAt).toLocaleString()}</Text>
-                                {task.status === AudioTaskStatus.CREATED && (
-                                    <Button colorScheme="red" onClick={() => dispatch(cancelTask(task.id))}>
-                                        Cancel Task
-                                    </Button>
-                                )}
-                                {task.status === AudioTaskStatus.COMPLETED && (
-                                    <Button colorScheme="blue" onClick={() => handleTaskDownload(task.id)}>
-                                        Download Audio
-                                    </Button>
-                                )}
-                            </Box>
-                        ))}
-                        {rmtToken && (
-                            <Box p={4} border="1px" borderColor="gray.300" borderRadius="md">
-                                <VStack spacing={4}>
-                                    <Button colorScheme="blue" onClick={() => dispatch(newTask())}>
-                                        Upload current project as a new task
-                                    </Button>
-                                </VStack>
-                            </Box>
-                        )}
+                    {!rmtToken ? (
+                        <Text textAlign="center">{t('Please login first.')}</Text>
+                    ) : (
+                        <>
+                            <Flex pl="4" pr="4" mb="4">
+                                <Text as="b" fontSize="4xl">
+                                    0
+                                </Text>
+                                <Text style={{ alignSelf: 'self-end', marginLeft: '10px' }}>pts</Text>
+                                <Flex style={{ flex: 1 }} />
+                                <IconButton
+                                    icon={<MdOutlinePayments />}
+                                    variant="ghost"
+                                    style={{ alignSelf: 'center' }}
+                                    aria-label={t('Top up points')}
+                                    isDisabled
+                                    // onClick={() => dispatch(newTask())}
+                                />
+                                <IconButton
+                                    icon={<MdOutlineUpload />}
+                                    variant="ghost"
+                                    style={{ alignSelf: 'center' }}
+                                    aria-label={t('Upload current project as a new task')}
+                                    onClick={() => dispatch(newTask())}
+                                />
+                            </Flex>
+                            <TableContainer height="100%" overflowY="auto">
+                                <Table variant="simple" height="100%">
+                                    <Thead>
+                                        <Tr>
+                                            <Th>{t('ID')}</Th>
+                                            <Th>{t('Status')}</Th>
+                                            <Th>{t('Created At')}</Th>
+                                            <Th>{t('Updated At')}</Th>
+                                            <Th>{t('Action')}</Th>
+                                        </Tr>
+                                    </Thead>
+                                    <Tbody>
+                                        {tasks.map(({ id, status, createdAt, updatedAt }) => (
+                                            <Tr key={id}>
+                                                <Td>{id}</Td>
+                                                <Td>{status}</Td>
+                                                <Td>{new Date(createdAt).toLocaleString()}</Td>
+                                                <Td>{new Date(updatedAt).toLocaleString()}</Td>
+                                                <Td>
+                                                    {status === AudioTaskStatus.CREATED && (
+                                                        <IconButton
+                                                            icon={<MdOutlineCancel />}
+                                                            aria-label={t('Cancel Task')}
+                                                            onClick={() => dispatch(cancelTask(id))}
+                                                        />
+                                                    )}
+                                                    {status === AudioTaskStatus.COMPLETED && (
+                                                        <IconButton
+                                                            icon={<MdOutlineDownload />}
+                                                            aria-label={t('Download Audio')}
+                                                            onClick={() => handleTaskDownload(id)}
+                                                        />
+                                                    )}
+                                                </Td>
+                                            </Tr>
+                                        ))}
+                                    </Tbody>
+                                </Table>
+                            </TableContainer>
+                        </>
+                    )}
+
+                    <VStack mt={4}>
+                        <Text fontSize="sm" lineHeight="100%" color="gray.600">
+                            We believe in a free and open internet. You may also{' '}
+                            <Link color={linkColour} fontSize="sm" lineHeight="100%" onClick={handleDownloadText}>
+                                download raw text
+                            </Link>{' '}
+                            and use in your preferred audio provider :)
+                        </Text>
                     </VStack>
                 </ModalBody>
             </ModalContent>
