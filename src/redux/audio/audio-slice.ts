@@ -1,26 +1,22 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '..';
-import { AudioTask, AudioTaskStatus } from '../../constants/audio';
+import { APIAudioTasks, AudioTask, AudioTaskStatus } from '../../constants/audio';
 import { simplifyReconciledPhrases } from '../../constants/constants';
 import { API_ENDPOINT, apiFetch } from '../../util/token';
 
 interface AudioTaskState {
     isModalOpen: boolean;
     tasks: AudioTask[];
+    points: number;
 }
 
 const initialState: AudioTaskState = {
     isModalOpen: false,
     tasks: [],
+    points: 0,
 };
 
-interface APIAudioTasks {
-    page: number;
-    limit: number;
-    tasks: AudioTask[];
-}
-
-export const fetchAudioTasks = createAsyncThunk<AudioTask[]>(
+export const fetchAudioTasks = createAsyncThunk<APIAudioTasks>(
     'audio/fetchTasks',
     async (_, { getState, rejectWithValue }) => {
         const { rmtToken: token } = (getState() as RootState).runtime;
@@ -33,11 +29,7 @@ export const fetchAudioTasks = createAsyncThunk<AudioTask[]>(
             return rejectWithValue(rep.text);
         }
         const apiAudioTasks = (await rep.json()) as APIAudioTasks;
-        apiAudioTasks.tasks.forEach(t => {
-            t.createdAt = new Date(t.createdAt).getTime();
-            t.updatedAt = new Date(t.updatedAt).getTime();
-        });
-        return apiAudioTasks.tasks;
+        return apiAudioTasks;
     }
 );
 
@@ -100,8 +92,9 @@ const appSlice = createSlice({
         },
     },
     extraReducers: builder => {
-        builder.addCase(fetchAudioTasks.fulfilled, (state, action: PayloadAction<AudioTask[]>) => {
-            state.tasks = action.payload;
+        builder.addCase(fetchAudioTasks.fulfilled, (state, action: PayloadAction<APIAudioTasks>) => {
+            state.tasks = action.payload.tasks;
+            state.points = action.payload.points;
         });
     },
 });

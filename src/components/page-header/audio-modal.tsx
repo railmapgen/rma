@@ -26,9 +26,10 @@ import { MdOutlineCancel, MdOutlineDownload, MdOutlinePayments, MdOutlineUpload 
 import { AudioTaskStatus } from '../../constants/audio';
 import { Events, reconciledPhrasesToText } from '../../constants/constants';
 import { useRootDispatch, useRootSelector } from '../../redux';
-import { cancelTask, fetchAudioTasks, newTask } from '../../redux/audio/audio-slice';
+import { cancelTask, fetchAudioTasks } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
 import { API_ENDPOINT, apiFetch } from '../../util/token';
+import NewTaskModal from './new-task-modal';
 
 const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
@@ -37,13 +38,15 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const {
         telemetry: { project: isAllowProjectTelemetry },
     } = useRootSelector(state => state.app);
-    const { tasks } = useRootSelector(state => state.audio);
+    const { tasks, points } = useRootSelector(state => state.audio);
     const { rmtToken, reconciledPhrases } = useRootSelector(state => state.runtime);
     const { project } = useRootSelector(state => state.param);
     const { style, metadata } = project;
     const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
 
     const linkColour = useColorModeValue('primary.500', 'primary.300');
+
+    const [isNewTaskModalOpen, setNewTaskModalOpen] = React.useState(false);
 
     React.useEffect(() => {
         if (!isOpen) return;
@@ -84,7 +87,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         <>
                             <Flex pl="4" pr="4" mb="4">
                                 <Text as="b" fontSize="4xl">
-                                    0
+                                    {points}
                                 </Text>
                                 <Text style={{ alignSelf: 'self-end', marginLeft: '10px' }}>pts</Text>
                                 <Flex style={{ flex: 1 }} />
@@ -94,15 +97,15 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                     style={{ alignSelf: 'center' }}
                                     aria-label={t('Top up points')}
                                     isDisabled
-                                    // onClick={() => dispatch(newTask())}
                                 />
                                 <IconButton
                                     icon={<MdOutlineUpload />}
                                     variant="ghost"
                                     style={{ alignSelf: 'center' }}
                                     aria-label={t('Upload current project as a new task')}
-                                    onClick={() => dispatch(newTask())}
+                                    onClick={() => setNewTaskModalOpen(true)}
                                 />
+                                <NewTaskModal isOpen={isNewTaskModalOpen} onClose={() => setNewTaskModalOpen(false)} />
                             </Flex>
                             <TableContainer height="100%" overflowY="auto">
                                 <Table variant="simple" height="100%">

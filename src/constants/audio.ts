@@ -12,3 +12,10 @@ export interface AudioTask {
     createdAt: number;
     updatedAt: number;
 }
+
+export interface APIAudioTasks {
+    page: number;
+    limit: number;
+    tasks: AudioTask[];
+    points: number;
+}
