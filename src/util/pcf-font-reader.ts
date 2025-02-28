@@ -18,6 +18,18 @@ const PCF_BIT_MASK = 1 << 3; // (1 << 3)
 const PCF_SCAN_UNIT_MASK = 3 << 4; // (3 << 4)
 
 /***************************************************************
+ * Constants for rendering
+ * These are specific to the font and can be adjusted as needed.
+ * The PCF format does not store these values.
+ * The values below are for the "WenQuanYi" font.
+ * Max ascent is 16 pixels, max descent is 4 pixels.
+ * The baseline is at 4 pixels from the bottom.
+ * So the total height is 20 pixels.
+ ***************************************************************/
+
+const GLYPH_BASELINE = 4;
+
+/***************************************************************
  * Helper: read integers from DataView with little-endian
  *         (the spec says "Always stored with LSB first")
  *         Mostly for reading the 32-bit `format` flags.
@@ -251,10 +263,14 @@ function parseBitmaps(
 
     for (let g = 0; g < glyphCount; g++) {
         const metric = metrics[g];
-        const w = metric.characterWidth; // glyph width
+        const w = metric.rightSideBearing - metric.leftSideBearing; // glyph width
         const h = metric.ascent + metric.descent;
 
+        const width = Math.max(metric.characterWidth, w);
+
         // if (g === 19) console.log(metric); // 1
+        // if (g === 44) console.log(metric); // J
+        // if (g === 121) console.log(metric); // ·
         // if (g === 1293) console.log(metric); // 。
         // if (g === 1364) console.log(metric); // ご
         // if (g === 8344) console.log(metric); // 乘
@@ -286,29 +302,23 @@ function parseBitmaps(
                 }
             }
 
-            // TODO: figure out how the left/right side bearings work
-            // actual character width should be left side bearing + character width + right side bearing
-            // but looks like it is left side bearing + character width
-            // so we need only to pad the left side with false
-            if (metric.leftSideBearing > 0) {
-                rowBits.unshift(...new Array(metric.leftSideBearing).fill(false));
+            // Pad the right if the glyph width is less than the visual width
+            if (width > w) {
+                rowBits.push(...new Array(width - w).fill(false));
             }
 
             bitmap2d.push(rowBits);
             bytePos += rowBytes;
         }
 
-        // TODO: padding for descent, but what for ascent?
-        // Should we pad the top as well?
-        const paddingHeight = metric.descent >= 0 && metric.descent < 2 ? 2 - metric.descent : 0;
-        if (paddingHeight > 0) {
-            for (let i = 0; i < paddingHeight; i++) {
-                const rowBits = new Array(w).fill(false);
-                if (metric.leftSideBearing > 0) {
-                    rowBits.unshift(...new Array(metric.leftSideBearing).fill(false));
-                }
-                bitmap2d.push(rowBits);
-            }
+        // Pad the bottom if descent is not max descent 4.
+        let padBottom = GLYPH_BASELINE;
+        if (metric.descent !== 0) {
+            padBottom = -metric.descent + GLYPH_BASELINE;
+        }
+        for (let i = 0; i < padBottom; i++) {
+            const rowBits = new Array(width).fill(false);
+            bitmap2d.push(rowBits);
         }
 
         glyphBitmaps[g] = bitmap2d;

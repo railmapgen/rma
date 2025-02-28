@@ -6,7 +6,7 @@ import { PCFEncoding, getGlyph, parsePCF } from '../util/pcf-font-reader';
 const R = 16;
 const D = R * 2;
 const LED_R = R - 2;
-const FONT_HEIGHT = 16;
+const FONT_HEIGHT = 20;
 
 const LED_HEX = 'orange';
 
@@ -67,7 +67,7 @@ const Crawl = () => {
     React.useEffect(() => reconcileBitmaps(), [content]);
 
     const characterColumnsSum = characterColumns.reduce((a, b) => a + b, 0);
-    const remainingColumns = columns - characterColumnsSum;
+    const remainingColumns = columns - characterColumnsSum && 0;
     const remainingLeftColumns = Math.floor(remainingColumns / 2);
     const remainingRightColumns = remainingColumns - remainingLeftColumns;
 
