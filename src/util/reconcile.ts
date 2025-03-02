@@ -167,12 +167,29 @@ const reconcileShanghaiMetro = (
             res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakStrong));
         }
 
+        const service = variants.service ?? baseVariants[Stage.Departure]![voiceName]!.service;
+        if (
+            service !== 'local' &&
+            (voiceName === VoiceName.ChineseMandarinSimplified || voiceName === VoiceName.ChineseWuSimplifiedXiaotong)
+        ) {
+            // 本次列车是大站车
+            if (service === 'express') {
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.ServiceExpress));
+            } else if (service === 'direct') {
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.ServiceDirect));
+            }
+        }
+
         const loop = variants.loop ?? baseVariants[Stage.Departure]![voiceName]!.loop;
         const terminal = (variants.terminal ?? baseVariants[Stage.Departure]![voiceName]!.terminal) as string;
         const terminalPinyin = (variants.terminal ??
             baseVariants[Stage.Departure]![voiceName]!.terminalPinyin) as string;
-        if (!loop) {
-            res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.TheTerminalOfThisTrain));
+        if (loop === 'none') {
+            if (service === 'local' || voiceName === VoiceName.ChineseWuSimplifiedYunzhe) {
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.TheTerminalOfThisTrain));
+            } else {
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.NextStopTerminal));
+            }
             res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
             res.push({
                 type: PhraseType.Customized,
@@ -209,6 +226,48 @@ const reconcileShanghaiMetro = (
                 res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakStrong));
             }
         }
+
+        const stopovers = variants.stopovers as string[] | undefined;
+        if (
+            service !== 'local' &&
+            stopovers &&
+            stopovers.length > 0 &&
+            (voiceName === VoiceName.ChineseMandarinSimplified || voiceName === VoiceName.ChineseWuSimplifiedXiaotong)
+        ) {
+            // 中途停靠 罗山路、新场、惠南、临港大道，到其他车站的乘客，请在 罗山路、新场、惠南 换乘
+            // 中途停靠 临港大道
+            res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.Stopovers1));
+            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
+            for (const stopover of stopovers) {
+                res.push({
+                    type: PhraseType.Customized,
+                    voiceName,
+                    text: stopover,
+                    pinyin: stopover,
+                    rate: customizedRate,
+                });
+                res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakMedium));
+            }
+            res.pop();
+            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
+            res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.Stopovers2));
+            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
+            for (const stopover of stopovers) {
+                res.push({
+                    type: PhraseType.Customized,
+                    voiceName,
+                    text: stopover,
+                    pinyin: stopover,
+                    rate: customizedRate,
+                });
+                res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakMedium));
+            }
+            res.pop();
+            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
+            res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.Stopovers3));
+            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakStrong));
+        }
+
         res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.NextStop));
         res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
         if (variants.next === terminal) {
@@ -311,6 +370,41 @@ const reconcileShanghaiMetro = (
                     voiceName === VoiceName.ChineseWuSimplifiedXiaotong)
             ) {
                 res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.NoteLastTrain));
+            }
+        }
+
+        const branchTerminalName = variants.branchTerminalName as string;
+        if (branchTerminalName) {
+            // 需要往闵行开发区方向的乘客，请在本站下车后换乘
+            // 可换乘往航中路方向的列车
+            // 要往花桥方向的乘客，请在本站下车后换乘
+            if (
+                voiceName === VoiceName.ChineseMandarinSimplified ||
+                voiceName === VoiceName.ChineseWuSimplifiedXiaotong
+            ) {
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.BranchTerminal1));
+                res.push({
+                    type: PhraseType.Customized,
+                    voiceName,
+                    text: branchTerminalName,
+                    pinyin: variants.branchTerminalNamePinyin as string,
+                    rate: customizedRate,
+                });
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.BranchTerminal2));
+                res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakStrong));
+            }
+            // You may transfer trains bound for Hangzhong Road.
+            if (voiceName === VoiceName.ChineseWuSimplifiedYunzhe) {
+                res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.BranchTerminalEnglish));
+                res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
+                res.push({
+                    type: PhraseType.Customized,
+                    voiceName,
+                    text: branchTerminalName,
+                    pinyin: variants.branchTerminalNamePinyin as string,
+                    rate: customizedRate,
+                });
+                res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakStrong));
             }
         }
     } else if (stage === Stage.Midway) {

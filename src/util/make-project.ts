@@ -1,6 +1,7 @@
 import { LanguageCode, Translation } from '@railmapgen/rmg-translate';
 import { emptyProject, Stage, VoiceName } from '../constants/constants';
-import { Name, RMGParam } from '../constants/rmg';
+import { Direction, Name, RMGParam, Services, ShortDirection } from '../constants/rmg';
+import { getRoutes } from './graph-theory';
 
 const makeBaseVariants = (
     terminal: Translation, // arrival & departure
@@ -11,7 +12,8 @@ const makeBaseVariants = (
     noteLastTrain: boolean = true, // departure
     caution: boolean = false, // midway
     loop: 'none' | 'inner' | 'outer' = 'none', // departure
-    loopTerminal: boolean = false // departure
+    loopTerminal: boolean = false, // departure
+    service: Services = Services.local // departure
 ) => ({
     [Stage.Arrival]: {
         [VoiceName.ChineseWuSimplifiedXiaotong]: {
@@ -48,6 +50,7 @@ const makeBaseVariants = (
             noteLastTrain,
             loop,
             loopTerminal,
+            service,
         },
         [VoiceName.ChineseMandarinSimplified]: {
             welcomeAbroad: railwayName?.at(0),
@@ -60,6 +63,7 @@ const makeBaseVariants = (
             noteLastTrain,
             loop,
             loopTerminal,
+            service,
         },
         [VoiceName.ChineseWuSimplifiedYunzhe]: {
             welcomeAbroad: railwayName?.at(1),
@@ -69,6 +73,7 @@ const makeBaseVariants = (
             nextDoorDirection,
             lineName: lineName[1],
             lineNamePinyin: lineName[1],
+            service,
         },
     },
     [Stage.Midway]: {
@@ -92,26 +97,33 @@ const replaceLineBreak = (localisedName: Partial<Record<LanguageCode, string>>) 
     return localisedName;
 };
 
-export const makeProject = (rmg: RMGParam) => {
+export const makeProject = (rmg: RMGParam, preferRouteIndex: number, preferService: Services = Services.local) => {
     const proj = structuredClone(emptyProject);
 
-    const { line_name: lineName, stn_list: stnList, loop } = rmg;
+    const { line_name: lineName, stn_list: stnList, loop, direction } = rmg;
     const doorDirection = 'left';
     const nextDoorDirection = 'left';
     const railwayName: [string, string] = ['轨道交通', 'Rail Transit'];
 
-    // get terminal
-    let terminalID = '';
-    let currentStnID = 'linestart';
-    while (currentStnID !== 'lineend') {
-        const nextID = stnList[currentStnID].children[0];
-        if (nextID === 'lineend') {
-            terminalID = currentStnID;
-            break;
-        }
-        currentStnID = nextID;
+    // TODO: get service before route and then filter route
+    // get route
+    const routes = getRoutes(stnList).map(route => route.slice(1, -1));
+    if (direction === ShortDirection.left) {
+        routes.forEach(route => route.reverse());
     }
-    if (terminalID === '') throw new Error('Invalid RMG save!');
+    let rawRoute = routes.at(preferRouteIndex) ?? routes.at(-1)!;
+    if (preferService !== Services.local) {
+        rawRoute = rawRoute.filter(stnID => stnList[stnID].services.includes(preferService));
+    }
+    const route = rawRoute;
+
+    // all services
+    const allServices = new Set(route.map(stnID => stnList[stnID].services).flat());
+
+    // get terminal
+    const terminalID = route.at(-1)!;
+    // get possible branch terminal
+    const branchTerminalID = routes.map(route => route[route.length - 1]).find(id => id !== terminalID);
 
     const { localisedName: terminalName } = stnList[terminalID];
     replaceLineBreak(terminalName);
@@ -124,12 +136,12 @@ export const makeProject = (rmg: RMGParam) => {
         undefined, // noteLastTrain
         undefined, // caution
         loop ? 'inner' : 'none',
-        false // loopTerminal
+        false, // loopTerminal
+        allServices.has(preferService) ? preferService : Services.local
     );
 
     // make variants for each station
-    currentStnID = stnList['linestart'].children[0];
-    while (currentStnID !== 'lineend') {
+    for (const [i, currentStnID] of route.entries()) {
         const { localisedName: currentName } = stnList[currentStnID];
         replaceLineBreak(currentName);
         proj.metadata[currentStnID] = { name: Object.values(currentName).at(0) ?? '' };
@@ -141,9 +153,8 @@ export const makeProject = (rmg: RMGParam) => {
             [VoiceName.ChineseWuSimplifiedYunzhe]: {},
         };
 
-        const prevID = stnList[currentStnID].parents[0];
         // has arr stage if current station is not the start
-        if (prevID !== 'linestart') {
+        if (i !== 0) {
             proj.stations[currentStnID][Stage.Arrival] = {
                 [VoiceName.ChineseWuSimplifiedXiaotong]: { name: currentName['zh'], namePinyin: currentName['zh'] },
                 [VoiceName.ChineseMandarinSimplified]: { name: currentName['zh'], namePinyin: currentName['zh'] },
@@ -151,10 +162,9 @@ export const makeProject = (rmg: RMGParam) => {
             };
         }
 
-        const nextID = stnList[currentStnID].children[0];
         // has dep stage if current station is not the terminal
-        if (nextID !== 'lineend' || loop) {
-            const nextValidID = loop && nextID === 'lineend' ? stnList['linestart'].children[0] : nextID;
+        if (i !== route.length - 1 || loop) {
+            const nextValidID = loop && i === route.length - 1 ? route[0] : route[i + 1];
             const { localisedName: nextName } = stnList[nextValidID];
             replaceLineBreak(nextName);
 
@@ -181,14 +191,59 @@ export const makeProject = (rmg: RMGParam) => {
                     noteLastTrain: false,
                 },
             };
-        }
 
-        currentStnID = nextID;
+            // add branch info
+            if (
+                branchTerminalID && // has branch
+                i + 1 < route.length && // current station is not the terminal
+                stnList[route[i + 1]].branch?.[direction === 'l' ? Direction.left : Direction.right] // next station has branch
+            ) {
+                const { localisedName: branchTerminalName } = stnList[branchTerminalID];
+                replaceLineBreak(branchTerminalName);
+                proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedXiaotong] = {
+                    ...proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedXiaotong],
+                    branchTerminalName: branchTerminalName['zh'],
+                    branchTerminalNamePinyin: branchTerminalName['zh'],
+                };
+                proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseMandarinSimplified] = {
+                    ...proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseMandarinSimplified],
+                    branchTerminalName: branchTerminalName['zh'],
+                    branchTerminalNamePinyin: branchTerminalName['zh'],
+                };
+                proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedYunzhe] = {
+                    ...proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedYunzhe],
+                    branchTerminalName: branchTerminalName['en'],
+                    branchTerminalNamePinyin: branchTerminalName['en'],
+                };
+            }
+
+            // add service info
+            if (preferService !== Services.local) {
+                const stopovers = route.slice(i + 1, -1);
+                const stopoverNames = stopovers.map(id => {
+                    const { localisedName: name } = stnList[id];
+                    replaceLineBreak(name);
+                    return name;
+                });
+                proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedXiaotong] = {
+                    ...proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedXiaotong],
+                    stopovers: stopoverNames.map(n => n['zh']),
+                };
+                proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseMandarinSimplified] = {
+                    ...proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseMandarinSimplified],
+                    stopovers: stopoverNames.map(n => n['zh']),
+                };
+                proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedYunzhe] = {
+                    ...proj.stations[currentStnID][Stage.Departure]![VoiceName.ChineseWuSimplifiedYunzhe],
+                    stopovers: stopoverNames.map(n => n['en']),
+                };
+            }
+        }
     }
 
     // Add departure stage for terminal station when loop
     if (loop) {
-        const firstID = stnList['linestart'].children[0];
+        const firstID = route[0];
         const { localisedName: currentName } = stnList[firstID];
         replaceLineBreak(currentName);
         proj.stations[firstID][Stage.Arrival] = {

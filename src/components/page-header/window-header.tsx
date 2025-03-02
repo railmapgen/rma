@@ -4,12 +4,13 @@ import rmgRuntime, { RmgEnv } from '@railmapgen/rmg-runtime';
 import { LANGUAGE_NAMES, LanguageCode } from '@railmapgen/rmg-translate';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
-import { MdHelp, MdTranslate } from 'react-icons/md';
+import { MdHelp, MdSettings, MdTranslate } from 'react-icons/md';
 import { Events } from '../../constants/constants';
 import { useRootDispatch } from '../../redux';
 import AboutModal from './about-modal';
 import DownloadActions from './download-actions';
 import OpenActions from './open-actions';
+import SettingsModal from './settings-modal';
 
 export default function WindowHeader() {
     const { t } = useTranslation();
@@ -65,6 +66,16 @@ export default function WindowHeader() {
                     <DownloadActions />
                 </WrapItem>
 
+                <WrapItem>
+                    <IconButton
+                        size="sm"
+                        variant="ghost"
+                        aria-label="Settings"
+                        icon={<MdSettings />}
+                        onClick={() => setIsSettingsModalOpen(true)}
+                    />
+                </WrapItem>
+
                 {rmgRuntime.isStandaloneWindow() && (
                     <WrapItem>
                         <Menu>
@@ -91,7 +102,7 @@ export default function WindowHeader() {
                 </WrapItem>
             </Wrap>
 
-            {/* <SettingsModal isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} /> */}
+            <SettingsModal isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} />
             <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} />
         </RmgWindowHeader>
     );

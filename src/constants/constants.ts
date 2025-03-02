@@ -128,6 +128,7 @@ export interface StyleVariants {
 }
 
 export enum LocalStorageKey {
+    APP = 'app',
     PARAM = 'param',
     ACCOUNT = 'rmg-home__account',
 }

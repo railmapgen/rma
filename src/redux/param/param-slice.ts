@@ -8,10 +8,12 @@ import { StnID } from '../../constants/rmg';
  */
 export interface ParamState {
     project: Project;
+    version: number;
 }
 
 const initialState: ParamState = {
     project: emptyProject,
+    version: 1,
 };
 
 const paramSlice = createSlice({

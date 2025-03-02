@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Services } from '../../constants/rmg';
 
 interface AppState {
     telemetry: {
@@ -14,6 +15,12 @@ interface AppState {
          */
         project: boolean;
     };
+    preference: {
+        import: {
+            route: number;
+            service: Services;
+        };
+    };
 }
 
 const initialState: AppState = {
@@ -21,20 +28,26 @@ const initialState: AppState = {
         app: true,
         project: true,
     },
+    preference: {
+        import: {
+            route: 0,
+            service: Services.local,
+        },
+    },
 };
 
 const appSlice = createSlice({
     name: 'app',
     initialState,
     reducers: {
-        setTelemetryApp: (state, action: PayloadAction<boolean>) => {
-            state.telemetry.app = action.payload;
-        },
         setTelemetryProject: (state, action: PayloadAction<boolean>) => {
             state.telemetry.project = action.payload;
+        },
+        setPreferenceImport: (state, action: PayloadAction<AppState['preference']['import']>) => {
+            state.preference.import = action.payload;
         },
     },
 });
 
-export const { setTelemetryApp, setTelemetryProject } = appSlice.actions;
+export const { setTelemetryProject, setPreferenceImport } = appSlice.actions;
 export default appSlice.reducer;

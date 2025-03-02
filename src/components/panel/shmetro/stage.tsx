@@ -42,7 +42,7 @@ export default function StageView() {
                 validVariants
                     .filter(([stage, voice, _]) => stageExistence?.[stage]?.[voice] !== undefined)
                     .map(([stage, voice, name]) => (
-                        <Card height="300px" width="400px" key={`${stage}-${voice}`} variant="outline">
+                        <Card height="350px" width="400px" key={`${stage}-${voice}`} variant="outline">
                             <CardHeader width="100%" display="flex">
                                 <Text as="b" flex="1">
                                     {name}

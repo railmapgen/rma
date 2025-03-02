@@ -36,6 +36,7 @@ export default function VariantsDefault() {
     const noteLastTrain = (variantsZHDep.noteLastTrain as boolean | undefined) ?? false;
     const loop = (variantsZHDep.loop as 'inner' | 'outer' | 'none') ?? false;
     const loopTerminal = (variantsZHDep.loopTerminal as boolean | undefined) ?? false;
+    const service = (variantsZHDep.service as string | undefined) ?? '';
 
     const doorDirection = (variantsZHArr.doorDirection as 'left' | 'right' | undefined) ?? 'left';
     const thanksForTaking = variantsZHArr.thanksForTaking as string | undefined;
@@ -137,6 +138,9 @@ export default function VariantsDefault() {
                                 )
                             }
                         />
+                    </RmgLabel>
+                    <RmgLabel label="列车种别">
+                        <RmgOutput>{service}</RmgOutput>
                     </RmgLabel>
                     <RmgLabel label="注意换乘列车末班车时间" oneLine>
                         <Switch

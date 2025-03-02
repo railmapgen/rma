@@ -3,6 +3,7 @@ import { LocalStorageKey, Stage } from '../constants/constants';
 import defaultProject from '../constants/default-project.json';
 import { reconcile } from '../util/reconcile';
 import { RootStore, startRootListening } from './index';
+import { setPreferenceImport, setTelemetryProject } from './app/app-slice';
 import { ParamState, setProject } from './param/param-slice';
 import { setCurrentStage, setCurrentStationID, setReconciledPhrases } from './runtime/runtime-slice';
 
@@ -25,8 +26,35 @@ export default function initStore(store: RootStore) {
         },
     });
 
+    startRootListening({
+        predicate: (_action, currentState, previousState) => {
+            return JSON.stringify(currentState.app) !== JSON.stringify(previousState.app);
+        },
+        effect: (_action, listenerApi) => {
+            const app = listenerApi.getState().app;
+            rmgRuntime.storage.set(LocalStorageKey.APP, JSON.stringify(app));
+        },
+    });
+
+    initAppStore(store);
     initParamStore(store);
 }
+
+const initAppStore = (store: RootStore) => {
+    const appString = rmgRuntime.storage.get(LocalStorageKey.APP);
+    if (appString) {
+        const app = JSON.parse(appString);
+
+        if ('telemetry' in app) {
+            if ('project' in app.telemetry) store.dispatch(setTelemetryProject(app.telemetry.project));
+        }
+        if ('preference' in app) {
+            if ('import' in app.preference) {
+                store.dispatch(setPreferenceImport(app.preference.import));
+            }
+        }
+    }
+};
 
 const initParamStore = (store: RootStore) => {
     const paramString = rmgRuntime.storage.get(LocalStorageKey.PARAM);

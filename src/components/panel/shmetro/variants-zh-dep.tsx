@@ -15,7 +15,6 @@ export default function VariantsZHDeparture() {
     const currentStage = Stage.Departure;
     const currentVoice = VoiceName.ChineseMandarinSimplified;
     const variants = project.stations[currentStationID]?.[currentStage]?.[currentVoice] ?? {};
-    console.log(currentStage, currentStationID, VoiceName.ChineseMandarinSimplified, variants);
 
     const baseVariants = project.baseVariants[currentStage]?.[VoiceName.ChineseMandarinSimplified] ?? {};
     const currentVariants = { ...baseVariants, ...variants };
@@ -36,8 +35,11 @@ export default function VariantsZHDeparture() {
     // const nextPinyin = (currentVariants.nextPinyin as string | undefined) ?? 'Next';
     const nextDoorDirection = (currentVariants.nextDoorDirection as 'left' | 'right' | undefined) ?? 'left';
     const int = (variants.int as string[] | undefined) ?? [];
+    const branchTerminalName = (currentVariants.branchTerminalName as string | undefined) ?? '';
+    const branchTerminalNamePinyin = (currentVariants.branchTerminalNamePinyin as string | undefined) ?? '';
+    const service = (currentVariants.service as string | undefined) ?? '';
+    const stopovers = (variants.stopovers as string[] | undefined) ?? [];
     const noteLastTrain = (currentVariants.noteLastTrain as boolean | undefined) ?? false;
-    console.log(next, nextDoorDirection, int, noteLastTrain);
 
     return (
         <Box>
@@ -47,7 +49,6 @@ export default function VariantsZHDeparture() {
             {/* <RmgLabel label="下一站名拼音">
                 <RmgDebouncedInput
                     defaultValue={nextPinyin}
-                    value={nextPinyin}
                     onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
                 />
             </RmgLabel> */}
@@ -60,6 +61,24 @@ export default function VariantsZHDeparture() {
             <RmgLabel label="换乘信息">
                 <RmgOutput>{int.join(' ')}</RmgOutput>
             </RmgLabel>
+            {currentVariants.branchTerminalName && currentVariants.branchTerminalNamePinyin && (
+                <>
+                    <RmgLabel label="支线终点站名">
+                        <RmgOutput>{branchTerminalName}</RmgOutput>
+                    </RmgLabel>
+                    <RmgLabel label="支线终点站名拼音">
+                        <RmgDebouncedInput
+                            defaultValue={branchTerminalNamePinyin}
+                            onDebouncedChange={val => handleVariantChange('branchTerminalNamePinyin', val)}
+                        />
+                    </RmgLabel>
+                </>
+            )}
+            {service !== 'local' && (
+                <RmgLabel label="停靠站信息">
+                    <RmgOutput>{stopovers.join(' ')}</RmgOutput>
+                </RmgLabel>
+            )}
             <RmgLabel label="注意换乘列车末班车时间" oneLine>
                 <Switch
                     isChecked={noteLastTrain}

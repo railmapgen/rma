@@ -1,10 +1,11 @@
 import { IconButton, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
-import { logger } from '@railmapgen/rmg-runtime';
+import { useReadyConfig } from '@railmapgen/rmg-components';
+import rmgRuntime, { logger, RmgEnv } from '@railmapgen/rmg-runtime';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdInsertDriveFile, MdUpload } from 'react-icons/md';
 import { Project, Stage } from '../../constants/constants';
-import { useRootDispatch } from '../../redux';
+import { useRootDispatch, useRootSelector } from '../../redux';
 import { setProject } from '../../redux/param/param-slice';
 import { setCurrentStage, setCurrentStationID, setGlobalAlert } from '../../redux/runtime/runtime-slice';
 import { makeProject } from '../../util/make-project';
@@ -13,6 +14,13 @@ import RmgParamAppClip from './rmg-param-app-clip';
 export default function OpenActions() {
     const dispatch = useRootDispatch();
     const { t } = useTranslation();
+    const {
+        preference: {
+            import: { route, service },
+        },
+    } = useRootSelector(state => state.app);
+
+    const environment = useReadyConfig(rmgRuntime.getEnv);
 
     const fileInputRef = React.useRef<HTMLInputElement | null>(null);
     const fileRMGInputRef = React.useRef<HTMLInputElement | null>(null);
@@ -60,7 +68,7 @@ export default function OpenActions() {
         } else {
             try {
                 const paramStr = await readFileAsText(file);
-                const project = makeProject(JSON.parse(paramStr));
+                const project = makeProject(JSON.parse(paramStr), route, service);
                 dispatch(setProject(project));
                 dispatch(setCurrentStationID(Object.keys(project['metadata'])[0]));
                 dispatch(setCurrentStage(Stage.Departure));
@@ -103,9 +111,11 @@ export default function OpenActions() {
                     onChange={handleImportRMGProject}
                     data-testid="file-upload"
                 />
-                <MenuItem icon={<MdUpload />} onClick={() => fileRMGInputRef?.current?.click()}>
-                    {t('header.open.RMG')}
-                </MenuItem>
+                {environment === RmgEnv.DEV && (
+                    <MenuItem icon={<MdUpload />} onClick={() => fileRMGInputRef?.current?.click()}>
+                        {t('header.open.RMG')}
+                    </MenuItem>
+                )}
 
                 <MenuItem icon={<MdInsertDriveFile />} onClick={() => setIsRmgParamAppClipOpen(true)}>
                     {t('header.open.projectRMG')}

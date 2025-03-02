@@ -16,6 +16,9 @@ export default function VariantsENDeparture() {
     const currentVoice = VoiceName.ChineseWuSimplifiedYunzhe;
     const variants = project.stations[currentStationID]?.[currentStage]?.[currentVoice] ?? {};
 
+    const baseVariants = project.baseVariants[currentStage]?.[currentVoice] ?? {};
+    const currentVariants = { ...baseVariants, ...variants };
+
     const handleVariantChange = (variant: string, value: Serializable) => {
         dispatch(
             setVariant({
@@ -28,10 +31,13 @@ export default function VariantsENDeparture() {
         );
     };
 
-    const next = (variants.next as string | undefined) ?? 'Next';
-    const nextPinyin = (variants.nextPinyin as string | undefined) ?? 'Next';
-    const nextDoorDirection = (variants.nextDoorDirection as 'left' | 'right' | undefined) ?? 'left';
-    const noteLastTrain = (variants.noteLastTrain as boolean | undefined) ?? false;
+    const next = (currentVariants.next as string | undefined) ?? 'Next';
+    const nextPinyin = (currentVariants.nextPinyin as string | undefined) ?? 'Next';
+    const nextDoorDirection = (currentVariants.nextDoorDirection as 'left' | 'right' | undefined) ?? 'left';
+    const int = (currentVariants.int as string[] | undefined) ?? [];
+    const branchTerminalName = (currentVariants.branchTerminalName as string | undefined) ?? '';
+    const branchTerminalNamePinyin = (currentVariants.branchTerminalNamePinyin as string | undefined) ?? '';
+    const noteLastTrain = (currentVariants.noteLastTrain as boolean | undefined) ?? false;
 
     return (
         <Box>
@@ -50,6 +56,22 @@ export default function VariantsENDeparture() {
                     <Radio value="right">Right</Radio>
                 </RadioGroup>
             </RmgLabel>
+            <RmgLabel label="Interchange info">
+                <RmgOutput>{int.join(' ')}</RmgOutput>
+            </RmgLabel>
+            {currentVariants.branchTerminalName && currentVariants.branchTerminalNamePinyin && (
+                <>
+                    <RmgLabel label="支线终点站名">
+                        <RmgOutput>{branchTerminalName}</RmgOutput>
+                    </RmgLabel>
+                    <RmgLabel label="支线终点站名拼音">
+                        <RmgDebouncedInput
+                            defaultValue={branchTerminalNamePinyin}
+                            onDebouncedChange={val => handleVariantChange('branchTerminalNamePinyin', val)}
+                        />
+                    </RmgLabel>
+                </>
+            )}
             <RmgLabel label="Note last train" oneLine>
                 <Switch
                     isChecked={noteLastTrain}
