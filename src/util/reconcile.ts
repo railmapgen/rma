@@ -249,7 +249,7 @@ const reconcileShanghaiMetro = (
                 res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakMedium));
             }
             res.pop();
-            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
+            res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakStrong));
             res.push(getPredefinedPhrases(stage, voiceName, PredefinedPhraseType.Stopovers2));
             res.push(makePunctuationPhrase(voiceName, PunctuationPhraseType.BreakWeak));
             for (const stopover of stopovers) {

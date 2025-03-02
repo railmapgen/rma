@@ -24,7 +24,8 @@ import canvasSize from 'canvas-size';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdDownload, MdImage, MdOpenInNew, MdOutlineAudiotrack, MdSave } from 'react-icons/md';
-import { Events, reconciledPhrasesToText } from '../../constants/constants';
+import { Events } from '../../constants/constants';
+import { phrasesToText } from '../../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { closeAudioModal, openAudioModal } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
@@ -40,9 +41,9 @@ export default function DownloadActions() {
         telemetry: { project: isAllowProjectTelemetry },
     } = useRootSelector(state => state.app);
     const dispatch = useRootDispatch();
-    const { content, columns, viewableColumns } = useRootSelector(state => state.crawl);
+    const { realColumns } = useRootSelector(state => state.crawl);
     const { project } = useRootSelector(state => state.param);
-    const { reconciledPhrases } = useRootSelector(state => state.runtime);
+    const { reconciledPhrases, currentStationID, currentStage, currentVoice } = useRootSelector(state => state.runtime);
     const { isModalOpen: isAudioTaskModalOpen } = useRootSelector(state => state.audio);
     const { style, metadata } = project;
     const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
@@ -104,9 +105,10 @@ export default function DownloadActions() {
     // disable some scale options that are too big for the current browser to generate
     React.useEffect(() => {
         if (isDownloadModalOpen) {
-            const [width, height] = [(viewableColumns * D * scale) / 100, (FONT_HEIGHT * D * scale) / 100];
+            const [width, height] = [(realColumns * D * scale) / 100, (FONT_HEIGHT * D * scale) / 100];
+            // TODO: more options should be disabled as the current method allows more than a browser could handle
             const disabledScales = scales.filter(
-                scale => (width * scale) / 100 > maxArea.width && (height * scale) / 100 > maxArea.height
+                scale => (width * scale) / 100 > maxArea.width || (height * scale) / 100 > maxArea.height
             );
             setDisabledScaleOptions(disabledScales);
         }
@@ -120,20 +122,21 @@ export default function DownloadActions() {
             );
         downloadAs(`RMA_${new Date().valueOf()}.json`, 'application/json', JSON.stringify(project, null, 2));
     };
-    const handleDownloadText = () => {
-        if (isAllowAppTelemetry)
-            rmgRuntime.event(
-                Events.DOWNLOAD_TEXT,
-                isAllowProjectTelemetry ? { style, '#stations': Object.keys(metadata).length } : {}
-            );
-        const text = reconciledPhrasesToText(reconciledPhrases);
-        downloadAs(`RMA_${new Date().valueOf()}.txt`, 'text/plain', text.join('\n'));
-    };
     // thanks to this article that includes all steps to convert a svg to a png
     // https://levelup.gitconnected.com/draw-an-svg-to-canvas-and-download-it-as-image-in-javascript-f7f7713cf81f
     const handleDownload = () => {
+        const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
+        const text = phrasesToText(phrases ?? []);
+        const content = text === '' ? ' ' : text;
+
         const elem = document.getElementById('crawl')!.cloneNode(true) as SVGSVGElement;
         const svgString = elem.outerHTML;
+
+        if (format === 'svg') {
+            downloadAs(`RMP_${new Date().valueOf()}.svg`, 'image/svg+xml', svgString);
+            return;
+        }
+
         // append to document to render the svg
         document.body.appendChild(elem);
         // convert it to an encoded string
@@ -144,7 +147,7 @@ export default function DownloadActions() {
 
         // prepare a clean canvas to be drawn on
         const canvas = document.createElement('canvas');
-        const [canvasWidth, canvasHeight] = [(viewableColumns * D * scale) / 100, (FONT_HEIGHT * D * scale) / 100];
+        const [canvasWidth, canvasHeight] = [(realColumns * D * scale) / 100, (FONT_HEIGHT * D * scale) / 100];
         canvas.width = canvasWidth;
         canvas.height = canvasHeight;
         const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;

@@ -3,21 +3,20 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface CrawlState {
     content: string;
     /**
-     * Aka "valid columns width"
-     * Valid means either with glyph or dim gray LED.
+     * Expected columns width
      */
     columns: number;
     /**
-     * Aka "svg viewport width"
+     * Actual columns width
      */
-    viewableColumns: number;
+    realColumns: number;
     scale: number;
 }
 
 const initialState: CrawlState = {
     content: 'ご欢１迎1乘こじ。nihao',
-    columns: 207,
-    viewableColumns: 200,
+    columns: 200,
+    realColumns: 200,
     scale: 0.2,
 };
 
@@ -31,8 +30,8 @@ const crawlSlice = createSlice({
         setColumns: (state, action: PayloadAction<number>) => {
             state.columns = action.payload;
         },
-        setViewableColumns: (state, action: PayloadAction<number>) => {
-            state.viewableColumns = action.payload;
+        setRealColumns: (state, action: PayloadAction<number>) => {
+            state.realColumns = action.payload;
         },
         setScale: (state, action: PayloadAction<number>) => {
             state.scale = action.payload;
@@ -40,5 +39,5 @@ const crawlSlice = createSlice({
     },
 });
 
-export const { setContent, setColumns, setViewableColumns, setScale } = crawlSlice.actions;
+export const { setContent, setColumns, setRealColumns, setScale } = crawlSlice.actions;
 export default crawlSlice.reducer;

@@ -1,6 +1,8 @@
+import { logger } from '@railmapgen/rmg-runtime';
 import React from 'react';
 import { phrasesToText } from '../constants/phrases';
-import { useRootSelector } from '../redux';
+import { useRootDispatch, useRootSelector } from '../redux';
+import { setRealColumns } from '../redux/crawl/crawl-slice';
 import { PCFEncoding, getGlyph, parsePCF } from '../util/pcf-font-reader';
 
 const R = 16;
@@ -11,13 +13,14 @@ const FONT_HEIGHT = 20;
 const LED_HEX = 'orange';
 
 const Crawl = () => {
+    const dispatch = useRootDispatch();
     const { reconciledPhrases, currentStationID, currentStage, currentVoice } = useRootSelector(state => state.runtime);
-    const { columns, scale } = useRootSelector(state => state.crawl);
+    const { columns, realColumns, scale } = useRootSelector(state => state.crawl);
 
     const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
     const text = phrasesToText(phrases ?? []);
     const content = text === '' ? ' ' : text;
-    console.log(content);
+    logger.debug(content);
 
     const fontDataRef = React.useRef<ArrayBuffer | null>(null);
     const bitmapsRef = React.useRef<boolean[][][]>([]);
@@ -46,6 +49,7 @@ const Crawl = () => {
 
         setBitmaps(bitmaps);
         setCharacterColumns(characterColumns);
+        dispatch(setRealColumns(characterColumns.reduce((a, b) => a + b, 0)));
     }, [content]);
 
     React.useEffect(() => {
@@ -66,8 +70,7 @@ const Crawl = () => {
 
     React.useEffect(() => reconcileBitmaps(), [content]);
 
-    const characterColumnsSum = characterColumns.reduce((a, b) => a + b, 0);
-    const remainingColumns = columns - characterColumnsSum && 0;
+    const remainingColumns = columns - realColumns && 0;
     const remainingLeftColumns = Math.floor(remainingColumns / 2);
     const remainingRightColumns = remainingColumns - remainingLeftColumns;
 
@@ -76,8 +79,8 @@ const Crawl = () => {
             xmlns="http://www.w3.org/2000/svg"
             id="crawl"
             style={{ backgroundColor: 'black' }}
-            viewBox={`0 0 ${characterColumnsSum * D} ${FONT_HEIGHT * D}`}
-            width={characterColumnsSum * D * scale}
+            viewBox={`0 0 ${realColumns * D} ${FONT_HEIGHT * D}`}
+            width={realColumns * D * scale}
             height={FONT_HEIGHT * D * scale}
         >
             <defs>
@@ -167,7 +170,7 @@ const Crawl = () => {
                                 .map((_, j) => (
                                     <LED
                                         key={`rr${i}${j}`}
-                                        x={(remainingLeftColumns + characterColumnsSum + i) * D + R}
+                                        x={(remainingLeftColumns + realColumns + i) * D + R}
                                         y={j * D + R}
                                     />
                                 ))
