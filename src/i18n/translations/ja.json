@@ -1,7 +1,114 @@
 {
     "header": {
         "about": {
-            "rma": "地下鉄路線図放送機"
+            "title": "について",
+            "rma": "地下鉄路線図放送機",
+            "railmapgen": "路線図ツールキットプロジェクト",
+            "desc": "",
+            "contributors": "貢献者",
+            "content1": "reflexion,allegretto,you",
+            "content2": "2024/03/03 上海にて",
+            "contactUs": "お問い合わせ",
+            "github": "プロジェクトリポジトリ",
+            "githubContent": "問題が発生しましたか？ここで検索またはイシューを提起してください！",
+            "slack": "Slackグループ",
+            "slackContent": "これらのSlackチャンネルでチャットしてください！"
+        },
+        "donation": {
+            "title": "寄付",
+            "openCollective": "Open Collective",
+            "viaUSD": "PaypalまたはVisaカードでUSDで寄付してください。",
+            "afdian": "爱发电",
+            "viaCNY": "AlipayまたはWechat PayでCNYで寄付してください。"
+        },
+        "open": {
+            "config": "プロジェクトをインポート",
+            "projectRMG": "RMGプロジェクトからインポート",
+            "invalidType": "無効なファイルタイプです！JSON形式のファイルのみ受け付けます。",
+            "unknownError": "アップロードされたファイルの解析中に不明なエラーが発生しました！もう一度お試しください。"
+        },
+        "download": {
+            "config": "プロジェクトをエクスポート",
+            "image": "画像をエクスポート",
+            "audio": "音声をエクスポート",
+            "format": "フォーマット",
+            "png": "PNG",
+            "svg": "SVG",
+            "scale": "スケール",
+            "disabledScaleOptions": "ブラウザのキャンバス制限により、一部のスケールオプションは無効です。",
+            "disabledScaleOptionsWorkarounds": "可能な回避策としては、このCLIツールを使用してSVGから画像を生成することがあります: ",
+            "shareInfo1": "この画像を共有する際に ",
+            "shareInfo2": " とそのリンクを添付します。",
+            "termsAndConditions": "利用規約",
+            "termsAndConditionsInfo": "私は以下に同意します ",
+            "period": "。",
+            "confirm": "ダウンロード"
+        },
+        "settings": {
+            "title": "設定",
+            "preference": {
+                "title": "設定",
+                "style": {
+                    "title": "風格",
+                    "shmetro": "上海地下鉄"
+                },
+                "branch": {
+                    "title": "支線索引を優先"
+                },
+                "service": {
+                    "title": "サービスレベルを優先",
+                    "local": "各駅停車",
+                    "express": "快速",
+                    "direct": "直通"
+                }
+            },
+            "telemetry": {
+                "title": "テレメトリ",
+                "info": "地下鉄路線図放送機を改善し、貢献者がプロジェクトを強化する意欲を維持するために、Google Analyticsを通じて匿名の使用データが収集されます。このデータはユーザーエクスペリエンスの向上とツールの機能最適化にのみ使用され、第三者と共有されることはありません。",
+                "essential": "基本",
+                "essentialTooltip": "このグローバル設定は路線図ツールキットで変更できます",
+                "essentialInfo": "地下鉄路線図放送機は、ユーザーがツールとどのように、いつ相互作用するかを理解するのに役立つ基本的な使用データを収集します。安心してください、個人を特定できる情報やプロジェクトのデータは一切収集されません。",
+                "essentialLink": "このリンクをクリックして、Google Analyticsが収集する可能性のある詳細なフィールドを確認してください。",
+                "additional": "追加",
+                "additionalInfo": "地下鉄路線図放送機は、入力時にプロジェクトの作成やバリアントの変更などの相互作用に関するデータも収集します。これらの追加データも匿名であり、統計分析にのみ使用され、ツールをより良くするのに役立ちます。"
+            }
+        },
+        "audioTask": {
+            "title": "音声タスク",
+            "loginFirst": "個人タスクにアクセスするには、まずログインしてください。",
+            "topUp": "チャージ",
+            "table": {
+                "id": "ID",
+                "status": "ステータス",
+                "createdAt": "作成日",
+                "updatedAt": "更新日",
+                "points": "ポイント",
+                "actions": "操作"
+            },
+            "freeInternet1": "私たちは自由でオープンなインターネットを信じています。また、",
+            "freeInternet2": "生のテキストをダウンロード",
+            "freeInternet3": "して、お気に入りの音声プロバイダーで使用することもできます :)",
+            "new": {
+                "title": "新しいタスク",
+                "content1": "これにより、現在のプロジェクトから新しいタスクが作成されます。",
+                "content2": "推定されるポイント消費量は ",
+                "content3": "実際に使用されるポイントはサーバーに依存します。",
+                "content4": "処理前にタスクをキャンセルすると、全額返金されます。",
+                "create": "新しいタスクを作成"
+            }
         }
+    },
+
+    "crawl": {
+        "settings": {
+            "title": "クロール設定",
+            "content": "コンテンツ",
+            "scale": "スケール"
+        }
+    },
+
+    "stationVariants": {
+        "title": "駅バリアント",
+        "baseVariant": "基本バリアント"
     }
 }

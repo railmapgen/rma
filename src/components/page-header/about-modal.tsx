@@ -108,7 +108,7 @@ const AboutModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                 </Text>
                                 <Text fontSize="sm">{t('header.about.slackContent')}</Text>
                                 <Text fontSize="sm" as="i">
-                                    #rmp, #gallery, #rmg, #palette-and-templates
+                                    #rma, #rmp, #gallery, #rmg, #palette-and-templates
                                 </Text>
                             </TagLabel>
                         </Tag>

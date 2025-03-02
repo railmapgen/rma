@@ -30,10 +30,13 @@ const NewTaskModal = (props: { isOpen: boolean; onClose: () => void }) => {
                 <ModalCloseButton />
 
                 <ModalBody paddingBottom={10}>
-                    <Text>This will create a new task from the current project.</Text>
-                    <Text>The estimated points consumed will be {estimatedPoints}.</Text>
-                    <Text>The actual points used is subject to the server.</Text>
-                    <Text>You may cancel the task before processing to get a full refund.</Text>
+                    <Text>{t('header.audioTask.new.content1')}</Text>
+                    <Text>
+                        {t('header.audioTask.new.content2')}
+                        {estimatedPoints}
+                    </Text>
+                    <Text>{t('header.audioTask.new.content3')}</Text>
+                    <Text>{t('header.audioTask.new.content4')}</Text>
                 </ModalBody>
 
                 <ModalFooter>
@@ -42,7 +45,7 @@ const NewTaskModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         onClick={() => dispatch(newTask())}
                         isDisabled={points < estimatedPoints}
                     >
-                        Create a new task
+                        {t('header.audioTask.new.create')}
                     </Button>
                 </ModalFooter>
             </ModalContent>

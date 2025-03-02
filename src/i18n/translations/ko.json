@@ -1,7 +1,114 @@
 {
     "header": {
         "about": {
-            "rma": "지하철 노선도 안내원"
+            "title": "소개",
+            "rma": "지하철 노선도 안내원",
+            "railmapgen": "노선도 툴킷 프로젝트",
+            "desc": "",
+            "contributors": "기여자",
+            "content1": "reflexion,allegretto,you",
+            "content2": "2024/03/03 상하이",
+            "contactUs": "문의하기",
+            "github": "프로젝트 저장소",
+            "githubContent": "문제가 있나요? 여기서 검색하거나 이슈를 등록하세요!",
+            "slack": "Slack 그룹",
+            "slackContent": "이 Slack 채널에서 채팅하세요!"
+        },
+        "donation": {
+            "title": "기부",
+            "openCollective": "Open Collective",
+            "viaUSD": "Paypal 또는 Visa 카드로 USD로 기부하세요.",
+            "afdian": "爱发电",
+            "viaCNY": "Alipay 또는 Wechat Pay로 CNY로 기부하세요."
+        },
+        "open": {
+            "config": "프로젝트 가져오기",
+            "projectRMG": "RMG 프로젝트에서 가져오기",
+            "invalidType": "잘못된 파일 형식입니다! JSON 형식의 파일만 허용됩니다.",
+            "unknownError": "업로드한 파일을 파싱하는 중 알 수 없는 오류가 발생했습니다! 다시 시도해 주세요."
+        },
+        "download": {
+            "config": "프로젝트 내보내기",
+            "image": "이미지 내보내기",
+            "audio": "오디오 내보내기",
+            "format": "형식",
+            "png": "PNG",
+            "svg": "SVG",
+            "scale": "스케일",
+            "disabledScaleOptions": "일부 스케일 옵션은 브라우저의 캔버스 제한으로 인해 비활성화되었습니다.",
+            "disabledScaleOptionsWorkarounds": "가능한 해결 방법으로는 이 CLI 도구를 사용하여 SVG에서 이미지를 생성하는 것이 있습니다: ",
+            "shareInfo1": "이 이미지를 공유할 때 ",
+            "shareInfo2": " 및 해당 링크를 첨부할 것입니다.",
+            "termsAndConditions": "이용 약관",
+            "termsAndConditionsInfo": "나는 다음에 동의합니다: ",
+            "period": ".",
+            "confirm": "다운로드"
+        },
+        "settings": {
+            "title": "설정",
+            "preference": {
+                "title": "환경 설정",
+                "style": {
+                    "title": "스타일",
+                    "shmetro": "상하이 지하철"
+                },
+                "branch": {
+                    "title": "지선 인덱스 선호"
+                },
+                "service": {
+                    "title": "서비스 수준 선호",
+                    "local": "일반",
+                    "express": "급행",
+                    "direct": "직통"
+                }
+            },
+            "telemetry": {
+                "title": "원격 측정",
+                "info": "지하철 노선도 안내원을 개선하고 기여자들이 프로젝트를 개선할 동기를 유지하기 위해 Google Analytics를 통해 익명의 사용 데이터를 수집합니다. 이 데이터는 사용자 경험을 향상시키고 도구의 기능을 최적화하는 데만 사용되며 제3자와 공유되지 않습니다.",
+                "essential": "기본",
+                "essentialTooltip": "이 전역 설정은 노선도 툴킷에서 변경하세요",
+                "essentialInfo": "지하철 노선도 안내원은 사용자가 도구와 상호 작용하는 방식과 시기를 이해하는 데 도움이 되는 기본 사용 데이터를 수집합니다. 안심하세요, 개인 식별 정보나 프로젝트 데이터는 절대 수집되지 않습니다.",
+                "essentialLink": "Google Analytics가 수집할 수 있는 상세 필드를 보려면 이 링크를 클릭하세요.",
+                "additional": "추가",
+                "additionalInfo": "지하철 노선도 안내원은 또한 프로젝트 생성 또는 변형 수정과 같은 상호 작용에 대한 데이터를 수집합니다. 이 추가 데이터도 익명이며 통계 분석을 위해 사용되어 도구를 개선하는 데 도움을 줍니다."
+            }
+        },
+        "audioTask": {
+            "title": "오디오 작업",
+            "loginFirst": "개인 작업에 접근하려면 먼저 로그인하세요.",
+            "topUp": "충전",
+            "table": {
+                "id": "ID",
+                "status": "상태",
+                "createdAt": "생성일",
+                "updatedAt": "수정일",
+                "points": "포인트",
+                "actions": "작업"
+            },
+            "freeInternet1": "우리는 자유롭고 개방된 인터넷을 믿습니다. 또한 ",
+            "freeInternet2": "원본 텍스트 다운로드",
+            "freeInternet3": " 를 통해 선호하는 오디오 제공자를 사용할 수 있습니다 :)",
+            "new": {
+                "title": "새 작업",
+                "content1": "이 작업은 현재 프로젝트에서 새 작업을 생성합니다.",
+                "content2": "예상 소모 포인트는 ",
+                "content3": "실제 사용 포인트는 서버에 따라 다릅니다.",
+                "content4": "처리 전 작업을 취소하면 전액 환불받을 수 있습니다.",
+                "create": "새 작업 생성"
+            }
         }
+    },
+
+    "crawl": {
+        "settings": {
+            "title": "크롤 설정",
+            "content": "내용",
+            "scale": "스케일"
+        }
+    },
+
+    "stationVariants": {
+        "title": "역 변형",
+        "baseVariant": "기본 변형"
     }
 }

@@ -57,7 +57,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
         const response = await apiFetch(`${API_ENDPOINT.AUDIOTASKS}/${taskId}/download`, {}, rmtToken);
         if (!response || !response.ok) {
             // TODO: show error message using global alert
-            throw new Error('文件下载失败');
+            throw new Error('Download error');
         }
 
         downloadBlobAs(`${taskId}.zip`, await response.blob());
@@ -82,7 +82,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
 
                 <ModalBody paddingBottom={10}>
                     {!rmtToken ? (
-                        <Text textAlign="center">{t('Please login first.')}</Text>
+                        <Text textAlign="center">{t('header.audioTask.loginFirst')}</Text>
                     ) : (
                         <>
                             <Flex pl="4" pr="4" mb="4">
@@ -95,14 +95,14 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                     icon={<MdOutlinePayments />}
                                     variant="ghost"
                                     style={{ alignSelf: 'center' }}
-                                    aria-label={t('Top up points')}
+                                    aria-label={t('header.audioTask.topUp')}
                                     isDisabled
                                 />
                                 <IconButton
                                     icon={<MdOutlineUpload />}
                                     variant="ghost"
                                     style={{ alignSelf: 'center' }}
-                                    aria-label={t('Upload current project as a new task')}
+                                    aria-label={t('header.audioTask.new.title')}
                                     onClick={() => setNewTaskModalOpen(true)}
                                 />
                                 <NewTaskModal isOpen={isNewTaskModalOpen} onClose={() => setNewTaskModalOpen(false)} />
@@ -111,20 +111,22 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                 <Table variant="simple" height="100%">
                                     <Thead>
                                         <Tr>
-                                            <Th>{t('ID')}</Th>
-                                            <Th>{t('Status')}</Th>
-                                            <Th>{t('Created At')}</Th>
-                                            <Th>{t('Updated At')}</Th>
-                                            <Th>{t('Action')}</Th>
+                                            <Th>{t('header.audioTask.table.id')}</Th>
+                                            <Th>{t('header.audioTask.table.status')}</Th>
+                                            <Th>{t('header.audioTask.table.createdAt')}</Th>
+                                            <Th>{t('header.audioTask.table.updatedAt')}</Th>
+                                            <Th>{t('header.audioTask.table.points')}</Th>
+                                            <Th>{t('header.audioTask.table.actions')}</Th>
                                         </Tr>
                                     </Thead>
                                     <Tbody>
-                                        {tasks.map(({ id, status, createdAt, updatedAt }) => (
+                                        {tasks.map(({ id, status, createdAt, updatedAt, points }) => (
                                             <Tr key={id}>
                                                 <Td>{id}</Td>
                                                 <Td>{status}</Td>
                                                 <Td>{new Date(createdAt).toLocaleString()}</Td>
                                                 <Td>{new Date(updatedAt).toLocaleString()}</Td>
+                                                <Td>{points}</Td>
                                                 <Td>
                                                     {status === AudioTaskStatus.CREATED && (
                                                         <IconButton
@@ -151,11 +153,11 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
 
                     <VStack mt={4}>
                         <Text fontSize="sm" lineHeight="100%" color="gray.600">
-                            We believe in a free and open internet. You may also{' '}
+                            {t('header.audioTask.freeInternet1')}
                             <Link color={linkColour} fontSize="sm" lineHeight="100%" onClick={handleDownloadText}>
-                                download raw text
-                            </Link>{' '}
-                            and use in your preferred audio provider :)
+                                {t('header.audioTask.freeInternet2')}
+                            </Link>
+                            {t('header.audioTask.freeInternet3')}
                         </Text>
                     </VStack>
                 </ModalBody>

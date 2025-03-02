@@ -11,6 +11,7 @@ export interface AudioTask {
     status: AudioTaskStatus;
     createdAt: number;
     updatedAt: number;
+    points: number;
 }
 
 export interface APIAudioTasks {

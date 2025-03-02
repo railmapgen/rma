@@ -59,7 +59,6 @@ export default function DownloadActions() {
     const scales = [10, 25, 33, 50, 67, 75, 100, 125, 150, 175, 200, 250, 300, 400, 500, 750, 1000];
     const scaleOptions: { [k: number]: string } = Object.fromEntries(scales.map(v => [v, `${v}%`]));
     const [disabledScaleOptions, setDisabledScaleOptions] = React.useState<number[]>([]);
-    const [isTransparent, setIsTransparent] = React.useState(false);
     const fields: RmgFieldsField[] = [
         {
             type: 'select',
@@ -78,12 +77,6 @@ export default function DownloadActions() {
             options: scaleOptions,
             disabledOptions: disabledScaleOptions,
             onChange: value => setScale(value as number),
-        },
-        {
-            type: 'switch',
-            label: t('header.download.transparent'),
-            isChecked: isTransparent,
-            onChange: setIsTransparent,
         },
     ];
     const [isDownloadModalOpen, setIsDownloadModalOpen] = React.useState(false);
@@ -211,18 +204,18 @@ export default function DownloadActions() {
                             </>
                         )}
                         <br />
-                        <Checkbox isChecked={isAttachSelected} onChange={e => setIsAttachSelected(e.target.checked)}>
+                        {/* <Checkbox isChecked={isAttachSelected} onChange={e => setIsAttachSelected(e.target.checked)}>
                             <Text>
                                 {t('header.download.shareInfo1')}
                                 <Link
                                     color="teal.500"
-                                    onClick={() => window.open('https://railmapgen.github.io/rmp', '_blank')}
+                                    onClick={() => window.open('https://railmapgen.github.io/rma', '_blank')}
                                 >
-                                    {t('header.about.rmp')} <Icon as={MdOpenInNew} />
+                                    {t('header.about.rma')} <Icon as={MdOpenInNew} />
                                 </Link>
                                 {t('header.download.shareInfo2')}
                             </Text>
-                        </Checkbox>
+                        </Checkbox> */}
                         <Checkbox
                             isChecked={isTermsAndConditionsSelected}
                             onChange={e => setIsTermsAndConditionsSelected(e.target.checked)}

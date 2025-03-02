@@ -1,7 +1,114 @@
 {
     "header": {
         "about": {
-            "rma": "地铁线路图放送机"
+            "title": "关于",
+            "rma": "地铁线路图放送机",
+            "railmapgen": "地铁线路图工具包项目",
+            "desc": "",
+            "contributors": "贡献者",
+            "content1": "reflexion,allegretto,you",
+            "content2": "2024/03/03 于上海",
+            "contactUs": "联系我们",
+            "github": "项目仓库",
+            "githubContent": "遇到问题？在这里搜索或提交问题！",
+            "slack": "Slack群组",
+            "slackContent": "在这些Slack频道中聊天！"
+        },
+        "donation": {
+            "title": "捐赠",
+            "openCollective": "Open Collective",
+            "viaUSD": "通过Paypal或Visa卡以美元捐赠。",
+            "afdian": "爱发电",
+            "viaCNY": "通过支付宝或微信支付以人民币捐赠。"
+        },
+        "open": {
+            "config": "导入项目",
+            "projectRMG": "从RMG项目导入",
+            "invalidType": "文件类型无效！仅接受JSON格式的文件。",
+            "unknownError": "解析上传文件时发生未知错误！请重试。"
+        },
+        "download": {
+            "config": "导出项目",
+            "image": "导出图片",
+            "audio": "导出音频",
+            "format": "格式",
+            "png": "PNG",
+            "svg": "SVG",
+            "scale": "缩放比例",
+            "disabledScaleOptions": "由于浏览器的画布限制，某些缩放比例选项被禁用。",
+            "disabledScaleOptionsWorkarounds": "可能的解决方法包括使用此CLI工具从svg生成图片：",
+            "shareInfo1": "我将在分享此图片时附上",
+            "shareInfo2": "及其链接。",
+            "termsAndConditions": "条款和条件",
+            "termsAndConditionsInfo": "我同意",
+            "period": "。",
+            "confirm": "下载"
+        },
+        "settings": {
+            "title": "设置",
+            "preference": {
+                "title": "偏好",
+                "style": {
+                    "title": "样式",
+                    "shmetro": "上海地铁"
+                },
+                "branch": {
+                    "title": "偏好支线索引"
+                },
+                "service": {
+                    "title": "偏好列車種別",
+                    "local": "普通",
+                    "express": "快速",
+                    "direct": "直达"
+                }
+            },
+            "telemetry": {
+                "title": "遥测",
+                "info": "为了帮助改进地铁线路图放送机并激励贡献者增强项目，通过Google Analytics收集匿名使用数据。这些数据仅用于增强用户体验和优化工具功能，绝不会与第三方共享。",
+                "essential": "基本",
+                "essentialTooltip": "在地铁线路图工具包中更改此全局设置",
+                "essentialInfo": "地铁线路图放送机收集基本使用数据，帮助我们了解用户如何以及何时与工具互动。请放心，绝不会收集任何个人身份信息或项目数据。",
+                "essentialLink": "点击此链接查看Google Analytics可能收集的详细字段。",
+                "additional": "附加",
+                "additionalInfo": "地铁线路图放送机还会在您输入时收集交互数据，例如项目创建或变体修改。这些附加数据也是匿名的，仅用于统计分析，以帮助我们改进工具。"
+            }
+        },
+        "audioTask": {
+            "title": "声音任务",
+            "loginFirst": "请先登录以访问个人任务。",
+            "topUp": "充值",
+            "table": {
+                "id": "ID",
+                "status": "状态",
+                "createdAt": "创建时间",
+                "updatedAt": "更新时间",
+                "points": "积分",
+                "actions": "操作"
+            },
+            "freeInternet1": "我们相信自由开放的互联网。您也可以",
+            "freeInternet2": "下载原始文本",
+            "freeInternet3": "并在您喜欢的声音提供商中使用 :)",
+            "new": {
+                "title": "新任务",
+                "content1": "这将从当前项目创建一个新任务。",
+                "content2": "预计消耗的积分为",
+                "content3": "实际使用的积分以服务器为准。",
+                "content4": "您可以在处理前取消任务以获得全额退款。",
+                "create": "创建新任务"
+            }
         }
+    },
+
+    "crawl": {
+        "settings": {
+            "title": "爬取设置",
+            "content": "内容",
+            "scale": "缩放比例"
+        }
+    },
+
+    "stationVariants": {
+        "title": "车站变体",
+        "baseVariant": "基础变体"
     }
 }

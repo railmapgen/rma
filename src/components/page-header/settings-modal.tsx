@@ -61,7 +61,7 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                 <Box mb="1" display="flex">
                                     <Text flex="1">{t('header.settings.preference.style.title')}</Text>
                                     <Select size="xs" width="auto" ml="1" defaultValue="shmetro">
-                                        <option value="shmetro">Shanghai Metro</option>
+                                        <option value="shmetro">{t('header.settings.preference.style.shmetro')}</option>
                                     </Select>
                                 </Box>
                                 <Box mb="1" display="flex">

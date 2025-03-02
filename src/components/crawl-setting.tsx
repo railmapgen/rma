@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { MdOutlineSettings } from 'react-icons/md';
 import { phrasesToText } from '../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../redux';
-import { setColumns, setScale } from '../redux/crawl/crawl-slice';
+import { setScale } from '../redux/crawl/crawl-slice';
 
 export default function CrawlSetting() {
     const { t } = useTranslation();
@@ -31,16 +31,16 @@ export default function CrawlSetting() {
         <Box>
             <IconButton
                 icon={<MdOutlineSettings />}
-                aria-label={t('Settings')}
+                aria-label={t('crawl.settings.title')}
                 onClick={() => setIsSettingOpen(true)}
                 style={{ position: 'absolute', right: '10px', top: '10px' }}
             />
             <Modal size="xl" isOpen={isSettingOpen} onClose={() => setIsSettingOpen(false)}>
                 <ModalOverlay />
                 <ModalContent>
-                    <ModalHeader>{t('Settings')}</ModalHeader>
+                    <ModalHeader>{t('crawl.settings.title')}</ModalHeader>
                     <ModalBody>
-                        <RmgLabel label="content">
+                        <RmgLabel label={t('crawl.settings.content')}>
                             <RmgOutput>{content}</RmgOutput>
                         </RmgLabel>
                         {/* <RmgLabel label="columns">
@@ -54,7 +54,7 @@ export default function CrawlSetting() {
                                 onThrottledChange={val => dispatch(setColumns(val))}
                             />
                         </RmgLabel> */}
-                        <RmgLabel label="scale">
+                        <RmgLabel label={t('crawl.settings.scale')}>
                             <RmgThrottledSlider
                                 defaultValue={scale}
                                 value={scale}

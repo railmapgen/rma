@@ -1,5 +1,4 @@
 import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
-import { RmgSelect } from '@railmapgen/rmg-components';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Stage } from '../../constants/constants';
@@ -18,11 +17,12 @@ export default function StationAgGrid() {
     const [rowData, setRowData] = useState<{ [k in StnID]: string }>({});
     useEffect(() => {
         const rowData = Object.fromEntries([
-            ['default', t('Base Variant')],
+            ['default', t('stationVariants.baseVariant')],
             ...Object.entries(metadata).map(([id, { name }]) => [id, name]),
         ]);
         setRowData(rowData);
     }, [metadata]);
+    console.log(rowData);
 
     const handleSelectionChanged = (selectedStationID: StnID) => {
         if (selectedStationID === 'default') {
@@ -40,7 +40,7 @@ export default function StationAgGrid() {
             <Table variant="simple" height="100%">
                 <Thead>
                     <Tr>
-                        <Th>{t('Station Variants')}</Th>
+                        <Th>{t('stationVariants.title')}</Th>
                     </Tr>
                 </Thead>
                 <Tbody>

@@ -1,7 +1,114 @@
 {
     "header": {
         "about": {
-            "rma": "Rail Map Announcer"
+            "title": "About",
+            "rma": "Rail Map Announcer",
+            "railmapgen": "A Rail Map Toolkit project",
+            "desc": "",
+            "contributors": "Contributors",
+            "content1": "reflexion,allegretto,you",
+            "content2": "2024/03/03 in Shanghai",
+            "contactUs": "Contact Us",
+            "github": "Project repository",
+            "githubContent": "Face any problems? Search or raise an issue here!",
+            "slack": "Slack group",
+            "slackContent": "Chat in these Slack channels!"
+        },
+        "donation": {
+            "title": "Donation",
+            "openCollective": "Open Collective",
+            "viaUSD": "Donate in USD via Paypal or Visa card.",
+            "afdian": "爱发电",
+            "viaCNY": "Donate in CNY via Alipay or Wechat Pay."
+        },
+        "open": {
+            "config": "Import project",
+            "projectRMG": "Import from RMG project",
+            "invalidType": "Invalid file type! Only file in JSON format is accepted.",
+        "unknownError": "Unknown error occurred while parsing the uploaded file! Please try again."
+        },
+        "download": {
+            "config": "Export project",
+            "image": "Export image",
+            "audio": "Export audio",
+            "format": "Format",
+            "png": "PNG",
+            "svg": "SVG",
+            "scale": "Scale",
+            "disabledScaleOptions": "Some scale options are disabled due to your browser's canvas limitation.",
+            "disabledScaleOptionsWorkarounds": "Possible workarounds include generating the image from svg using this cli tool: ",
+            "shareInfo1": "I will attach ",
+            "shareInfo2": " and its link when I share this image.",
+            "termsAndConditions": "Terms and Conditions",
+            "termsAndConditionsInfo": "I agree to ",
+            "period": ".",
+            "confirm": "Download"
+        },
+        "settings": {
+            "title": "Settings",
+            "preference": {
+                "title": "Preference",
+                "style": {
+                    "title": "Style",
+                    "shmetro": "Shanghai Metro"
+                },
+                "branch": {
+                    "title": "Prefer branch index"
+                },
+                "service": {
+                    "title": "Prefer service level",
+                    "local": "Local",
+                    "express": "Express",
+                    "direct": "Direct"
+                }
+            },
+            "telemetry": {
+                "title": "Telemetry",
+                "info": "To help improve Rail Map Announcer and keep contributors motivated to enhance the project, anonymous usage data is collected through Google Analytics. This data is used solely for enhancing the user experience and optimizing the tool's functionality and is never shared with third parties.",
+                "essential": "Basic",
+                "essentialTooltip": "Change this global setting in Rail Map Toolkit",
+                "essentialInfo": "Rail Map Announcer collects essential usage data that helps us understand how and when users interact with the tool. Rest assured, no personally identifiable information or data from your projects is ever collected.",
+                "essentialLink": "Click this link to see detailed fields that Google Analytics may collect.",
+                "additional": "Additional",
+                "additionalInfo": "Rail Map Announcer also gathers data on interactions, such as project creation or variants modification, when you input. These additional data is also anonymous and are only used for statistical analysis to help us make the tool better."
+            }
+        },
+        "audioTask": {
+            "title": "Audio Task",
+            "loginFirst": "Please log in first to access personal tasks.",
+            "topUp": "Top up",
+            "table": {
+                "id": "ID",
+                "status": "Status",
+                "createdAt": "Created At",
+                "updatedAt": "Updated At",
+                "points": "Points",
+                "actions": "Actions"
+            },
+            "freeInternet1": "We believe in a free and open internet. You may also ",
+            "freeInternet2": "download raw text",
+            "freeInternet3": " and use in your preferred audio provider :)",
+            "new": {
+                "title": "New Task",
+                "content1": "This will create a new task from the current project.",
+                "content2": "The estimated points consumed will be ",
+                "content3": "The actual points used is subject to the server.",
+                "content4": "You may cancel the task before processing to get a full refund.",
+                "create": "Create a new task"
+            }
         }
+    },
+
+    "crawl": {
+        "settings": {
+            "title": "Crawl Settings",
+            "content": "Content",
+            "scale": "Scale"
+        }
+    },
+
+    "stationVariants": {
+        "title": "Station Variants",
+        "baseVariant": "Base Variant"
     }
 }
