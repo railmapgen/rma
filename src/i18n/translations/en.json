@@ -47,7 +47,7 @@
         "settings": {
             "title": "Settings",
             "preference": {
-                "title": "Preference",
+                "title": "Import Preference",
                 "style": {
                     "title": "Style",
                     "shmetro": "Shanghai Metro"
@@ -62,6 +62,10 @@
                     "direct": "Direct"
                 }
             },
+            "crawl": {
+                "title": "Crawl Settings",
+                "scale": "Scale"
+            },        
             "telemetry": {
                 "title": "Telemetry",
                 "info": "To help improve Rail Map Announcer and keep contributors motivated to enhance the project, anonymous usage data is collected through Google Analytics. This data is used solely for enhancing the user experience and optimizing the tool's functionality and is never shared with third parties.",
@@ -96,14 +100,6 @@
                 "content4": "You may cancel the task before processing to get a full refund.",
                 "create": "Create a new task"
             }
-        }
-    },
-
-    "crawl": {
-        "settings": {
-            "title": "Crawl Settings",
-            "content": "Content",
-            "scale": "Scale"
         }
     },
 

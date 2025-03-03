@@ -16,12 +16,14 @@ import {
     useColorModeValue,
     VStack,
 } from '@chakra-ui/react';
+import { RmgLabel, RmgThrottledSlider } from '@railmapgen/rmg-components';
 import rmgRuntime from '@railmapgen/rmg-runtime';
 import { useTranslation } from 'react-i18next';
 import { MdOpenInNew } from 'react-icons/md';
 import { Services } from '../../constants/rmg';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { setPreferenceImport, setTelemetryProject } from '../../redux/app/app-slice';
+import { setScale } from '../../redux/crawl/crawl-slice';
 
 const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
@@ -34,6 +36,8 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const dispatch = useRootDispatch();
     const { t } = useTranslation();
     const linkColour = useColorModeValue('primary.500', 'primary.300');
+
+    const { scale } = useRootSelector(state => state.crawl);
 
     const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
     const handleAdditionalTelemetry = (allowTelemetry: boolean) => {
@@ -97,6 +101,35 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                         <option value="direct">{t('header.settings.preference.service.direct')}</option>
                                     </Select>
                                 </Box>
+                            </Box>
+                        </Box>
+
+                        <Box width="100%" mb="3">
+                            <Text as="b" fontSize="xl">
+                                {t('header.settings.crawl.title')}
+                            </Text>
+                            <Box mt="3">
+                                {/* <RmgLabel label="columns">
+                                    <RmgThrottledSlider
+                                        isReadOnly
+                                        defaultValue={columns}
+                                        value={columns}
+                                        min={100}
+                                        max={300}
+                                        step={1}
+                                        onThrottledChange={val => dispatch(setColumns(val))}
+                                    />
+                                </RmgLabel> */}
+                                <RmgLabel label={t('header.settings.crawl.scale')}>
+                                    <RmgThrottledSlider
+                                        defaultValue={scale}
+                                        value={scale}
+                                        min={0.1}
+                                        max={1}
+                                        step={0.1}
+                                        onThrottledChange={val => dispatch(setScale(val))}
+                                    />
+                                </RmgLabel>
                             </Box>
                         </Box>
 

@@ -47,7 +47,7 @@
         "settings": {
             "title": "設置",
             "preference": {
-                "title": "偏好",
+                "title": "導入偏好",
                 "style": {
                     "title": "風格",
                     "shmetro": "上海地鐵"
@@ -62,6 +62,10 @@
                     "direct": "直達"
                 }
             },
+            "crawl": {
+                "title": "走字螢幕",
+                "scale": "縮放比例"
+            },        
             "telemetry": {
                 "title": "遙測",
                 "info": "為了幫助改進地鐵線路圖放送機並激勵貢獻者增強項目，通過 Google Analytics 收集匿名使用數據。這些數據僅用於增強用戶體驗和優化工具功能，絕不會與第三方共享。",
@@ -96,14 +100,6 @@
                 "content4": "您可以在處理前取消任務以獲得全額退款。",
                 "create": "創建新任務"
             }
-        }
-    },
-
-    "crawl": {
-        "settings": {
-            "title": "爬取設置",
-            "content": "內容",
-            "scale": "比例"
         }
     },
 

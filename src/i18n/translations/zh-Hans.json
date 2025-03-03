@@ -47,7 +47,7 @@
         "settings": {
             "title": "设置",
             "preference": {
-                "title": "偏好",
+                "title": "导入偏好",
                 "style": {
                     "title": "样式",
                     "shmetro": "上海地铁"
@@ -61,6 +61,10 @@
                     "express": "快速",
                     "direct": "直达"
                 }
+            },
+            "crawl": {
+                "title": "走字屏",
+                "scale": "缩放比例"
             },
             "telemetry": {
                 "title": "遥测",
@@ -96,14 +100,6 @@
                 "content4": "您可以在处理前取消任务以获得全额退款。",
                 "create": "创建新任务"
             }
-        }
-    },
-
-    "crawl": {
-        "settings": {
-            "title": "爬取设置",
-            "content": "内容",
-            "scale": "缩放比例"
         }
     },
 

@@ -6,7 +6,6 @@ import { D, FONT_HEIGHT, StyleType } from '../constants/constants';
 import { useRootDispatch, useRootSelector } from '../redux';
 import { useWindowSize } from '../util/hooks';
 import Crawl from './crawl';
-import CrawlSetting from './crawl-setting';
 import StationAgGrid from './station/station-variants';
 
 const PageHeader = React.lazy(() => import('./page-header/page-header'));
@@ -33,7 +32,6 @@ export default function AppRoot() {
                             <StationAgGrid />
                         </Box>
                         <Flex width="calc(100% - 200px)" flexDirection="column">
-                            <CrawlSetting />
                             <Box style={{ overflowX: 'auto' }}>
                                 <Crawl />
                             </Box>
