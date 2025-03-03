@@ -66,12 +66,12 @@ export default function VariantsZHDeparture() {
                     <RmgLabel label="支线终点站名">
                         <RmgOutput>{branchTerminalName}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label="支线终点站名拼音">
+                    {/* <RmgLabel label="支线终点站名拼音">
                         <RmgDebouncedInput
                             defaultValue={branchTerminalNamePinyin}
                             onDebouncedChange={val => handleVariantChange('branchTerminalNamePinyin', val)}
                         />
-                    </RmgLabel>
+                    </RmgLabel> */}
                 </>
             )}
             {service !== 'local' && (

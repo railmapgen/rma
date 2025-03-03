@@ -44,12 +44,12 @@ export default function VariantsENDeparture() {
             <RmgLabel label="Next station name">
                 <RmgOutput>{next}</RmgOutput>
             </RmgLabel>
-            <RmgLabel label="Next station name pinyin">
+            {/* <RmgLabel label="Next station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={nextPinyin}
                     onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
                 />
-            </RmgLabel>
+            </RmgLabel> */}
             <RmgLabel label="Next door direction" oneLine>
                 <RadioGroup value={nextDoorDirection} onChange={val => handleVariantChange('nextDoorDirection', val)}>
                     <Radio value="left">Left</Radio>
@@ -64,12 +64,12 @@ export default function VariantsENDeparture() {
                     <RmgLabel label="支线终点站名">
                         <RmgOutput>{branchTerminalName}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label="支线终点站名拼音">
+                    {/* <RmgLabel label="支线终点站名拼音">
                         <RmgDebouncedInput
                             defaultValue={branchTerminalNamePinyin}
                             onDebouncedChange={val => handleVariantChange('branchTerminalNamePinyin', val)}
                         />
-                    </RmgLabel>
+                    </RmgLabel> */}
                 </>
             )}
             <RmgLabel label="Note last train" oneLine>
