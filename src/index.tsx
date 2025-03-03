@@ -9,6 +9,8 @@ import i18n from './i18n/config';
 import store from './redux';
 import initStore from './redux/init';
 import { onLocalStorageChangeRMT } from './util/token';
+// eslint-disable-next-line import/no-unassigned-import
+import './index.css';
 
 let root: Root;
 

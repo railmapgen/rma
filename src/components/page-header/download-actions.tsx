@@ -24,17 +24,13 @@ import canvasSize from 'canvas-size';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdDownload, MdImage, MdOpenInNew, MdOutlineAudiotrack, MdSave } from 'react-icons/md';
-import { Events } from '../../constants/constants';
+import { D, Events, FONT_HEIGHT } from '../../constants/constants';
 import { phrasesToText } from '../../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { closeAudioModal, openAudioModal } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
 import AudioModal from './audio-modal';
 import TermsAndConditionsModal from './terms-and-conditions';
-
-const R = 16;
-const D = R * 2;
-const FONT_HEIGHT = 16;
 
 export default function DownloadActions() {
     const {

@@ -1,6 +1,10 @@
 import { BasePhrase, phrasesToPinyin } from './phrases';
 import { StnID } from './rmg';
 
+export const R = 16;
+export const D = R * 2;
+export const FONT_HEIGHT = 20;
+
 export enum VoiceName {
     ChineseWuSimplifiedXiaotong = 'wuu-CN-XiaotongNeural',
     ChineseWuSimplifiedYunzhe = 'wuu-CN-YunzheNeural',

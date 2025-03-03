@@ -7,7 +7,7 @@
             "desc": "",
             "contributors": "貢獻者",
             "content1": "reflexion,allegretto,you",
-            "content2": "2024/03/03 於上海",
+            "content2": "2024/02/21 於上海",
             "contactUs": "聯絡我們",
             "github": "項目倉庫",
             "githubContent": "遇到任何問題？在這裡搜索或提出問題！",
@@ -56,7 +56,7 @@
                     "title": "偏好分支索引"
                 },
                 "service": {
-                    "title": "偏好服務等級",
+                    "title": "偏好列車種別",
                     "local": "普通",
                     "express": "快速",
                     "direct": "直達"

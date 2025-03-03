@@ -35,7 +35,7 @@ export default function StageView() {
     };
 
     return (
-        <Flex flexDirection="row" wrap="wrap" flex="1" overflow="scroll" gap={4} margin="2">
+        <Flex flexDirection="row" wrap="wrap" flex="1" gap={4} margin="2">
             {showDefaultVariants ? (
                 <VariantsDefault />
             ) : (

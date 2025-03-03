@@ -21,6 +21,7 @@ export default function StationAgGrid() {
             ...Object.entries(metadata).map(([id, { name }]) => [id, name]),
         ]);
         setRowData(rowData);
+        // TODO: change base variant i18n on language change
     }, [metadata]);
     console.log(rowData);
 

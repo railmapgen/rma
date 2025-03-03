@@ -1,16 +1,10 @@
 import { logger } from '@railmapgen/rmg-runtime';
 import React from 'react';
+import { D, FONT_HEIGHT, R } from '../constants/constants';
 import { phrasesToText } from '../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../redux';
 import { setRealColumns } from '../redux/crawl/crawl-slice';
 import { PCFEncoding, getGlyph, parsePCF } from '../util/pcf-font-reader';
-
-const R = 16;
-const D = R * 2;
-const LED_R = R - 2;
-const FONT_HEIGHT = 20;
-
-const LED_HEX = 'orange';
 
 const Crawl = () => {
     const dispatch = useRootDispatch();
@@ -180,6 +174,9 @@ const Crawl = () => {
         </svg>
     );
 };
+
+const LED_R = R - 2;
+const LED_HEX = 'orange';
 
 const LED = ({ x, y, on = false }: { x: number; y: number; on?: boolean }) => (
     <circle cx={x} cy={y} r={LED_R} fill={on ? LED_HEX : 'dimgray'} filter={on ? 'url(#neon)' : undefined} />
