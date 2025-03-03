@@ -43,24 +43,13 @@ export interface PunctuationPhrase extends BasePhrase {
 
 export const makePunctuationPhrase = (voiceName: VoiceName, punctuation: PunctuationPhraseType): PunctuationPhrase => {
     let text = '';
-    if (
-        [
-            VoiceName.ChineseWuSimplifiedXiaotong,
-            VoiceName.ChineseMandarinSimplified,
-            VoiceName.ChineseCantoneseSimplified,
-            VoiceName.ChineseCantoneseTraditional,
-        ].includes(voiceName)
-    ) {
+    if ([VoiceName.ChineseWuSimplifiedXiaotong, VoiceName.ChineseMandarinSimplified].includes(voiceName)) {
         text = {
             [PunctuationPhraseType.BreakWeak]: ' ',
             [PunctuationPhraseType.BreakMedium]: '，',
             [PunctuationPhraseType.BreakStrong]: '。',
         }[punctuation];
-    } else if (
-        [VoiceName.ChineseWuSimplifiedYunzhe, VoiceName.EnglishUnitedKingdom, VoiceName.EnglishUnitedStates].includes(
-            voiceName
-        )
-    ) {
+    } else if ([VoiceName.ChineseWuSimplifiedYunzhe].includes(voiceName)) {
         text = {
             [PunctuationPhraseType.BreakWeak]: ' ',
             [PunctuationPhraseType.BreakMedium]: ', ',

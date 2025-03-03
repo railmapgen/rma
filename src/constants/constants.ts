@@ -6,13 +6,9 @@ export const D = R * 2;
 export const FONT_HEIGHT = 20;
 
 export enum VoiceName {
-    ChineseWuSimplifiedXiaotong = 'wuu-CN-XiaotongNeural',
-    ChineseWuSimplifiedYunzhe = 'wuu-CN-YunzheNeural',
-    ChineseCantoneseSimplified = 'yue-CN-XiaoMinNeural',
-    ChineseCantoneseTraditional = 'zh-HK-HiuMaanNeural',
-    ChineseMandarinSimplified = 'zh-CN-XiaoqiuNeural',
-    EnglishUnitedStates = 'en-US-RyanMultilingualNeural',
-    EnglishUnitedKingdom = 'en-GB-RyanNeural',
+    ChineseWuSimplifiedXiaotong = 'shmetro-wuu',
+    ChineseWuSimplifiedYunzhe = 'shmetro-en',
+    ChineseMandarinSimplified = 'shmetro-zh',
 }
 
 export enum StyleType {
@@ -47,6 +43,7 @@ export interface StationMetadata {
 }
 
 export interface Project {
+    readonly version: number;
     /**
      * Style should contain the minimal information to generate the phrases.
      */
@@ -56,7 +53,13 @@ export interface Project {
     readonly metadata: { [k: StnID]: StationMetadata };
 }
 
-export const emptyProject: Project = { style: StyleType.ShanghaiMetro, baseVariants: {}, stations: {}, metadata: {} };
+export const emptyProject: Project = {
+    version: 1,
+    style: StyleType.ShanghaiMetro,
+    baseVariants: {},
+    stations: {},
+    metadata: {},
+};
 
 /**
  * ReconciledPhrases contains only phrases to be resolved to final wav audio files.
