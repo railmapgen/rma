@@ -24,7 +24,7 @@
         "open": {
             "config": "프로젝트 가져오기",
             "projectRMG": "RMG 프로젝트에서 가져오기",
-            "invalidType": "잘못된 파일 형식입니다! JSON 형식의 파일만 허용됩니다.",
+            "invalidType": "잘못된 파일 형식입니다! RMA에서 내보낸 파일만 허용됩니다.",
             "unknownError": "업로드한 파일을 파싱하는 중 알 수 없는 오류가 발생했습니다! 다시 시도해 주세요."
         },
         "download": {

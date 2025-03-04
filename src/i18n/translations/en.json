@@ -24,8 +24,8 @@
         "open": {
             "config": "Import project",
             "projectRMG": "Import from RMG project",
-            "invalidType": "Invalid file type! Only file in JSON format is accepted.",
-        "unknownError": "Unknown error occurred while parsing the uploaded file! Please try again."
+            "invalidType": "Invalid file type! Only files exported from RMA are accepted.",
+            "unknownError": "Unknown error occurred while parsing the uploaded file! Please try again."
         },
         "download": {
             "config": "Export project",

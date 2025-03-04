@@ -27,13 +27,6 @@ export default function OpenActions() {
 
     const [isRmgParamAppClipOpen, setIsRmgParamAppClipOpen] = React.useState(false);
 
-    const loadProject = (projectStr: string) => {
-        const project = JSON.parse(projectStr) as Project;
-        dispatch(setProject(project));
-        dispatch(setCurrentStationID(Object.keys(project['metadata'])[0]));
-        dispatch(setCurrentStage(Stage.Departure));
-    };
-
     const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         logger.info('OpenActions.handleUpload():: received file', file);
@@ -44,7 +37,16 @@ export default function OpenActions() {
         } else {
             try {
                 const projectStr = await readFileAsText(file);
-                loadProject(projectStr);
+                const project = JSON.parse(projectStr) as Project;
+                if (!('baseVariants' in project)) {
+                    dispatch(setGlobalAlert({ status: 'error', message: t('header.open.invalidType') }));
+                    logger.error('OpenActions.handleUpload():: Not a valid RMA project.');
+                    event.target.value = '';
+                    return;
+                }
+                dispatch(setProject(project));
+                dispatch(setCurrentStationID(Object.keys(project['metadata'])[0]));
+                dispatch(setCurrentStage(Stage.Departure));
             } catch (err) {
                 dispatch(setGlobalAlert({ status: 'error', message: t('header.open.unknownError') }));
                 logger.error(

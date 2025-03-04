@@ -23,7 +23,6 @@ export default function StationAgGrid() {
         setRowData(rowData);
         // TODO: change base variant i18n on language change
     }, [metadata]);
-    console.log(rowData);
 
     const handleSelectionChanged = (selectedStationID: StnID) => {
         if (selectedStationID === 'default') {

@@ -24,7 +24,7 @@
         "open": {
             "config": "導入項目",
             "projectRMG": "從 RMG 項目導入",
-            "invalidType": "無效的文件類型！只接受 JSON 格式的文件。",
+            "invalidType": "無效的文件類型！只接受從RMA匯出的檔案。",
             "unknownError": "解析上傳文件時發生未知錯誤！請重試。"
         },
         "download": {
