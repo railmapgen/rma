@@ -15,6 +15,53 @@ export enum StyleType {
     ShanghaiMetro = 'shmetro',
 }
 
+export type OS = 'win' | 'mac' | 'linux' | 'ios' | 'android' | 'unknown';
+
+type VoiceToPreview = {
+    [k in StyleType]: {
+        /**
+         * Each voice in a style should have a compatible language code for speech synthesis API to fallback
+         * when preferredPreviewVoiceName specified is not available.
+         * Note: This might be overwritten by the user in settings.
+         */
+        defaultLang: { [k in VoiceName]?: string };
+        /**
+         * Preferred voice name for speech synthesis API in different platforms.
+         * [Optional] If not specified, the defaultLang will be used.
+         */
+        preferredPreviewVoiceName: {
+            [k in VoiceName]?: { [k in OS]?: string };
+        };
+    };
+};
+
+export const voiceToPreview: VoiceToPreview = {
+    [StyleType.ShanghaiMetro]: {
+        defaultLang: {
+            [VoiceName.ChineseMandarinSimplified]: 'zh-CN',
+            [VoiceName.ChineseWuSimplifiedXiaotong]: 'wuu-CN',
+            [VoiceName.ChineseWuSimplifiedYunzhe]: 'en-GB',
+        },
+        preferredPreviewVoiceName: {
+            [VoiceName.ChineseMandarinSimplified]: {
+                win: 'Microsoft Huihui Desktop - Chinese (Simplified)',
+                mac: 'Tingting',
+                linux: undefined,
+                ios: 'Ting-Ting',
+                android: undefined,
+            },
+            [VoiceName.ChineseWuSimplifiedXiaotong]: undefined,
+            [VoiceName.ChineseWuSimplifiedYunzhe]: {
+                win: 'Microsoft George - English (United Kingdom)',
+                mac: 'Daniel',
+                linux: undefined,
+                ios: 'Daniel',
+                android: undefined,
+            },
+        },
+    },
+};
+
 export enum Stage {
     Arrival = 'arr',
     Stop = 'stp',

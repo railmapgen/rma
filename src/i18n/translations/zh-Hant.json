@@ -65,7 +65,13 @@
             "crawl": {
                 "title": "走字螢幕",
                 "scale": "縮放比例"
-            },        
+            },
+            "previewAudio": {
+                "title": "首選預覽語音",
+                "notModified": "使用風格偏好",
+                "shmetro-zh": "上海地鐵（普通話）",
+                "shmetro-en": "上海地鐵（英語）"
+            },
             "telemetry": {
                 "title": "遙測",
                 "info": "為了幫助改進地鐵線路圖放送機並激勵貢獻者增強項目，通過 Google Analytics 收集匿名使用數據。這些數據僅用於增強用戶體驗和優化工具功能，絕不會與第三方共享。",
@@ -79,7 +85,7 @@
         },
         "audioTask": {
             "title": "音頻任務",
-            "loginFirst": "請先登錄以訪問個人任務。",
+            "loginFirst": "請先登入以使用大模型生成音頻。",
             "topUp": "充值",
             "table": {
                 "id": "ID",

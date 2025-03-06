@@ -1,6 +1,6 @@
 import { AlertStatus } from '@chakra-ui/react';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ReconciledPhrases, Stage, VoiceName } from '../../constants/constants';
+import { ReconciledPhrases, Stage, StyleType, VoiceName } from '../../constants/constants';
 import { StnID } from '../../constants/rmg';
 
 /**
@@ -10,6 +10,7 @@ import { StnID } from '../../constants/rmg';
 interface RuntimeState {
     reconciledPhrases: ReconciledPhrases;
     showDefaultVariants: boolean;
+    currentStyle: StyleType;
     currentStationID: StnID;
     currentStage: Stage;
     currentVoice: VoiceName;
@@ -20,6 +21,7 @@ interface RuntimeState {
 const initialState: RuntimeState = {
     reconciledPhrases: {},
     showDefaultVariants: false,
+    currentStyle: StyleType.ShanghaiMetro,
     currentStationID: 'kaxg',
     currentStage: Stage.Departure,
     currentVoice: VoiceName.ChineseMandarinSimplified,

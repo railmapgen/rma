@@ -20,10 +20,35 @@ import { RmgLabel, RmgThrottledSlider } from '@railmapgen/rmg-components';
 import rmgRuntime from '@railmapgen/rmg-runtime';
 import { useTranslation } from 'react-i18next';
 import { MdOpenInNew } from 'react-icons/md';
+import { StyleType, VoiceName, voiceToPreview } from '../../constants/constants';
 import { Services } from '../../constants/rmg';
 import { useRootDispatch, useRootSelector } from '../../redux';
-import { setPreferenceImport, setTelemetryProject } from '../../redux/app/app-slice';
+import {
+    removePreviewAudio,
+    setPreferenceImport,
+    setPreviewAudio,
+    setTelemetryProject,
+} from '../../redux/app/app-slice';
 import { setScale } from '../../redux/crawl/crawl-slice';
+
+const synth = window.speechSynthesis;
+const allVoices = synth?.getVoices();
+const availableVoices = {
+    [VoiceName.ChineseMandarinSimplified]: allVoices
+        .filter(
+            voice =>
+                voice.lang ===
+                voiceToPreview[StyleType.ShanghaiMetro]?.defaultLang?.[VoiceName.ChineseMandarinSimplified]
+        )
+        .map(voice => voice.name),
+    [VoiceName.ChineseWuSimplifiedYunzhe]: allVoices
+        .filter(
+            voice =>
+                voice.lang ===
+                voiceToPreview[StyleType.ShanghaiMetro]?.defaultLang?.[VoiceName.ChineseWuSimplifiedYunzhe]
+        )
+        .map(voice => voice.name),
+};
 
 const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
@@ -31,21 +56,30 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
         telemetry: { project: isAllowProjectTelemetry },
         preference: {
             import: { route, service },
+            previewAudio,
         },
     } = useRootSelector(state => state.app);
     const dispatch = useRootDispatch();
     const { t } = useTranslation();
     const linkColour = useColorModeValue('primary.500', 'primary.300');
 
+    const handlePreferenceChange = (route: number, service: Services) => {
+        dispatch(setPreferenceImport({ route, service }));
+    };
+
     const { scale } = useRootSelector(state => state.crawl);
+
+    const handlePreviewAudioChange = (voiceName: VoiceName, systemTTSVoiceName: string) => {
+        if (systemTTSVoiceName === 'undefined') {
+            dispatch(removePreviewAudio(voiceName));
+        } else {
+            dispatch(setPreviewAudio([voiceName, systemTTSVoiceName]));
+        }
+    };
 
     const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
     const handleAdditionalTelemetry = (allowTelemetry: boolean) => {
         dispatch(setTelemetryProject(allowTelemetry));
-    };
-
-    const handlePreferenceChange = (route: number, service: Services) => {
-        dispatch(setPreferenceImport({ route, service }));
     };
 
     return (
@@ -130,6 +164,56 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                         onThrottledChange={val => dispatch(setScale(val))}
                                     />
                                 </RmgLabel>
+                            </Box>
+                        </Box>
+
+                        <Box width="100%" mb="3">
+                            <Text as="b" fontSize="xl">
+                                {t('header.settings.previewAudio.title')}
+                            </Text>
+                            <Box mt="3">
+                                <Box mb="1" display="flex">
+                                    <Text flex="1">{t('header.settings.previewAudio.shmetro-zh')}</Text>
+                                    <Select
+                                        size="xs"
+                                        width="300px"
+                                        ml="1"
+                                        defaultValue={previewAudio[VoiceName.ChineseMandarinSimplified] ?? 'undefined'}
+                                        onChange={({ target: { value } }) =>
+                                            handlePreviewAudioChange(VoiceName.ChineseMandarinSimplified, value)
+                                        }
+                                    >
+                                        <option value="undefined">
+                                            {t('header.settings.previewAudio.notModified')}
+                                        </option>
+                                        {availableVoices[VoiceName.ChineseMandarinSimplified].map(voice => (
+                                            <option key={voice} value={voice}>
+                                                {voice}
+                                            </option>
+                                        ))}
+                                    </Select>
+                                </Box>
+                                <Box mb="1" display="flex">
+                                    <Text flex="1">{t('header.settings.previewAudio.shmetro-en')}</Text>
+                                    <Select
+                                        size="xs"
+                                        width="300px"
+                                        ml="1"
+                                        defaultValue={previewAudio[VoiceName.ChineseWuSimplifiedYunzhe] ?? 'undefined'}
+                                        onChange={({ target: { value } }) =>
+                                            handlePreviewAudioChange(VoiceName.ChineseWuSimplifiedYunzhe, value)
+                                        }
+                                    >
+                                        <option value="undefined">
+                                            {t('header.settings.previewAudio.notModified')}
+                                        </option>
+                                        {availableVoices[VoiceName.ChineseWuSimplifiedYunzhe].map(voice => (
+                                            <option key={voice} value={voice}>
+                                                {voice}
+                                            </option>
+                                        ))}
+                                    </Select>
+                                </Box>
                             </Box>
                         </Box>
 

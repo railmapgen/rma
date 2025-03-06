@@ -3,7 +3,7 @@ import { LocalStorageKey, Stage } from '../constants/constants';
 import defaultProject from '../constants/default-project.json';
 import { reconcile } from '../util/reconcile';
 import { RootStore, startRootListening } from './index';
-import { setPreferenceImport, setTelemetryProject } from './app/app-slice';
+import { setPreferenceImport, setPreviewAudioBulk, setTelemetryProject } from './app/app-slice';
 import { ParamState, setProject } from './param/param-slice';
 import { setCurrentStage, setCurrentStationID, setReconciledPhrases } from './runtime/runtime-slice';
 
@@ -51,6 +51,9 @@ const initAppStore = (store: RootStore) => {
         if ('preference' in app) {
             if ('import' in app.preference) {
                 store.dispatch(setPreferenceImport(app.preference.import));
+            }
+            if ('previewAudio' in app.preference) {
+                store.dispatch(setPreviewAudioBulk(app.preference.previewAudio));
             }
         }
     }

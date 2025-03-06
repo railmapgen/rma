@@ -65,7 +65,13 @@
             "crawl": {
                 "title": "Crawl Settings",
                 "scale": "Scale"
-            },        
+            },
+            "previewAudio": {
+                "title": "Preferred Preview Voice",
+                "notModified": "Use style preference",
+                "shmetro-zh": "Shanghai Metro (Mandarin)",
+                "shmetro-en": "Shanghai Metro (English)"
+            },
             "telemetry": {
                 "title": "Telemetry",
                 "info": "To help improve Rail Map Announcer and keep contributors motivated to enhance the project, anonymous usage data is collected through Google Analytics. This data is used solely for enhancing the user experience and optimizing the tool's functionality and is never shared with third parties.",
@@ -79,7 +85,7 @@
         },
         "audioTask": {
             "title": "Audio Task",
-            "loginFirst": "Please log in first to access personal tasks.",
+            "loginFirst": "Please log in first to generate audio with AI.",
             "topUp": "Top up",
             "table": {
                 "id": "ID",

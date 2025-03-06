@@ -66,6 +66,12 @@
                 "title": "走字屏",
                 "scale": "缩放比例"
             },
+            "previewAudio": {
+                "title": "首选预览语音",
+                "notModified": "使用风格偏好",
+                "shmetro-zh": "上海地铁（普通话）",
+                "shmetro-en": "上海地铁（英语）"
+            },
             "telemetry": {
                 "title": "遥测",
                 "info": "为了帮助改进地铁线路图放送机并激励贡献者增强项目，通过Google Analytics收集匿名使用数据。这些数据仅用于增强用户体验和优化工具功能，绝不会与第三方共享。",
@@ -79,7 +85,7 @@
         },
         "audioTask": {
             "title": "声音任务",
-            "loginFirst": "请先登录以访问个人任务。",
+            "loginFirst": "请先登录以使用大模型生成音频。",
             "topUp": "充值",
             "table": {
                 "id": "ID",

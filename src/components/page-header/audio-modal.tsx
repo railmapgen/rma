@@ -77,7 +77,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
         <Modal isOpen={isOpen} onClose={onClose} size="4xl" scrollBehavior="inside">
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>{t('header.audioTask.title')}</ModalHeader>
+                <ModalHeader>{t('header.download.audio')}</ModalHeader>
                 <ModalCloseButton />
 
                 <ModalBody paddingBottom={10}>
@@ -90,6 +90,10 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                     {points}
                                 </Text>
                                 <Text style={{ alignSelf: 'self-end', marginLeft: '10px' }}>pts</Text>
+                                <Flex style={{ flex: 1 }} />
+                                <Text as="b" style={{ alignSelf: 'self-end' }}>
+                                    {t('header.audioTask.title')}
+                                </Text>
                                 <Flex style={{ flex: 1 }} />
                                 <IconButton
                                     icon={<MdOutlinePayments />}
@@ -150,8 +154,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                             </TableContainer>
                         </>
                     )}
-
-                    <VStack mt={4}>
+                    <VStack mt={10}>
                         <Text fontSize="sm" lineHeight="100%" color="gray.600">
                             {t('header.audioTask.freeInternet1')}
                             <Link color={linkColour} fontSize="sm" lineHeight="100%" onClick={handleDownloadText}>
