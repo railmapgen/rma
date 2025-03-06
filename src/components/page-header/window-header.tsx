@@ -7,6 +7,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { MdHelp, MdSettings, MdTranslate } from 'react-icons/md';
 import { Events } from '../../constants/constants';
 import { useRootDispatch } from '../../redux';
+import Play from '../paly';
 import AboutModal from './about-modal';
 import DownloadActions from './download-actions';
 import OpenActions from './open-actions';
@@ -58,6 +59,10 @@ export default function WindowHeader() {
             />
 
             <Wrap ml="auto">
+                <WrapItem>
+                    <Play />
+                </WrapItem>
+
                 <WrapItem>
                     <OpenActions />
                 </WrapItem>
