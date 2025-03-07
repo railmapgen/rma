@@ -6,7 +6,6 @@ export interface Size {
     height: number | undefined;
 }
 
-// Hook
 export const useWindowSize = (): Size => {
     // Initialize state with undefined width/height so server and client renders match
     // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
@@ -36,4 +35,32 @@ export const useWindowSize = (): Size => {
     }, []); // Empty array ensures that effect is only run on mount
 
     return windowSize;
+};
+
+/**
+ * Find all available voices in the browser via the Web Speech API.
+ */
+export const useVoices = (): SpeechSynthesisVoice[] => {
+    const [allVoices, setAllVoices] = useState<SpeechSynthesisVoice[]>([]);
+
+    useEffect(() => {
+        const synth = window.speechSynthesis;
+        const updateVoices = () => {
+            const voices = synth.getVoices();
+            setAllVoices(voices);
+        };
+
+        // voices are loaded asynchronously on first load
+        // so listen to this event and know all voices
+        synth.addEventListener('voiceschanged', updateVoices);
+
+        // after tab refresh, voices may be already loaded
+        updateVoices();
+
+        return () => {
+            synth.removeEventListener('voiceschanged', updateVoices);
+        };
+    }, []);
+
+    return allVoices;
 };

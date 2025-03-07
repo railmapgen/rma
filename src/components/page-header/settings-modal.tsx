@@ -18,6 +18,7 @@ import {
 } from '@chakra-ui/react';
 import { RmgLabel, RmgThrottledSlider } from '@railmapgen/rmg-components';
 import rmgRuntime from '@railmapgen/rmg-runtime';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOpenInNew } from 'react-icons/md';
 import { StyleType, VoiceName, voiceToPreview } from '../../constants/constants';
@@ -30,25 +31,9 @@ import {
     setTelemetryProject,
 } from '../../redux/app/app-slice';
 import { setScale } from '../../redux/crawl/crawl-slice';
+import { useVoices } from '../../util/hooks';
 
 const synth = window.speechSynthesis;
-const allVoices = synth?.getVoices();
-const availableVoices = {
-    [VoiceName.ChineseMandarinSimplified]: allVoices
-        .filter(
-            voice =>
-                voice.lang ===
-                voiceToPreview[StyleType.ShanghaiMetro]?.defaultLang?.[VoiceName.ChineseMandarinSimplified]
-        )
-        .map(voice => voice.name),
-    [VoiceName.ChineseWuSimplifiedYunzhe]: allVoices
-        .filter(
-            voice =>
-                voice.lang ===
-                voiceToPreview[StyleType.ShanghaiMetro]?.defaultLang?.[VoiceName.ChineseWuSimplifiedYunzhe]
-        )
-        .map(voice => voice.name),
-};
 
 const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
@@ -68,6 +53,34 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
     };
 
     const { scale } = useRootSelector(state => state.crawl);
+
+    const allVoices = useVoices();
+    const [availableVoices, setAvailableVoices] = React.useState<{
+        [k in VoiceName]: string[];
+    }>({
+        [VoiceName.ChineseMandarinSimplified]: [],
+        [VoiceName.ChineseWuSimplifiedXiaotong]: [],
+        [VoiceName.ChineseWuSimplifiedYunzhe]: [],
+    });
+    React.useEffect(() => {
+        setAvailableVoices({
+            [VoiceName.ChineseMandarinSimplified]: allVoices
+                .filter(
+                    voice =>
+                        voice.lang ===
+                        voiceToPreview[StyleType.ShanghaiMetro]?.defaultLang?.[VoiceName.ChineseMandarinSimplified]
+                )
+                .map(voice => voice.name),
+            [VoiceName.ChineseWuSimplifiedXiaotong]: [],
+            [VoiceName.ChineseWuSimplifiedYunzhe]: allVoices
+                .filter(
+                    voice =>
+                        voice.lang ===
+                        voiceToPreview[StyleType.ShanghaiMetro]?.defaultLang?.[VoiceName.ChineseWuSimplifiedYunzhe]
+                )
+                .map(voice => voice.name),
+        });
+    }, [allVoices]);
 
     const handlePreviewAudioChange = (voiceName: VoiceName, systemTTSVoiceName: string) => {
         if (systemTTSVoiceName === 'undefined') {

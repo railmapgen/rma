@@ -5,6 +5,7 @@ import { MdPause, MdPlayArrow, MdWarning } from 'react-icons/md';
 import { voiceToPreview } from '../constants/constants';
 import { phrasesToText } from '../constants/phrases';
 import { useRootSelector } from '../redux';
+import { useVoices } from '../util/hooks';
 import { detectOS } from '../util/platform';
 
 const synth = window.speechSynthesis;
@@ -20,13 +21,14 @@ export default function Play() {
 
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [isPlayable, setIsPlayable] = React.useState(false);
+    const allVoices = useVoices();
 
     React.useEffect(() => {
         const defaultLang = voiceToPreview[currentStyle]?.defaultLang?.[currentVoice];
-        const voice = synth.getVoices().find(voice => voice.lang === defaultLang);
+        const voice = allVoices.find(voice => voice.lang === defaultLang);
         if (voice) setIsPlayable(true);
         else setIsPlayable(false);
-    }, [currentVoice]);
+    }, [currentVoice, allVoices]);
 
     const handlePlay = () => {
         if (synth.paused && synth.speaking) {
