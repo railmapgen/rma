@@ -21,6 +21,9 @@
             "afdian": "爱发电",
             "viaCNY": "Alipay 또는 Wechat Pay로 CNY로 기부하세요."
         },
+        "paly": {
+            "previewWarning": "미리보기 음성에 만족하지 못하셨나요? 내보내기 오디오에서 우리의 최신 AI가 생성한 음성을 시도해 보세요."
+        },
         "open": {
             "config": "프로젝트 가져오기",
             "projectRMG": "RMG 프로젝트에서 가져오기",

@@ -1,14 +1,15 @@
 import { IconButton } from '@chakra-ui/react';
 import { logger } from '@railmapgen/rmg-runtime';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { MdPause, MdPlayArrow, MdWarning } from 'react-icons/md';
 import { voiceToPreview } from '../constants/constants';
 import { phrasesToText } from '../constants/phrases';
-import { useRootSelector } from '../redux';
+import { useRootDispatch, useRootSelector } from '../redux';
+import { setGlobalAlert } from '../redux/runtime/runtime-slice';
 import { useVoices } from '../util/hooks';
 import { detectOS } from '../util/platform';
 
-const synth = window.speechSynthesis;
 const os = detectOS();
 
 export default function Play() {
@@ -18,6 +19,8 @@ export default function Play() {
     const {
         preference: { previewAudio },
     } = useRootSelector(state => state.app);
+    const dispatch = useRootDispatch();
+    const { t } = useTranslation();
 
     const [isPlaying, setIsPlaying] = React.useState(false);
     const [isPlayable, setIsPlayable] = React.useState(false);
@@ -31,6 +34,16 @@ export default function Play() {
     }, [currentVoice, allVoices]);
 
     const handlePlay = () => {
+        // warn this a not an AI voice, just a preview one from the browser
+        dispatch(
+            setGlobalAlert({
+                status: 'warning',
+                message: t('header.paly.previewWarning'),
+            })
+        );
+
+        const synth = window.speechSynthesis;
+
         if (synth.paused && synth.speaking) {
             setIsPlaying(true);
             synth.resume();
@@ -67,6 +80,7 @@ export default function Play() {
     };
 
     const handlePause = () => {
+        const synth = window.speechSynthesis;
         synth.pause();
         setIsPlaying(false);
     };

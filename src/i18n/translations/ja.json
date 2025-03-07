@@ -21,6 +21,9 @@
             "afdian": "爱发电",
             "viaCNY": "AlipayまたはWechat PayでCNYで寄付してください。"
         },
+        "paly": {
+            "previewWarning": "プレビューの音声に満足できないですか？エクスポート音声で私たちの最新AIが生成した音声をお試しください。"
+        },
         "open": {
             "config": "プロジェクトをインポート",
             "projectRMG": "RMGプロジェクトからインポート",

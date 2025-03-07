@@ -21,6 +21,9 @@
             "afdian": "愛發電",
             "viaCNY": "通過支付寶或微信支付以人民幣捐贈。"
         },
+        "paly": {
+            "previewWarning": "對預覽聲音不滿意？試試在導出音頻中使用我們最新大模型生成的聲音。"
+        },
         "open": {
             "config": "導入項目",
             "projectRMG": "從 RMG 項目導入",

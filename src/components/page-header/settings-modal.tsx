@@ -33,8 +33,6 @@ import {
 import { setScale } from '../../redux/crawl/crawl-slice';
 import { useVoices } from '../../util/hooks';
 
-const synth = window.speechSynthesis;
-
 const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
     const {

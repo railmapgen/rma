@@ -21,6 +21,9 @@
             "afdian": "爱发电",
             "viaCNY": "通过支付宝或微信支付以人民币捐赠。"
         },
+        "paly": {
+            "previewWarning": "对预览声音不满意？试试在导出音频中使用我们最新大模型生成的声音。"
+        },
         "open": {
             "config": "导入项目",
             "projectRMG": "从RMG项目导入",
