@@ -1,9 +1,10 @@
-import { Box, Divider, Flex } from '@chakra-ui/react';
+import { Box, Button, Divider, Flex } from '@chakra-ui/react';
 import { RmgPage, RmgThemeProvider, RmgWindow } from '@railmapgen/rmg-components';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { D, FONT_HEIGHT, StyleType } from '../constants/constants';
 import { useRootDispatch, useRootSelector } from '../redux';
+import { setStationVariantsExpanded } from '../redux/runtime/runtime-slice';
 import { useWindowSize } from '../util/hooks';
 import Crawl from './crawl';
 import StationAgGrid from './station/station-variants';
@@ -17,10 +18,13 @@ export default function AppRoot() {
     const {
         project: { style },
     } = useRootSelector(state => state.param);
+    const { stationVariantsExpanded } = useRootSelector(state => state.runtime);
     const { scale } = useRootSelector(state => state.crawl);
 
     const size = useWindowSize();
     const { width = 1280, height = 720 } = size;
+
+    const stationVariantsWidth = stationVariantsExpanded ? 200 : 0;
 
     return (
         <RmgThemeProvider>
@@ -28,10 +32,27 @@ export default function AppRoot() {
                 <PageHeader />
                 <RmgPage>
                     <Flex flexDirection="row">
-                        <Box style={{ width: '200px', height: 'calc(100vh - 40px)', overflowY: 'auto' }}>
-                            <StationAgGrid />
-                        </Box>
-                        <Flex width="calc(100% - 200px)" flexDirection="column">
+                        {stationVariantsExpanded ? (
+                            <Box
+                                style={{
+                                    width: '200px',
+                                    height: 'calc(100vh - 40px)',
+                                    overflowY: 'auto',
+                                }}
+                            >
+                                <StationAgGrid />
+                            </Box>
+                        ) : (
+                            <Button
+                                onClick={() => dispatch(setStationVariantsExpanded(true))}
+                                size="lg"
+                                style={{ position: 'absolute', left: '0px', top: '0px' }}
+                                borderRadius="0px"
+                            >
+                                {t('stationVariants.title')}
+                            </Button>
+                        )}
+                        <Flex width={`calc(100% - ${stationVariantsWidth}px)`} flexDirection="column">
                             <Box style={{ overflowX: 'auto' }}>
                                 <Crawl />
                             </Box>

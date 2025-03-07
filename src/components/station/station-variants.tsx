@@ -1,10 +1,16 @@
-import { Table, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react';
+import { Flex, IconButton, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MdExpandMore } from 'react-icons/md';
 import { Stage } from '../../constants/constants';
 import { StnID } from '../../constants/rmg';
 import { useRootDispatch, useRootSelector } from '../../redux';
-import { setCurrentStage, setCurrentStationID, setShowDefaultVariants } from '../../redux/runtime/runtime-slice';
+import {
+    setCurrentStage,
+    setCurrentStationID,
+    setShowDefaultVariants,
+    setStationVariantsExpanded,
+} from '../../redux/runtime/runtime-slice';
 
 export default function StationAgGrid() {
     const { t } = useTranslation();
@@ -40,7 +46,21 @@ export default function StationAgGrid() {
             <Table variant="simple" height="100%">
                 <Thead>
                     <Tr>
-                        <Th>{t('stationVariants.title')}</Th>
+                        <Th width="100%" onClick={() => dispatch(setStationVariantsExpanded(false))}>
+                            <Flex justifyContent="space-between">
+                                <Text fontSize="md" alignSelf="center">
+                                    {t('stationVariants.title')}
+                                </Text>
+                                <IconButton
+                                    aria-label="Close"
+                                    size="sm"
+                                    variant="ghost"
+                                    icon={<MdExpandMore transform="rotate(90)" />}
+                                >
+                                    {t('stationVariants.title')}
+                                </IconButton>
+                            </Flex>
+                        </Th>
                     </Tr>
                 </Thead>
                 <Tbody>

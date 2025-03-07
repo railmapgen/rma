@@ -56,10 +56,10 @@
                     "shmetro": "上海地下鉄"
                 },
                 "branch": {
-                    "title": "支線索引を優先"
+                    "title": "支線索引"
                 },
                 "service": {
-                    "title": "サービスレベルを優先",
+                    "title": "列車種別",
                     "local": "各駅停車",
                     "express": "快速",
                     "direct": "直通"

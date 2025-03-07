@@ -9,6 +9,7 @@ import { StnID } from '../../constants/rmg';
  */
 interface RuntimeState {
     reconciledPhrases: ReconciledPhrases;
+    stationVariantsExpanded: boolean;
     showDefaultVariants: boolean;
     currentStyle: StyleType;
     currentStationID: StnID;
@@ -20,6 +21,7 @@ interface RuntimeState {
 
 const initialState: RuntimeState = {
     reconciledPhrases: {},
+    stationVariantsExpanded: true,
     showDefaultVariants: false,
     currentStyle: StyleType.ShanghaiMetro,
     currentStationID: 'kaxg',
@@ -34,6 +36,9 @@ const runtimeSlice = createSlice({
     reducers: {
         setReconciledPhrases: (state, action: PayloadAction<ReconciledPhrases>) => {
             state.reconciledPhrases = action.payload;
+        },
+        setStationVariantsExpanded: (state, action: PayloadAction<boolean>) => {
+            state.stationVariantsExpanded = action.payload;
         },
         setShowDefaultVariants: (state, action: PayloadAction<boolean>) => {
             state.showDefaultVariants = action.payload;
@@ -73,6 +78,7 @@ const runtimeSlice = createSlice({
 
 export const {
     setReconciledPhrases,
+    setStationVariantsExpanded,
     setShowDefaultVariants,
     setCurrentStationID,
     setCurrentStage,

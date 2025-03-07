@@ -37,7 +37,7 @@ export default function Play() {
         // warn this a not an AI voice, just a preview one from the browser
         dispatch(
             setGlobalAlert({
-                status: 'warning',
+                status: 'info',
                 message: t('header.paly.previewWarning'),
             })
         );

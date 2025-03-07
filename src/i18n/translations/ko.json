@@ -56,10 +56,10 @@
                     "shmetro": "상하이 지하철"
                 },
                 "branch": {
-                    "title": "지선 인덱스 선호"
+                    "title": "지선 인덱스"
                 },
                 "service": {
-                    "title": "서비스 수준 선호",
+                    "title": "서비스 수준",
                     "local": "일반",
                     "express": "급행",
                     "direct": "직통"

@@ -56,10 +56,10 @@
                     "shmetro": "Shanghai Metro"
                 },
                 "branch": {
-                    "title": "Prefer branch index"
+                    "title": "Branch index"
                 },
                 "service": {
-                    "title": "Prefer service level",
+                    "title": "Service level",
                     "local": "Local",
                     "express": "Express",
                     "direct": "Direct"

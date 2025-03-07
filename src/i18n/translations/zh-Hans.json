@@ -56,10 +56,10 @@
                     "shmetro": "上海地铁"
                 },
                 "branch": {
-                    "title": "偏好支线索引"
+                    "title": "支线索引"
                 },
                 "service": {
-                    "title": "偏好列车种别",
+                    "title": "列车种别",
                     "local": "普通",
                     "express": "快速",
                     "direct": "直达"
