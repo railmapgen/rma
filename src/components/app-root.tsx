@@ -7,7 +7,7 @@ import { useRootDispatch, useRootSelector } from '../redux';
 import { setStationVariantsExpanded } from '../redux/runtime/runtime-slice';
 import { useWindowSize } from '../util/hooks';
 import Crawl from './crawl';
-import StationAgGrid from './station/station-variants';
+import StationVariants from './station/station-variants';
 
 const PageHeader = React.lazy(() => import('./page-header/page-header'));
 const SHMetroStageView = React.lazy(() => import('./panel/shmetro/stage'));
@@ -40,7 +40,7 @@ export default function AppRoot() {
                                     overflowY: 'auto',
                                 }}
                             >
-                                <StationAgGrid />
+                                <StationVariants />
                             </Box>
                         ) : (
                             <Button

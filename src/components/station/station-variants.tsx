@@ -1,4 +1,16 @@
-import { Flex, IconButton, Table, TableContainer, Tbody, Td, Text, Th, Thead, Tr } from '@chakra-ui/react';
+import {
+    Flex,
+    IconButton,
+    Table,
+    TableContainer,
+    Tbody,
+    Td,
+    Text,
+    Th,
+    Thead,
+    Tr,
+    useColorModeValue,
+} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdExpandMore } from 'react-icons/md';
@@ -12,9 +24,13 @@ import {
     setStationVariantsExpanded,
 } from '../../redux/runtime/runtime-slice';
 
-export default function StationAgGrid() {
+export default function StationVariants() {
     const { t } = useTranslation();
     const dispatch = useRootDispatch();
+
+    const selectedBgColor = useColorModeValue('blue.100', 'blue.700');
+    const selectedTextColor = useColorModeValue('gray.800', 'white');
+    const hoverBgColor = useColorModeValue('gray.100', 'gray.700');
 
     const { project } = useRootSelector(state => state.param);
     const { metadata } = project;
@@ -67,11 +83,13 @@ export default function StationAgGrid() {
                     {Object.entries(rowData).map(([id, name]) => (
                         <Tr
                             key={id}
-                            bg={id === selectedStationID ? 'teal.100' : 'transparent'}
-                            _hover={{ bg: 'gray.100' }}
+                            bg={id === selectedStationID ? selectedBgColor : 'transparent'}
+                            _hover={{ bg: hoverBgColor }}
                             onClick={() => handleSelectionChanged(id as StnID)}
                         >
-                            <Td>{name}</Td>
+                            <Td>
+                                <Text color={selectedTextColor}>{name}</Text>
+                            </Td>
                         </Tr>
                     ))}
                 </Tbody>
