@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdPause, MdPlayArrow, MdWarning } from 'react-icons/md';
 import { voiceToPreview } from '../constants/constants';
-import { phrasesToText } from '../constants/phrases';
+import { phrasesToPinyin } from '../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../redux';
 import { setGlobalAlert } from '../redux/runtime/runtime-slice';
 import { useVoices } from '../util/hooks';
@@ -51,7 +51,7 @@ export default function Play() {
         }
 
         const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
-        const text = phrasesToText(phrases ?? []);
+        const text = phrasesToPinyin(phrases ?? []);
         const content = text === '' ? ' ' : text;
 
         const utterance = new SpeechSynthesisUtterance(content);
@@ -76,6 +76,7 @@ export default function Play() {
         };
         setIsPlaying(true);
 
+        logger.debug(`Previewing audio "${content}" with ${utterance.voice?.name}`);
         synth.speak(utterance);
     };
 

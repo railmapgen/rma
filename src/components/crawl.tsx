@@ -14,7 +14,6 @@ const Crawl = () => {
     const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
     const text = phrasesToText(phrases ?? []);
     const content = text === '' ? ' ' : text;
-    logger.debug(content);
 
     const fontDataRef = React.useRef<ArrayBuffer | null>(null);
     const bitmapsRef = React.useRef<boolean[][][]>([]);
@@ -25,6 +24,8 @@ const Crawl = () => {
 
     const reconcileBitmaps = React.useCallback(() => {
         if (!bitmapsRef.current || !encDataRef.current || !content) return;
+
+        logger.debug(`Reconciling bitmaps for "${content}"`);
 
         const bitmaps = [];
         const characterColumns = [];
