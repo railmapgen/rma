@@ -57,6 +57,8 @@ const ImportModal = () => {
             console.error('OpenActions.handleUploadRMG():: Unknown error occurred while parsing the RMG project', err);
         } finally {
             dispatch(removeRMGParam());
+            dispatch(setRoute(0));
+            dispatch(setService(Services.local));
         }
     };
 
