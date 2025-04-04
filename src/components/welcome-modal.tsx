@@ -10,6 +10,7 @@ import {
     ModalOverlay,
     OrderedList,
     Text,
+    useColorModeValue,
     VStack,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
@@ -17,6 +18,10 @@ import { useTranslation } from 'react-i18next';
 const WelcomeModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
     const { t } = useTranslation();
+
+    const headingColor = useColorModeValue('blue.700', 'blue.200');
+    const textColor = useColorModeValue('gray.800', 'gray.200');
+    const bgColor = useColorModeValue('blue.50', 'blue.600');
 
     return (
         <Modal isOpen={isOpen} onClose={onClose} size="xl" scrollBehavior="inside">
@@ -37,13 +42,13 @@ const WelcomeModal = (props: { isOpen: boolean; onClose: () => void }) => {
                 <ModalBody p={8}>
                     <VStack spacing={6} align="stretch">
                         <Box textAlign="center" mb={4}>
-                            <Text fontSize="lg" color="gray.600">
+                            <Text fontSize="lg" color={textColor}>
                                 {t('welcome.desc')}
                             </Text>
                         </Box>
 
-                        <Box bg="blue.50" p={4} borderRadius="lg">
-                            <Heading size="md" color="blue.700" mb={3}>
+                        <Box bg={bgColor} p={4} borderRadius="lg">
+                            <Heading size="md" color={headingColor} mb={3}>
                                 {t('welcome.steps')}
                             </Heading>
                             <OrderedList spacing={3}>
