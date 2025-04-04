@@ -90,6 +90,12 @@
             "freeInternet1": "我们相信自由开放的互联网。您也可以",
             "freeInternet2": "下载原始文本",
             "freeInternet3": "并在您喜欢的声音提供商中使用 :)",
+            "redeem": {
+                "title": "点数兑换",
+                "desc": "您可以使用点数兑换音频生成服务。CDKey可在以下平台购买：",
+                "input": "在此输入您的CDKey：",
+                "redeem": "兑换"
+            },
             "new": {
                 "title": "新任务",
                 "content1": "这将从当前项目创建一个新任务。",

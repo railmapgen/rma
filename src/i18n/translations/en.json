@@ -92,6 +92,12 @@
             "freeInternet1": "We believe in a free and open internet. You may also ",
             "freeInternet2": "download raw text",
             "freeInternet3": " and use in your preferred audio provider :)",
+            "redeem": {
+                "title": "Redeem your points",
+                "desc": "You can redeem your points to generate audio. CDKey could be purchased in the following sites:",
+                "input": "Enter your CDKey here:",
+                "redeem": "Redeem"
+            },
             "new": {
                 "title": "New Task",
                 "content1": "This will create a new task from the current project.",
