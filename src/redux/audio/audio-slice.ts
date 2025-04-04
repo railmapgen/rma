@@ -6,12 +6,14 @@ import { API_ENDPOINT, apiFetch } from '../../util/token';
 
 interface AudioTaskState {
     isModalOpen: boolean;
+    isRedeemModalOpen: boolean;
     tasks: AudioTask[];
     points: number;
 }
 
 const initialState: AudioTaskState = {
     isModalOpen: false,
+    isRedeemModalOpen: false,
     tasks: [],
     points: 0,
 };
@@ -97,6 +99,7 @@ export const redeem = createAsyncThunk<void, string>(
             return rejectWithValue(rep.text);
         }
         dispatch(fetchAudioTasks());
+        dispatch(closeRedeemModal());
     }
 );
 
@@ -110,6 +113,12 @@ const appSlice = createSlice({
         closeAudioModal: state => {
             state.isModalOpen = false;
         },
+        openRedeemModal: state => {
+            state.isRedeemModalOpen = true;
+        },
+        closeRedeemModal: state => {
+            state.isRedeemModalOpen = false;
+        },
     },
     extraReducers: builder => {
         builder.addCase(fetchAudioTasks.fulfilled, (state, action: PayloadAction<APIAudioTasks>) => {
@@ -119,5 +128,5 @@ const appSlice = createSlice({
     },
 });
 
-export const { openAudioModal, closeAudioModal } = appSlice.actions;
+export const { openAudioModal, closeAudioModal, openRedeemModal, closeRedeemModal } = appSlice.actions;
 export default appSlice.reducer;

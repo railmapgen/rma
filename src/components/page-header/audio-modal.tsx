@@ -27,7 +27,7 @@ import { MdOutlineCancel, MdOutlineDownload, MdOutlinePayments, MdOutlineUpload 
 import { AudioTaskStatus } from '../../constants/audio';
 import { Events, reconciledPhrasesToText } from '../../constants/constants';
 import { useRootDispatch, useRootSelector } from '../../redux';
-import { cancelTask, fetchAudioTasks } from '../../redux/audio/audio-slice';
+import { cancelTask, fetchAudioTasks, openRedeemModal } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
 import { API_ENDPOINT, apiFetch } from '../../util/token';
 import NewTaskModal from './new-task-modal';
@@ -49,7 +49,6 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const linkColour = useColorModeValue('primary.500', 'primary.300');
 
     const [isNewTaskModalOpen, setNewTaskModalOpen] = React.useState(false);
-    const [isRedeemModalOpen, setRedeemModalOpen] = React.useState(false);
 
     React.useEffect(() => {
         if (!isOpen) return;
@@ -102,7 +101,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         {t('header.audioTask.audioNotSupported')}
                     </audio>
 
-                    {!rmtToken ? (
+                    {rmtToken ? (
                         <Text mt="10" textAlign="center">
                             {t('header.audioTask.loginFirst')}
                         </Text>
@@ -121,12 +120,12 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                 <Button
                                     leftIcon={<MdOutlinePayments />}
                                     style={{ alignSelf: 'center' }}
-                                    onClick={() => setRedeemModalOpen(true)}
+                                    onClick={() => dispatch(openRedeemModal())}
                                     mr="2"
                                 >
                                     {t('header.audioTask.topUp')}
                                 </Button>
-                                <RedeemModal isOpen={isRedeemModalOpen} onClose={() => setRedeemModalOpen(false)} />
+                                <RedeemModal />
                                 <Button
                                     leftIcon={<MdOutlineUpload />}
                                     style={{ alignSelf: 'center' }}

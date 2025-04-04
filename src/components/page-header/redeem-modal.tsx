@@ -15,25 +15,25 @@ import {
     Text,
     UnorderedList,
     useColorModeValue,
-    useToast,
 } from '@chakra-ui/react';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOpenInNew } from 'react-icons/md';
-import { useRootDispatch } from '../../redux';
-import { redeem } from '../../redux/audio/audio-slice';
+import { useRootDispatch, useRootSelector } from '../../redux';
+import { closeRedeemModal, redeem } from '../../redux/audio/audio-slice';
 
-const RedeemModal = (props: { isOpen: boolean; onClose: () => void }) => {
-    const toast = useToast();
+const RedeemModal = () => {
     const { t } = useTranslation();
-    const { isOpen, onClose } = props;
+    const { isRedeemModalOpen } = useRootSelector(state => state.audio);
     const dispatch = useRootDispatch();
 
     const linkColour = useColorModeValue('primary.500', 'primary.300');
     const [CDKey, setCDKey] = React.useState('');
 
+    const handleClose = () => dispatch(closeRedeemModal());
+
     return (
-        <Modal isOpen={isOpen} onClose={onClose} size="xl" scrollBehavior="inside">
+        <Modal isOpen={isRedeemModalOpen} onClose={handleClose} size="xl" scrollBehavior="inside">
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>{t('header.audioTask.redeem.title')}</ModalHeader>
