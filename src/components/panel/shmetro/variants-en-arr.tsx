@@ -37,12 +37,12 @@ export default function VariantsENArrival() {
             <RmgLabel label="Current station name">
                 <RmgOutput>{name}</RmgOutput>
             </RmgLabel>
-            {/* <RmgLabel label="Current station name pinyin">
+            <RmgLabel label="Current station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={namePinyin}
                     onDebouncedChange={val => handleVariantChange('namePinyin', val)}
                 />
-            </RmgLabel> */}
+            </RmgLabel>
             <RmgLabel label="Door direction" oneLine>
                 <RadioGroup value={doorDirection} onChange={val => handleVariantChange('doorDirection', val)}>
                     <Radio value="left">Left</Radio>

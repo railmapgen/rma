@@ -44,12 +44,12 @@ export default function VariantsENDeparture() {
             <RmgLabel label="Next station name">
                 <RmgOutput>{next}</RmgOutput>
             </RmgLabel>
-            {/* <RmgLabel label="Next station name pinyin">
+            <RmgLabel label="Next station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={nextPinyin}
                     onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
                 />
-            </RmgLabel> */}
+            </RmgLabel>
             <RmgLabel label="Next door direction" oneLine>
                 <RadioGroup value={nextDoorDirection} onChange={val => handleVariantChange('nextDoorDirection', val)}>
                     <Radio value="left">Left</Radio>
