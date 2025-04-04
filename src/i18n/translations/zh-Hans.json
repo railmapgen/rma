@@ -49,22 +49,6 @@
         },
         "settings": {
             "title": "设置",
-            "preference": {
-                "title": "导入偏好",
-                "style": {
-                    "title": "样式",
-                    "shmetro": "上海地铁"
-                },
-                "branch": {
-                    "title": "支线索引"
-                },
-                "service": {
-                    "title": "列车种别",
-                    "local": "普通",
-                    "express": "快速",
-                    "direct": "直达"
-                }
-            },
             "crawl": {
                 "title": "走字屏",
                 "scale": "缩放比例"
@@ -124,6 +108,19 @@
         "step1": "右上角导入来自地铁线路图生成器的作品",
         "step2": "修改诸如开门方向等的细节",
         "step3": "点击右上角的播放预览报站音",
-        "start": "我们给你准备好了示例项目，关闭窗口后尽情体验吧 :)"
+        "start": "我们给你准备好了示例作品，关闭窗口后尽情体验吧 :)"
+    },
+
+    "import": {
+        "title": "导入RMG作品",
+        "goodToGo": "一切就绪！立即导入此RMG作品。",
+        "routes": "选择要导入的路线",
+        "services": "选择要导入的班次类型",
+        "service": {
+            "local": "普通",
+            "express": "快速",
+            "direct": "直达"
+        },
+        "import": "导入"
     }
 }

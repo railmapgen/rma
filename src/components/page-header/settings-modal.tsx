@@ -1,5 +1,6 @@
 import {
     Box,
+    Heading,
     Icon,
     Link,
     Modal,
@@ -103,56 +104,7 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
                 <ModalBody>
                     <VStack divider={<StackDivider borderColor="gray.200" />}>
                         <Box width="100%" mb="3">
-                            <Text as="b" fontSize="xl">
-                                {t('header.settings.preference.title')}
-                            </Text>
-                            <Box mt="3">
-                                <Box mb="1" display="flex">
-                                    <Text flex="1">{t('header.settings.preference.style.title')}</Text>
-                                    <Select size="xs" width="auto" ml="1" defaultValue="shmetro">
-                                        <option value="shmetro">{t('header.settings.preference.style.shmetro')}</option>
-                                    </Select>
-                                </Box>
-                                <Box mb="1" display="flex">
-                                    <Text flex="1">{t('header.settings.preference.branch.title')}</Text>
-                                    <Select
-                                        size="xs"
-                                        width="auto"
-                                        ml="1"
-                                        defaultValue={route}
-                                        onChange={({ target: { value } }) =>
-                                            handlePreferenceChange(Number(value), service)
-                                        }
-                                    >
-                                        <option value="0">0</option>
-                                        <option value="1">1</option>
-                                    </Select>
-                                </Box>
-                                <Box mb="1" display="flex">
-                                    <Text flex="1">{t('header.settings.preference.service.title')}</Text>
-                                    <Select
-                                        size="xs"
-                                        width="auto"
-                                        ml="1"
-                                        defaultValue={service}
-                                        onChange={({ target: { value } }) =>
-                                            handlePreferenceChange(route, value as Services)
-                                        }
-                                    >
-                                        <option value="local">{t('header.settings.preference.service.local')}</option>
-                                        <option value="express">
-                                            {t('header.settings.preference.service.express')}
-                                        </option>
-                                        <option value="direct">{t('header.settings.preference.service.direct')}</option>
-                                    </Select>
-                                </Box>
-                            </Box>
-                        </Box>
-
-                        <Box width="100%" mb="3">
-                            <Text as="b" fontSize="xl">
-                                {t('header.settings.crawl.title')}
-                            </Text>
+                            <Heading fontSize="md">{t('header.settings.crawl.title')}</Heading>
                             <Box mt="3">
                                 {/* <RmgLabel label="columns">
                                     <RmgThrottledSlider
@@ -179,9 +131,7 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         </Box>
 
                         <Box width="100%" mb="3">
-                            <Text as="b" fontSize="xl">
-                                {t('header.settings.previewAudio.title')}
-                            </Text>
+                            <Heading fontSize="md">{t('header.settings.previewAudio.title')}</Heading>
                             <Box mt="3">
                                 <Box mb="1" display="flex">
                                     <Text flex="1">{t('header.settings.previewAudio.shmetro-zh')}</Text>
@@ -229,9 +179,7 @@ const SettingsModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         </Box>
 
                         <Box width="100%" mb="3">
-                            <Text as="b" fontSize="xl">
-                                {t('header.settings.telemetry.title')}
-                            </Text>
+                            <Heading fontSize="md">{t('header.settings.telemetry.title')}</Heading>
                             <Box mt="3">
                                 <Text fontSize="sm" lineHeight="100%" color="gray.600">
                                     {t('header.settings.telemetry.info')}

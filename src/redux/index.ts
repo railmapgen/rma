@@ -1,10 +1,11 @@
 import { combineReducers, configureStore, createListenerMiddleware, TypedStartListening } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import appReducer from './app/app-slice';
+import audioReducer from './audio/audio-slice';
 import crawlReducer from './crawl/crawl-slice';
+import importReducer from './import/import-slice';
 import paramReducer from './param/param-slice';
 import runtimeReducer from './runtime/runtime-slice';
-import audioReducer from './audio/audio-slice';
 
 const rootReducer = combineReducers({
     app: appReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
     param: paramReducer,
     runtime: runtimeReducer,
     audio: audioReducer,
+    import: importReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
 

@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { MdInsertDriveFile, MdUpload } from 'react-icons/md';
 import { Project, Stage } from '../../constants/constants';
 import { useRootDispatch, useRootSelector } from '../../redux';
+import { setRMGParam } from '../../redux/import/import-slice';
 import { setProject } from '../../redux/param/param-slice';
 import { setCurrentStage, setCurrentStationID, setGlobalAlert } from '../../redux/runtime/runtime-slice';
-import { makeProject } from '../../util/make-project';
 import RmgParamAppClip from './rmg-param-app-clip';
 
 export default function OpenActions() {
@@ -70,10 +70,7 @@ export default function OpenActions() {
         } else {
             try {
                 const paramStr = await readFileAsText(file);
-                const project = makeProject(JSON.parse(paramStr), route, service);
-                dispatch(setProject(project));
-                dispatch(setCurrentStationID(Object.keys(project['metadata'])[0]));
-                dispatch(setCurrentStage(Stage.Departure));
+                dispatch(setRMGParam(JSON.parse(paramStr)));
             } catch (err) {
                 dispatch(setGlobalAlert({ status: 'error', message: t('header.open.unknownError') }));
                 logger.error(

@@ -3,12 +3,10 @@ import { RmgAppClip } from '@railmapgen/rmg-components';
 import rmgRuntime, { logger } from '@railmapgen/rmg-runtime';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Events, Stage } from '../../constants/constants';
 import { RMGParam } from '../../constants/rmg';
-import { useRootDispatch, useRootSelector } from '../../redux';
-import { setProject } from '../../redux/param/param-slice';
-import { setCurrentStage, setCurrentStationID, setGlobalAlert } from '../../redux/runtime/runtime-slice';
-import { makeProject } from '../../util/make-project';
+import { useRootDispatch } from '../../redux';
+import { setRMGParam } from '../../redux/import/import-slice';
+import { setGlobalAlert } from '../../redux/runtime/runtime-slice';
 
 const CHANNEL_PREFIX = 'rmg-bridge--';
 
@@ -30,14 +28,8 @@ interface RmgAppClipProps {
 export default function RmgParamAppClip(props: RmgAppClipProps) {
     const { isOpen, onClose } = props;
     const { t } = useTranslation();
-    const {
-        preference: {
-            import: { route, service },
-        },
-    } = useRootSelector(state => state.app);
 
     const dispatch = useRootDispatch();
-    const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
 
     const [appClipId] = useState(crypto.randomUUID());
     const frameUrl =
@@ -49,11 +41,7 @@ export default function RmgParamAppClip(props: RmgAppClipProps) {
 
     const handleImportRMGProject = (param: RMGParam) => {
         try {
-            if (isAllowAppTelemetry) rmgRuntime.event(Events.IMPORT_RMG_PARAM);
-            const project = makeProject(param, route, service);
-            dispatch(setProject(project));
-            dispatch(setCurrentStationID(Object.keys(project['metadata'])[0]));
-            dispatch(setCurrentStage(Stage.Departure));
+            dispatch(setRMGParam(param));
         } catch (err) {
             dispatch(setGlobalAlert({ status: 'error', message: t('header.open.unknownError') }));
             console.error('OpenActions.handleUploadRMG():: Unknown error occurred while parsing the RMG project', err);

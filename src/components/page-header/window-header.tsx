@@ -10,6 +10,7 @@ import { useRootDispatch } from '../../redux';
 import Play from '../play';
 import AboutModal from './about-modal';
 import DownloadActions from './download-actions';
+import ImportModal from './import-modal';
 import OpenActions from './open-actions';
 import SettingsModal from './settings-modal';
 
@@ -109,6 +110,7 @@ export default function WindowHeader() {
 
             <SettingsModal isOpen={isSettingsModalOpen} onClose={() => setIsSettingsModalOpen(false)} />
             <AboutModal isOpen={isAboutModalOpen} onClose={() => setIsAboutModalOpen(false)} />
+            <ImportModal />
         </RmgWindowHeader>
     );
 }

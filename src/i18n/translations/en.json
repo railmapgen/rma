@@ -49,22 +49,6 @@
         },
         "settings": {
             "title": "Settings",
-            "preference": {
-                "title": "Import Preference",
-                "style": {
-                    "title": "Style",
-                    "shmetro": "Shanghai Metro"
-                },
-                "branch": {
-                    "title": "Branch index"
-                },
-                "service": {
-                    "title": "Service level",
-                    "local": "Local",
-                    "express": "Express",
-                    "direct": "Direct"
-                }
-            },
             "crawl": {
                 "title": "Crawl Settings",
                 "scale": "Scale"
@@ -125,5 +109,18 @@
         "step2": "Adjust details like door opening direction",
         "step3": "Click 'Play' (top-right) to preview announcements",
         "start": "We've prepared a sample project—close this window and start exploring! :)"
+    },
+
+    "import": {
+        "title": "Import RMG Project",
+        "goodToGo": "All set! Import this RMG work now.",
+        "routes": "Select the route you want to import",
+        "services": "Select the service you want to import",
+        "service": {
+            "local": "Local",
+            "express": "Express",
+            "direct": "Direct"
+        },
+        "import": "Import"
     }
 }

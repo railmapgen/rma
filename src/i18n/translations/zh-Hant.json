@@ -49,22 +49,6 @@
         },
         "settings": {
             "title": "設置",
-            "preference": {
-                "title": "導入偏好",
-                "style": {
-                    "title": "風格",
-                    "shmetro": "上海地鐵"
-                },
-                "branch": {
-                    "title": "分支索引"
-                },
-                "service": {
-                    "title": "列車種別",
-                    "local": "普通",
-                    "express": "快速",
-                    "direct": "直達"
-                }
-            },
             "crawl": {
                 "title": "走字螢幕",
                 "scale": "縮放比例"
@@ -124,6 +108,19 @@
         "step1": "從右上角匯入「地鐵路綫圖產生器」的作品",
         "step2": "調整開門方向等細節",
         "step3": "點擊右上角「播放」預覽報站音",
-        "start": "我們已準備好示例專案，關閉此視窗即可開始體驗！ :)"
+        "start": "我們已準備好示例作品，關閉此視窗即可開始體驗！ :)"
+    },
+
+    "import": {
+        "title": "匯入RMG作品",
+        "goodToGo": "準備完成！立即匯入此RMG作品。",
+        "routes": "選擇要匯入的路線",
+        "services": "選擇要匯入的班次類型",
+        "service": {
+            "local": "普通車",
+            "express": "快速車",
+            "direct": "直達車"
+        },
+        "import": "匯入"
     }
 }
