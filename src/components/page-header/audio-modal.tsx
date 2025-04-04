@@ -81,11 +81,31 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                 <ModalCloseButton />
 
                 <ModalBody paddingBottom={10}>
+                    <Text fontSize="lg" mb="4">
+                        {t('header.audioTask.desc')}
+                    </Text>
+                    <Text fontSize="md" mt="4" color="gray.600">
+                        {t('header.audioTask.exampleZH')}
+                    </Text>
+                    <audio controls>
+                        <source src="audio/shmetro-zh.mp3" type="audio/mpeg" />
+                        {t('header.audioTask.audioNotSupported')}
+                    </audio>
+                    <Text fontSize="md" mt="4" color="gray.600">
+                        {t('header.audioTask.exampleEN')}
+                    </Text>
+                    <audio controls>
+                        <source src="audio/shmetro-en.mp3" type="audio/mpeg" />
+                        {t('header.audioTask.audioNotSupported')}
+                    </audio>
+
                     {!rmtToken ? (
-                        <Text textAlign="center">{t('header.audioTask.loginFirst')}</Text>
+                        <Text mt="10" textAlign="center">
+                            {t('header.audioTask.loginFirst')}
+                        </Text>
                     ) : (
                         <>
-                            <Flex pl="4" pr="4" mb="4">
+                            <Flex pl="4" pr="4" mt="10" mb="4">
                                 <Text as="b" fontSize="4xl">
                                     {points}
                                 </Text>

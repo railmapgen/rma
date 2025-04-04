@@ -72,6 +72,13 @@
         },
         "audioTask": {
             "title": "Audio Task",
+            "desc": "We are committed to generating the most natural station announcements. To achieve this, we've collected hundreds of minutes of official broadcasts and trained our models. Experience the highest quality announcements powered by the latest large-scale machine learning models!",
+            "note1": "Please note that currently only Shanghai-style station announcements are available.",
+            "note2": "Due to computational limitations, please be patient after submitting your request - we aim to process all requests within 30 hours.",
+            "note3": "Please download and save your creations promptly, as we only guarantee data storage for 30 days.",
+            "exampleZH": "本次列车终点站 上海宝山站。下一站 工口足球场。开左边门。可换乘三号线。",
+            "exampleEN": "The terminal of this train is 莘庄 University. Next station is 五角场 Railway Station. Doors will open on the right.",
+            "audioNotSupported": "Your browser does not support audio playback. Chrome or Firefox is recommended.",
             "loginFirst": "Please log in first to generate audio with AI.",
             "topUp": "Top up",
             "table": {
