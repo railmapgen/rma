@@ -16,6 +16,7 @@ interface RuntimeState {
     currentStage: Stage;
     currentVoice: VoiceName;
     rmtToken?: string;
+    showWelcome: boolean;
     globalAlerts: Partial<Record<AlertStatus, { message: string; url?: string; linkedApp?: string }>>;
 }
 
@@ -27,6 +28,7 @@ const initialState: RuntimeState = {
     currentStationID: 'kaxg',
     currentStage: Stage.Departure,
     currentVoice: VoiceName.ChineseMandarinSimplified,
+    showWelcome: false,
     globalAlerts: {},
 };
 
@@ -58,6 +60,9 @@ const runtimeSlice = createSlice({
         removeRmtToken: state => {
             state.rmtToken = undefined;
         },
+        setShowWelcome: (state, action: PayloadAction<boolean>) => {
+            state.showWelcome = action.payload;
+        },
         /**
          * If linkedApp is true, alert will try to open link in the current domain.
          * E.g. linkedApp=true, url='/rmp' will open https://railmapgen.github.io/rmp/
@@ -85,6 +90,7 @@ export const {
     setCurrentVoice,
     setRmtToken,
     removeRmtToken,
+    setShowWelcome,
     setGlobalAlert,
     closeGlobalAlert,
 } = runtimeSlice.actions;

@@ -5,7 +5,7 @@ import { reconcile } from '../util/reconcile';
 import { RootStore, startRootListening } from './index';
 import { setPreferenceImport, setPreviewAudioBulk, setTelemetryProject } from './app/app-slice';
 import { ParamState, setProject } from './param/param-slice';
-import { setCurrentStage, setCurrentStationID, setReconciledPhrases } from './runtime/runtime-slice';
+import { setCurrentStage, setCurrentStationID, setReconciledPhrases, setShowWelcome } from './runtime/runtime-slice';
 
 export default function initStore(store: RootStore) {
     // Reconcile phrases when project changes
@@ -64,12 +64,17 @@ const initParamStore = (store: RootStore) => {
 
     if (paramString) {
         const param = JSON.parse(paramString) as ParamState;
-        logger.debug(`Get param from local storage: ${paramString}`);
+        // logger.debug(`Get param from local storage: ${paramString}`);
         store.dispatch(setProject(param.project));
         store.dispatch(setCurrentStationID(Object.keys(param.project['metadata'])[0]));
         store.dispatch(setCurrentStage(Stage.Departure));
+
+        if (JSON.stringify(param['project']) === JSON.stringify(defaultProject)) {
+            store.dispatch(setShowWelcome(true));
+        }
     } else {
         logger.warn('No param from local storage. Setting to default.');
         store.dispatch(setProject(defaultProject as ParamState['project']));
+        store.dispatch(setShowWelcome(true));
     }
 };

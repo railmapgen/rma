@@ -115,5 +115,15 @@
     "stationVariants": {
         "title": "Station Variants",
         "baseVariant": "Base Variant"
+    },
+
+    "welcome": {
+        "title": "Welcome to the Rail Map Announcer",
+        "desc": "Here, you can create and generate customized line displays and announcements!",
+        "steps": "🚇 Complete in just 3 steps",
+        "step1": "Import your work from the Rail Map Generator (top-right)",
+        "step2": "Adjust details like door opening direction",
+        "step3": "Click 'Play' (top-right) to preview announcements",
+        "start": "We've prepared a sample project—close this window and start exploring! :)"
     }
 }

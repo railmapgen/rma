@@ -4,10 +4,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { D, FONT_HEIGHT, StyleType } from '../constants/constants';
 import { useRootDispatch, useRootSelector } from '../redux';
-import { setStationVariantsExpanded } from '../redux/runtime/runtime-slice';
+import { setShowWelcome, setStationVariantsExpanded } from '../redux/runtime/runtime-slice';
 import { useWindowSize } from '../util/hooks';
 import Crawl from './crawl';
 import StationVariants from './station/station-variants';
+import WelcomeModal from './welcome-modal';
 
 const PageHeader = React.lazy(() => import('./page-header/page-header'));
 const SHMetroStageView = React.lazy(() => import('./panel/shmetro/stage'));
@@ -18,7 +19,7 @@ export default function AppRoot() {
     const {
         project: { style },
     } = useRootSelector(state => state.param);
-    const { stationVariantsExpanded } = useRootSelector(state => state.runtime);
+    const { stationVariantsExpanded, showWelcome } = useRootSelector(state => state.runtime);
     const { scale } = useRootSelector(state => state.crawl);
 
     const size = useWindowSize();
@@ -63,6 +64,7 @@ export default function AppRoot() {
                         </Flex>
                     </Flex>
                 </RmgPage>
+                <WelcomeModal isOpen={showWelcome} onClose={() => dispatch(setShowWelcome(false))} />
             </RmgWindow>
         </RmgThemeProvider>
     );
