@@ -54,6 +54,7 @@ export const API_URL = 'https://railmapgen.org/v1';
 // export const API_URL = 'http://localhost:3000/v1';
 export enum API_ENDPOINT {
     AUDIOTASKS = '/audio',
+    SUBSCRIPTION_REDEEM = '/subscription/redeem',
 }
 
 /**

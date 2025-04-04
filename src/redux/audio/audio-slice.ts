@@ -80,6 +80,26 @@ export const newTask = createAsyncThunk<void, void>(
     }
 );
 
+export const redeem = createAsyncThunk<void, string>(
+    'audio/redeem',
+    async (cdkey, { getState, dispatch, rejectWithValue }) => {
+        const { rmtToken: token } = (getState() as RootState).runtime;
+        if (!token) return rejectWithValue('No token.');
+        const rep = await apiFetch(
+            API_ENDPOINT.SUBSCRIPTION_REDEEM,
+            { method: 'POST', body: JSON.stringify({ cdkey }) },
+            token
+        );
+        if (!rep) {
+            return rejectWithValue('Can not recover from expired refresh token.');
+        }
+        if (rep.status !== 202) {
+            return rejectWithValue(rep.text);
+        }
+        dispatch(fetchAudioTasks());
+    }
+);
+
 const appSlice = createSlice({
     name: 'app',
     initialState,

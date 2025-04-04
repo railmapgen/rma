@@ -1,4 +1,5 @@
 import {
+    Button,
     Flex,
     IconButton,
     Link,
@@ -30,6 +31,7 @@ import { cancelTask, fetchAudioTasks } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
 import { API_ENDPOINT, apiFetch } from '../../util/token';
 import NewTaskModal from './new-task-modal';
+import RedeemModal from './redeem-modal';
 
 const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
@@ -47,6 +49,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const linkColour = useColorModeValue('primary.500', 'primary.300');
 
     const [isNewTaskModalOpen, setNewTaskModalOpen] = React.useState(false);
+    const [isRedeemModalOpen, setRedeemModalOpen] = React.useState(false);
 
     React.useEffect(() => {
         if (!isOpen) return;
@@ -115,20 +118,22 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                     {t('header.audioTask.title')}
                                 </Text>
                                 <Flex style={{ flex: 1 }} />
-                                <IconButton
-                                    icon={<MdOutlinePayments />}
-                                    variant="ghost"
+                                <Button
+                                    leftIcon={<MdOutlinePayments />}
                                     style={{ alignSelf: 'center' }}
-                                    aria-label={t('header.audioTask.topUp')}
-                                    isDisabled
-                                />
-                                <IconButton
-                                    icon={<MdOutlineUpload />}
-                                    variant="ghost"
+                                    onClick={() => setRedeemModalOpen(true)}
+                                    mr="2"
+                                >
+                                    {t('header.audioTask.topUp')}
+                                </Button>
+                                <RedeemModal isOpen={isRedeemModalOpen} onClose={() => setRedeemModalOpen(false)} />
+                                <Button
+                                    leftIcon={<MdOutlineUpload />}
                                     style={{ alignSelf: 'center' }}
-                                    aria-label={t('header.audioTask.new.title')}
                                     onClick={() => setNewTaskModalOpen(true)}
-                                />
+                                >
+                                    {t('header.audioTask.new.title')}
+                                </Button>
                                 <NewTaskModal isOpen={isNewTaskModalOpen} onClose={() => setNewTaskModalOpen(false)} />
                             </Flex>
                             <TableContainer height="100%" overflowY="auto">
