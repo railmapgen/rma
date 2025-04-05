@@ -92,7 +92,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Hanzhong Road",
-          "nextPinyin": "Hanzhong Road",
+          "nextPinyin": "汉中 Road",
           "int": [
             [
               "Line 12",
@@ -120,7 +120,7 @@
         },
         "shmetro-en": {
           "name": "Hanzhong Road",
-          "namePinyin": "Hanzhong Road"
+          "namePinyin": "汉中 Road"
         }
       },
       "dep": {
@@ -137,7 +137,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "XinZha Road",
-          "nextPinyin": "XinZha Road",
+          "nextPinyin": "新闸 Road",
           "int": [],
           "noteLastTrain": false
         }
@@ -160,7 +160,7 @@
         },
         "shmetro-en": {
           "name": "XinZha Road",
-          "namePinyin": "XinZha Road"
+          "namePinyin": "新闸 Road"
         }
       },
       "dep": {
@@ -240,7 +240,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Site of the First CPC National Congress · South Huangpi Road",
-          "nextPinyin": "Site of the First CPC National Congress · South Huangpi Road",
+          "nextPinyin": "Site of the First CPC National Congress · South 黄陂 Road",
           "int": [
             [
               "Line 14"
@@ -267,7 +267,7 @@
         },
         "shmetro-en": {
           "name": "Site of the First CPC National Congress · South Huangpi Road",
-          "namePinyin": "Site of the First CPC National Congress · South Huangpi Road"
+          "namePinyin": "Site of the First CPC National Congress · South 黄陂 Road"
         }
       },
       "dep": {
@@ -294,7 +294,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "South Shaanxi Road",
-          "nextPinyin": "South Shaanxi Road",
+          "nextPinyin": "South 陕西 Road",
           "int": [
             [
               "Line 10",
@@ -322,7 +322,7 @@
         },
         "shmetro-en": {
           "name": "South Shaanxi Road",
-          "namePinyin": "South Shaanxi Road"
+          "namePinyin": "South 陕西 Road"
         }
       },
       "dep": {
@@ -347,7 +347,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Changshu Road",
-          "nextPinyin": "Changshu Road",
+          "nextPinyin": "常熟 Road",
           "int": [
             [
               "Line 7"
@@ -374,7 +374,7 @@
         },
         "shmetro-en": {
           "name": "Changshu Road",
-          "namePinyin": "Changshu Road"
+          "namePinyin": "常熟 Road"
         }
       },
       "dep": {
@@ -391,7 +391,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Hengshan Road",
-          "nextPinyin": "Hengshan Road",
+          "nextPinyin": "衡山 Road",
           "int": [],
           "noteLastTrain": false
         }
@@ -414,7 +414,7 @@
         },
         "shmetro-en": {
           "name": "Hengshan Road",
-          "namePinyin": "Hengshan Road"
+          "namePinyin": "衡山 Road"
         }
       },
       "dep": {
@@ -441,7 +441,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Xujiahui",
-          "nextPinyin": "Xujiahui",
+          "nextPinyin": "徐家汇",
           "int": [
             [
               "Line 9",
@@ -469,7 +469,7 @@
         },
         "shmetro-en": {
           "name": "Xujiahui",
-          "namePinyin": "Xujiahui"
+          "namePinyin": "徐家汇"
         }
       },
       "dep": {
@@ -546,7 +546,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Caobao Road",
-          "nextPinyin": "Caobao Road",
+          "nextPinyin": "漕宝 Road",
           "int": [
             [
               "Line 12"
@@ -573,7 +573,7 @@
         },
         "shmetro-en": {
           "name": "Caobao Road",
-          "namePinyin": "Caobao Road"
+          "namePinyin": "漕宝 Road"
         }
       },
       "dep": {
@@ -654,7 +654,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "JinJiang Park",
-          "nextPinyin": "JinJiang Park",
+          "nextPinyin": "锦江 Park",
           "int": [],
           "noteLastTrain": false
         }
@@ -677,7 +677,7 @@
         },
         "shmetro-en": {
           "name": "JinJiang Park",
-          "namePinyin": "JinJiang Park"
+          "namePinyin": "锦江 Park"
         }
       },
       "dep": {
@@ -694,7 +694,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Lianhua Road ",
-          "nextPinyin": "Lianhua Road ",
+          "nextPinyin": "莲花 Road ",
           "int": [],
           "noteLastTrain": false
         }
@@ -717,7 +717,7 @@
         },
         "shmetro-en": {
           "name": "Lianhua Road ",
-          "namePinyin": "Lianhua Road "
+          "namePinyin": "莲花 Road "
         }
       },
       "dep": {
@@ -734,7 +734,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Waihuanlu",
-          "nextPinyin": "Waihuanlu",
+          "nextPinyin": "外环路",
           "int": [],
           "noteLastTrain": false
         }
@@ -757,7 +757,7 @@
         },
         "shmetro-en": {
           "name": "Waihuanlu",
-          "namePinyin": "Waihuanlu"
+          "namePinyin": "外环路"
         }
       },
       "dep": {
@@ -782,7 +782,7 @@
         "shmetro-en": {
           "welcomeAbroad": false,
           "next": "Xinzhuang",
-          "nextPinyin": "Xinzhuang",
+          "nextPinyin": "莘庄",
           "int": [
             [
               "Line 5"
@@ -809,7 +809,7 @@
         },
         "shmetro-en": {
           "name": "Xinzhuang",
-          "namePinyin": "Xinzhuang"
+          "namePinyin": "莘庄"
         }
       }
     }
