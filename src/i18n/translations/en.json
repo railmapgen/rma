@@ -103,7 +103,7 @@
                 "content1": "This will create a new task from the current project.",
                 "content2": "The estimated points consumed will be ",
                 "content3": "The actual points used is subject to the server.",
-                "content4": "You may cancel the task before processing to get a full refund.",
+                "content4": "You may cancel the task before processing to get a full points return.",
                 "create": "Create a new task"
             }
         }
