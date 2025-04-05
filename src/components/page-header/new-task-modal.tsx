@@ -7,7 +7,7 @@ import {
     ModalFooter,
     ModalHeader,
     ModalOverlay,
-    Text
+    Text,
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 import { useRootDispatch, useRootSelector } from '../../redux';

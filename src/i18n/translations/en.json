@@ -72,7 +72,7 @@
         },
         "audioTask": {
             "title": "Audio Task",
-            "desc": "We are committed to generating the most natural station announcements. To achieve this, we've collected hundreds of minutes of official broadcasts and trained our models. Experience the highest quality announcements powered by the latest large-scale machine learning models!",
+            "desc": "We are committed to generating the most natural station announcements. To achieve this, we conducted deep training based on a large number of samples. Experience the highest quality announcements powered by the latest large-scale machine learning models!",
             "note1": "Please note that currently only Shanghai-style station announcements are available.",
             "note2": "Due to computational limitations, please be patient after submitting your request - we aim to process all requests within 30 hours.",
             "note3": "Please download and save your creations promptly, as we only guarantee data storage for 30 days.",
