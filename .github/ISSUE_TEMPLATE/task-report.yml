@@ -1,0 +1,41 @@
+name: Audio Task Report
+description: Report a problematic announcement.
+title: "[Audio Task Ticket]: "
+labels: ["audio-task-bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Open a ticket to report a problematic announcement. We'll return points after validation.
+  - type: input
+    id: email
+    attributes:
+      label: Account email
+      description: What's the email address associated with your account?
+      placeholder: ex. email@example.com
+    validations:
+      required: true
+  - type: input
+    id: id
+    attributes:
+      label: Task ID
+      description: What is the ID of the task you are reporting?
+      placeholder: ex. 123456
+    validations:
+      required: true
+  - type: input
+    id: filename
+    attributes:
+      label: Filename
+      description: What is the filename of the problematic announcement?
+      placeholder: ex. announcement.mp3
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Extra information
+      description: Please provide any extra information where the announcement was problematic.
+      placeholder: ex. Missing station name, etc. Expected "Station Name"
+    validations:
+      required: true

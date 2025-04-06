@@ -1,4 +1,6 @@
 import {
+    Alert,
+    AlertIcon,
     Button,
     Flex,
     IconButton,
@@ -32,6 +34,8 @@ import { downloadAs, downloadBlobAs } from '../../util/download';
 import { API_ENDPOINT, apiFetch } from '../../util/token';
 import NewTaskModal from './new-task-modal';
 import RedeemModal from './redeem-modal';
+
+const ISSUE_TEMPLATE_URL = 'https://github.com/railmapgen/rma/issues/new?template=task-report.yml';
 
 const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
@@ -101,6 +105,34 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         <source src="audio/shmetro-en.mp3" type="audio/mpeg" />
                         {t('header.audioTask.audioNotSupported')}
                     </audio>
+
+                    <Alert status="info" mt="4">
+                        <AlertIcon />
+                        <Text fontSize="md" color="gray.600">
+                            {t('header.audioTask.note1')}
+                        </Text>
+                    </Alert>
+
+                    <Alert status="info" mt="4">
+                        <AlertIcon />
+                        <Text fontSize="md" color="gray.600">
+                            {t('header.audioTask.note2')}
+                        </Text>
+                    </Alert>
+
+                    <Alert status="info" mt="4">
+                        <AlertIcon />
+                        <Text fontSize="md" color="gray.600">
+                            {t('header.audioTask.note3')}
+                        </Text>
+                    </Alert>
+
+                    <Alert status="warning" mt="4">
+                        <AlertIcon />
+                        <Text fontSize="md" color="gray.600">
+                            {t('header.audioTask.note4')}
+                        </Text>
+                    </Alert>
 
                     {!rmtToken ? (
                         <Text mt="10" textAlign="center">
@@ -177,6 +209,20 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                     </Tbody>
                                 </Table>
                             </TableContainer>
+                            <VStack mt={10}>
+                                <Text fontSize="sm" lineHeight="100%" color="gray.600">
+                                    {t('header.audioTask.report1')}
+                                    <Link
+                                        color={linkColour}
+                                        fontSize="sm"
+                                        lineHeight="100%"
+                                        onClick={() => window.open(ISSUE_TEMPLATE_URL, '_blank')}
+                                    >
+                                        {t('header.audioTask.report2')}
+                                    </Link>
+                                    {t('header.audioTask.report3')}
+                                </Text>
+                            </VStack>
                         </>
                     )}
                     <VStack mt={10}>

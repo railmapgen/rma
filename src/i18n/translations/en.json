@@ -76,6 +76,7 @@
             "note1": "Please note that currently only Shanghai-style station announcements are available.",
             "note2": "Due to computational limitations, please be patient after submitting your request - we aim to process all requests within 30 hours.",
             "note3": "Please download and save your creations promptly, as we only guarantee data storage for 30 days.",
+            "note4": "To ensure the best English announcements, please replace all pinyin parts in 'station name pinyin' with Chinese characters, such as '莘庄 University' instead of 'Xinzhuang University'.",
             "exampleZH": "本次列车终点站 上海宝山站。下一站 工口足球场。开左边门。可换乘三号线。",
             "exampleEN": "The terminal of this train is 莘庄 University. Next station is 五角场 Railway Station. Doors will open on the right.",
             "audioNotSupported": "Your browser does not support audio playback. Chrome or Firefox is recommended.",
@@ -89,6 +90,9 @@
                 "points": "Points",
                 "actions": "Actions"
             },
+            "report1": "If you encounter any issues with the generated announcements, ",
+            "report2": "please create a GitHub issue. ",
+            "report3": "We will fully return your points after confirmation.",
             "freeInternet1": "We believe in a free and open internet. You may also ",
             "freeInternet2": "download raw text",
             "freeInternet3": " and use in your preferred audio provider :)",

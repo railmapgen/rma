@@ -76,6 +76,7 @@
             "note1": "请注意目前仅提供上海风格的报站广播。",
             "note2": "由于算力限制，提交任务后请耐心等待，我们将尽力在30小时内处理完毕。",
             "note3": "请及时下载保存您的作品，我们仅承诺保存30天内的数据。",
+            "note4": "为了保证最好的英文广播，请用汉字替换'station name pinyin'中所有拼音部分，如'莘庄 University'而非'Xinzhuang University'。",
             "audioNotSupported": "您的浏览器不支持音频播放。推荐使用Chrome或Firefox浏览器。",
             "loginFirst": "请先登录以使用大模型生成音频。",
             "topUp": "充值",
@@ -87,6 +88,9 @@
                 "points": "积分",
                 "actions": "操作"
             },
+            "report1": "生成的广播遇到问题？",
+            "report2": "创建一个GitHub的议题。",
+            "report3": "我们将在确认后全额返还点数。",
             "freeInternet1": "我们相信自由开放的互联网。您也可以",
             "freeInternet2": "下载原始文本",
             "freeInternet3": "并在您喜欢的声音提供商中使用 :)",
