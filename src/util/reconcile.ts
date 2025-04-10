@@ -111,11 +111,27 @@ const reconcileShanghaiMetro = (
                         | VoiceName.ChineseWuSimplifiedXiaotong
                         | VoiceName.ChineseWuSimplifiedYunzhe
                 ];
+                const thanksForTakingPinyin = {
+                    [VoiceName.ChineseMandarinSimplified]: `感谢您乘坐${
+                        baseVariants[Stage.Arrival]![voiceName]!.thanksForTakingPinyin
+                    }，祝您旅途愉快。`,
+                    [VoiceName.ChineseWuSimplifiedXiaotong]: `谢谢侬搭乘${
+                        baseVariants[Stage.Arrival]![voiceName]!.thanksForTakingPinyin
+                    }，阿拉下趟再会。`,
+                    [VoiceName.ChineseWuSimplifiedYunzhe]: `Thanks for taking ${
+                        baseVariants[Stage.Arrival]![voiceName]!.thanksForTakingPinyin
+                    }, see you next time.`,
+                }[
+                    voiceName as
+                        | VoiceName.ChineseMandarinSimplified
+                        | VoiceName.ChineseWuSimplifiedXiaotong
+                        | VoiceName.ChineseWuSimplifiedYunzhe
+                ];
                 res.push({
                     type: PhraseType.Customized,
                     voiceName,
                     text: thanksForTaking,
-                    pinyin: baseVariants[Stage.Arrival]![voiceName]!.thanksForTakingPinyin as string,
+                    pinyin: thanksForTakingPinyin,
                     rate: customizedRate,
                 });
             }

@@ -27,7 +27,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdOutlineCancel, MdOutlineDownload, MdOutlinePayments, MdOutlineUpload } from 'react-icons/md';
 import { AudioTaskStatus } from '../../constants/audio';
-import { Events, reconciledPhrasesToText } from '../../constants/constants';
+import { Events, reconciledPhrasesToPinyin } from '../../constants/constants';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { cancelTask, fetchAudioTasks } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
@@ -76,7 +76,7 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                 Events.DOWNLOAD_TEXT,
                 isAllowProjectTelemetry ? { style, '#stations': Object.keys(metadata).length } : {}
             );
-        const text = reconciledPhrasesToText(reconciledPhrases);
+        const text = reconciledPhrasesToPinyin(reconciledPhrases);
         downloadAs(`RMA_${new Date().valueOf()}.txt`, 'text/plain', text.join('\n'));
     };
 

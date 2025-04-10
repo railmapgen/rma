@@ -115,7 +115,7 @@ export interface ReconciledPhrases {
     [k: StnID]: { [k in Stage]?: { [k in VoiceName]?: BasePhrase[] } };
 }
 
-export const reconciledPhrasesToText = (r: ReconciledPhrases) => {
+export const reconciledPhrasesToPinyin = (r: ReconciledPhrases) => {
     const res: string[] = [];
     for (const stn in r) {
         for (const stage in r[stn]) {

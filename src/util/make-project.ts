@@ -184,7 +184,6 @@ export const makeProject = (rmg: RMGParam, preferRouteIndex: number, preferServi
                     int: nextInt?.map(i => i?.map(_ => _[0])),
                 },
                 [VoiceName.ChineseWuSimplifiedYunzhe]: {
-                    welcomeAbroad: false,
                     next: nextName['en'],
                     nextPinyin: nextName['en'],
                     int: nextInt?.map(i => i?.map(_ => _[1])),

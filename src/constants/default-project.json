@@ -90,7 +90,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Hanzhong Road",
           "nextPinyin": "汉中 Road",
           "int": [
@@ -135,7 +134,6 @@
           "int": []
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "XinZha Road",
           "nextPinyin": "新闸 Road",
           "int": [],
@@ -185,7 +183,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "People's Square",
           "nextPinyin": "People's Square",
           "int": [
@@ -238,7 +235,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Site of the First CPC National Congress · South Huangpi Road",
           "nextPinyin": "Site of the First CPC National Congress · South 黄陂 Road",
           "int": [
@@ -292,7 +288,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "South Shaanxi Road",
           "nextPinyin": "South 陕西 Road",
           "int": [
@@ -345,7 +340,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Changshu Road",
           "nextPinyin": "常熟 Road",
           "int": [
@@ -389,7 +383,6 @@
           "int": []
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Hengshan Road",
           "nextPinyin": "衡山 Road",
           "int": [],
@@ -439,7 +432,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Xujiahui",
           "nextPinyin": "徐家汇",
           "int": [
@@ -492,7 +484,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Shanghai Indoor Stadium",
           "nextPinyin": "Shanghai Indoor Stadium",
           "int": [
@@ -544,7 +535,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Caobao Road",
           "nextPinyin": "漕宝 Road",
           "int": [
@@ -604,7 +594,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Shanghai South Railway Station",
           "nextPinyin": "Shanghai South Railway Station",
           "int": [
@@ -652,7 +641,6 @@
           "int": []
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "JinJiang Park",
           "nextPinyin": "锦江 Park",
           "int": [],
@@ -692,7 +680,6 @@
           "int": []
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Lianhua Road ",
           "nextPinyin": "莲花 Road ",
           "int": [],
@@ -732,7 +719,6 @@
           "int": []
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Waihuanlu",
           "nextPinyin": "外环路",
           "int": [],
@@ -780,7 +766,6 @@
           ]
         },
         "shmetro-en": {
-          "welcomeAbroad": false,
           "next": "Xinzhuang",
           "nextPinyin": "莘庄",
           "int": [

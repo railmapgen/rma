@@ -68,27 +68,20 @@ export default function VariantsDefault() {
                     <RmgLabel label="欢迎乘坐">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroad}
-                            onDebouncedChange={val =>
+                            onDebouncedChange={val => {
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseMandarinSimplified,
                                     'welcomeAbroad',
                                     val
-                                )
-                            }
-                        />
-                    </RmgLabel>
-                    <RmgLabel label="欢迎乘坐拼音">
-                        <RmgDebouncedInput
-                            defaultValue={welcomeAbroadPinyin}
-                            onDebouncedChange={val =>
+                                );
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseMandarinSimplified,
                                     'welcomeAbroadPinyin',
                                     val
-                                )
-                            }
+                                );
+                            }}
                         />
                     </RmgLabel>
                     <RmgLabel label="终点站名">
@@ -99,7 +92,7 @@ export default function VariantsDefault() {
                             defaultValue={terminalPinyin}
                             onDebouncedChange={val =>
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseMandarinSimplified,
                                     'terminalPinyin',
                                     val
@@ -131,7 +124,7 @@ export default function VariantsDefault() {
                             defaultValue={lineNamePinyin}
                             onDebouncedChange={val =>
                                 handleVariantChange(
-                                    Stage.Arrival,
+                                    Stage.Departure,
                                     VoiceName.ChineseMandarinSimplified,
                                     'lineNamePinyin',
                                     val
@@ -216,27 +209,20 @@ export default function VariantsDefault() {
                     <RmgLabel label="感谢乘坐">
                         <RmgDebouncedInput
                             defaultValue={thanksForTaking}
-                            onDebouncedChange={val =>
+                            onDebouncedChange={val => {
                                 handleVariantChange(
                                     Stage.Arrival,
                                     VoiceName.ChineseMandarinSimplified,
                                     'thanksForTaking',
                                     val
-                                )
-                            }
-                        />
-                    </RmgLabel>
-                    <RmgLabel label="感谢乘坐拼音">
-                        <RmgDebouncedInput
-                            defaultValue={thanksForTakingPinyin}
-                            onDebouncedChange={val =>
+                                );
                                 handleVariantChange(
                                     Stage.Arrival,
                                     VoiceName.ChineseMandarinSimplified,
                                     'thanksForTakingPinyin',
                                     val
-                                )
-                            }
+                                );
+                            }}
                         />
                     </RmgLabel>
                 </CardBody>
