@@ -1,19 +1,13 @@
 import { logger } from '@railmapgen/rmg-runtime';
 import React from 'react';
 import { D, FONT_HEIGHT, R } from '../constants/constants';
-import { phrasesToText } from '../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../redux';
 import { setRealColumns } from '../redux/crawl/crawl-slice';
 import { PCFEncoding, getGlyph, parsePCF } from '../util/pcf-font-reader';
 
 const Crawl = () => {
     const dispatch = useRootDispatch();
-    const { reconciledPhrases, currentStationID, currentStage, currentVoice } = useRootSelector(state => state.runtime);
-    const { columns, realColumns, scale } = useRootSelector(state => state.crawl);
-
-    const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
-    const text = phrasesToText(phrases ?? []);
-    const content = text === '' ? ' ' : text;
+    const { content, columns, realColumns, scale } = useRootSelector(state => state.crawl);
 
     const fontDataRef = React.useRef<ArrayBuffer | null>(null);
     const bitmapsRef = React.useRef<boolean[][][]>([]);
@@ -46,6 +40,7 @@ const Crawl = () => {
         setCharacterColumns(characterColumns);
         dispatch(setRealColumns(characterColumns.reduce((a, b) => a + b, 0)));
     }, [content]);
+    React.useEffect(() => reconcileBitmaps(), [content]);
 
     React.useEffect(() => {
         const fetchLocalFile = async () => {
@@ -62,8 +57,6 @@ const Crawl = () => {
 
         fetchLocalFile();
     }, []);
-
-    React.useEffect(() => reconcileBitmaps(), [content]);
 
     const remainingColumns = columns - realColumns && 0;
     const remainingLeftColumns = Math.floor(remainingColumns / 2);

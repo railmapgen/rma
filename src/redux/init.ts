@@ -1,9 +1,11 @@
 import rmgRuntime, { logger } from '@railmapgen/rmg-runtime';
 import { LocalStorageKey, Stage } from '../constants/constants';
 import defaultProject from '../constants/default-project.json';
+import { phrasesToText } from '../constants/phrases';
 import { reconcile } from '../util/reconcile';
 import { RootStore, startRootListening } from './index';
 import { setPreferenceImport, setPreviewAudioBulk, setTelemetryProject } from './app/app-slice';
+import { setContent } from './crawl/crawl-slice';
 import { ParamState, setProject } from './param/param-slice';
 import { setCurrentStage, setCurrentStationID, setReconciledPhrases, setShowWelcome } from './runtime/runtime-slice';
 
@@ -14,15 +16,31 @@ export default function initStore(store: RootStore) {
             return JSON.stringify(currentState.param.project) !== JSON.stringify(previousState.param.project);
         },
         effect: (_action, listenerApi) => {
-            const { project } = listenerApi.getState().param;
+            const { param } = listenerApi.getState();
+
             // TODO: there is a lot of overhead here,
             // better reconcile specific stnid-stage-voice in param/setVariant
-            const reconciledPhrases = reconcile(project);
+            const reconciledPhrases = reconcile(param.project);
             logger.debug(reconciledPhrases);
             listenerApi.dispatch(setReconciledPhrases(reconciledPhrases));
 
-            const param = listenerApi.getState().param;
             rmgRuntime.storage.set(LocalStorageKey.PARAM, JSON.stringify(param));
+        },
+    });
+
+    // Update crawl content when runtime changes
+    startRootListening({
+        predicate: (_action, currentState, previousState) => {
+            return JSON.stringify(currentState.runtime) !== JSON.stringify(previousState.runtime);
+        },
+        effect: (_action, listenerApi) => {
+            const { runtime } = listenerApi.getState();
+
+            const { currentStationID, currentStage, currentVoice, reconciledPhrases } = runtime;
+            const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
+            const text = phrasesToText(phrases ?? []);
+            const content = text === '' ? ' ' : text;
+            listenerApi.dispatch(setContent(content));
         },
     });
 

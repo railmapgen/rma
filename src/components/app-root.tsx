@@ -1,9 +1,10 @@
 import { Box, Button, Divider, Flex } from '@chakra-ui/react';
-import { RmgPage, RmgThemeProvider, RmgWindow } from '@railmapgen/rmg-components';
+import { RmgDebouncedInput, RmgPage, RmgThemeProvider, RmgWindow } from '@railmapgen/rmg-components';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { D, FONT_HEIGHT, StyleType } from '../constants/constants';
 import { useRootDispatch, useRootSelector } from '../redux';
+import { setContent } from '../redux/crawl/crawl-slice';
 import { setShowWelcome, setStationVariantsExpanded } from '../redux/runtime/runtime-slice';
 import { useWindowSize } from '../util/hooks';
 import Crawl from './crawl';
@@ -20,12 +21,16 @@ export default function AppRoot() {
         project: { style },
     } = useRootSelector(state => state.param);
     const { stationVariantsExpanded, showWelcome } = useRootSelector(state => state.runtime);
-    const { scale } = useRootSelector(state => state.crawl);
+    const { content, scale } = useRootSelector(state => state.crawl);
 
     const size = useWindowSize();
     const { width = 1280, height = 720 } = size;
 
     const stationVariantsWidth = stationVariantsExpanded ? 200 : 0;
+
+    const handleContentChange = (value: string) => {
+        dispatch(setContent(value));
+    };
 
     return (
         <RmgThemeProvider>
@@ -57,7 +62,8 @@ export default function AppRoot() {
                             <Box style={{ overflowX: 'auto' }}>
                                 <Crawl />
                             </Box>
-                            <Divider marginTop="2" />
+                            <RmgDebouncedInput defaultValue={content} onDebouncedChange={handleContentChange} m="2" />
+                            <Divider />
                             <Box style={{ height: height - 40 - FONT_HEIGHT * D * scale - 10, overflowY: 'auto' }}>
                                 {style === StyleType.ShanghaiMetro && <SHMetroStageView />}
                             </Box>

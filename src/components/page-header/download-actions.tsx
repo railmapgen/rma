@@ -25,7 +25,6 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { MdDownload, MdImage, MdOpenInNew, MdOutlineAudiotrack, MdSave } from 'react-icons/md';
 import { D, Events, FONT_HEIGHT } from '../../constants/constants';
-import { phrasesToText } from '../../constants/phrases';
 import { useRootDispatch, useRootSelector } from '../../redux';
 import { closeAudioModal, openAudioModal } from '../../redux/audio/audio-slice';
 import { downloadAs, downloadBlobAs } from '../../util/download';
@@ -37,9 +36,8 @@ export default function DownloadActions() {
         telemetry: { project: isAllowProjectTelemetry },
     } = useRootSelector(state => state.app);
     const dispatch = useRootDispatch();
-    const { realColumns } = useRootSelector(state => state.crawl);
+    const { content, realColumns } = useRootSelector(state => state.crawl);
     const { project } = useRootSelector(state => state.param);
-    const { reconciledPhrases, currentStationID, currentStage, currentVoice } = useRootSelector(state => state.runtime);
     const { isModalOpen: isAudioTaskModalOpen } = useRootSelector(state => state.audio);
     const { style, metadata } = project;
     const isAllowAppTelemetry = rmgRuntime.isAllowAnalytics();
@@ -77,7 +75,6 @@ export default function DownloadActions() {
     ];
     const [isDownloadModalOpen, setIsDownloadModalOpen] = React.useState(false);
     const [isTermsAndConditionsModalOpen, setIsTermsAndConditionsModalOpen] = React.useState(false);
-    const [isAttachSelected, setIsAttachSelected] = React.useState(false);
     const [isTermsAndConditionsSelected, setIsTermsAndConditionsSelected] = React.useState(false);
 
     // calculate the max canvas area the current browser can support
@@ -114,10 +111,6 @@ export default function DownloadActions() {
     // thanks to this article that includes all steps to convert a svg to a png
     // https://levelup.gitconnected.com/draw-an-svg-to-canvas-and-download-it-as-image-in-javascript-f7f7713cf81f
     const handleDownload = () => {
-        const phrases = reconciledPhrases[currentStationID]?.[currentStage]?.[currentVoice];
-        const text = phrasesToText(phrases ?? []);
-        const content = text === '' ? ' ' : text;
-
         const elem = document.getElementById('crawl')!.cloneNode(true) as SVGSVGElement;
         const svgString = elem.outerHTML;
 
