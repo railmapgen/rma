@@ -51,4 +51,13 @@ jobs:
           dist: dist
           github_token: ${{ secrets.RMG_BUILD_AND_RELEASE }}
           gitlab_token: ${{ secrets.GITLAB_RELEASE }}
-          gitee_token: ${{ secrets.GITEE_RELEASE }}
+
+  release-org:
+    needs: build
+    if: ${{ success() && inputs.auto_deploy == 'PRD' }}
+    runs-on: self-hosted
+    steps:
+      - name: Release Org
+        uses: railmapgen/releaser-org@main
+        with:
+          app_name: rma
