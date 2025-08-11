@@ -106,13 +106,6 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         {t('header.audioTask.audioNotSupported')}
                     </audio>
 
-                    <Alert status="error" mt="4">
-                        <AlertIcon />
-                        <Text fontSize="md" color="gray.600">
-                            {t('header.audioTask.temporaryMaintenance')}
-                        </Text>
-                    </Alert>
-
                     <Alert status="info" mt="4">
                         <AlertIcon />
                         <Text fontSize="md" color="gray.600">
