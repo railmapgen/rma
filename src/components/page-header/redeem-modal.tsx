@@ -45,7 +45,7 @@ const RedeemModal = (props: { isOpen: boolean; onClose: () => void }) => {
                         <ListItem>
                             <Link
                                 color={linkColour}
-                                href="https://afdian.com/item/851c2bb4110d11f0935a5254001e7c00"
+                                href="https://ifdian.net/item/851c2bb4110d11f0935a5254001e7c00"
                                 isExternal={true}
                             >
                                 爱发电 <Icon as={MdOpenInNew} />
