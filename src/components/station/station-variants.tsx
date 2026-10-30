@@ -68,7 +68,7 @@ export default function StationVariants() {
                                     {t('stationVariants.title')}
                                 </Text>
                                 <IconButton
-                                    aria-label="Close"
+                                    aria-label={t('Close')}
                                     size="sm"
                                     variant="ghost"
                                     icon={<MdExpandMore transform="rotate(90)" />}

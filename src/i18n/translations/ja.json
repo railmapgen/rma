@@ -107,8 +107,17 @@
                 "content3": "実際に使用されるポイントはサーバーに依存します。",
                 "content4": "処理前にタスクをキャンセルすると、全額のポイントが返金されます。",
                 "create": "新しいタスクを作成"
+            },
+            "status": {
+                "CREATED": "受付済み",
+                "CANCELLED": "取消済み",
+                "PROCESSING": "処理中",
+                "COMPLETED": "完了",
+                "FAILED": "失敗"
             }
-        }
+        },
+        "popoverHeader": "{{environment}} 環境を使用しています。",
+        "popoverBody": "最新の RMA 試験版を確認するための環境です。"
     },
 
     "stationVariants": {
@@ -137,5 +146,11 @@
             "direct": "直通列車"
         },
         "import": "インポート"
-    }
+    },
+    "Help": "操作案内",
+    "Close": "閉じる",
+    "Cancel Task": "処理を取り消す",
+    "Download Audio": "音声をダウンロード",
+    "Preview audio": "音声を試聴",
+    "Pause audio": "音声を一時停止"
 }

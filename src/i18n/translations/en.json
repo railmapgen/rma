@@ -109,8 +109,17 @@
                 "content3": "The actual points used is subject to the server.",
                 "content4": "You may cancel the task before processing to get a full points return.",
                 "create": "Create a new task"
+            },
+            "status": {
+                "CREATED": "Created",
+                "CANCELLED": "Cancelled",
+                "PROCESSING": "Processing",
+                "COMPLETED": "Completed",
+                "FAILED": "Failed"
             }
-        }
+        },
+        "popoverHeader": "You're on {{environment}} environment!",
+        "popoverBody": "This is a testing environment where we test the latest beta RMA."
     },
 
     "stationVariants": {
