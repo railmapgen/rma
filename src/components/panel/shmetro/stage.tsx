@@ -12,11 +12,11 @@ import VariantsZHMidway from './variants-zh-mdw';
 import VariantsDefault from './variants-default';
 
 const validVariants = [
-    [Stage.Departure, VoiceName.ChineseMandarinSimplified, 'editor.departureZH'],
-    [Stage.Arrival, VoiceName.ChineseMandarinSimplified, 'editor.arrivalZH'],
-    [Stage.Midway, VoiceName.ChineseMandarinSimplified, 'editor.midwayZH'],
-    [Stage.Departure, VoiceName.ChineseWuSimplifiedYunzhe, 'editor.departureEN'],
-    [Stage.Arrival, VoiceName.ChineseWuSimplifiedYunzhe, 'editor.arrivalEN'],
+    [Stage.Departure, VoiceName.ChineseMandarinSimplified, '出发'],
+    [Stage.Arrival, VoiceName.ChineseMandarinSimplified, '到达'],
+    [Stage.Midway, VoiceName.ChineseMandarinSimplified, '中途'],
+    [Stage.Departure, VoiceName.ChineseWuSimplifiedYunzhe, 'Departure'],
+    [Stage.Arrival, VoiceName.ChineseWuSimplifiedYunzhe, 'Arrival'],
 ] as [Stage, VoiceName, string][];
 
 export default function StageView() {
@@ -45,10 +45,10 @@ export default function StageView() {
                         <Card height="350px" width="400px" key={`${stage}-${voice}`} variant="outline">
                             <CardHeader width="100%" display="flex">
                                 <Text as="b" flex="1">
-                                    {t(name)}
+                                    {name}
                                 </Text>
                                 <IconButton
-                                    aria-label={t('editor.selectStage', { stage: t(name) })}
+                                    aria-label={`set current stage to ${stage}`}
                                     icon={
                                         currentStage === stage && currentVoice === voice ? (
                                             <MdRadioButtonChecked />

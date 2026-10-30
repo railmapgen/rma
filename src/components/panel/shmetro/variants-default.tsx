@@ -61,11 +61,11 @@ export default function VariantsDefault() {
             <Card sx={{ ...cardStyle, height: '450px' }} variant="outline">
                 <CardHeader width="100%" display="flex">
                     <Text as="b" flex="1">
-                        {t('editor.departureZH')}
+                        出发
                     </Text>
                 </CardHeader>
                 <CardBody>
-                    <RmgLabel label={t('editor.welcome')}>
+                    <RmgLabel label="欢迎乘坐">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroad}
                             onDebouncedChange={val => {
@@ -84,10 +84,10 @@ export default function VariantsDefault() {
                             }}
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.terminal')}>
+                    <RmgLabel label="终点站名">
                         <RmgOutput>{terminal}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.terminalPinyin')}>
+                    <RmgLabel label="终点站名拼音">
                         <RmgDebouncedInput
                             defaultValue={terminalPinyin}
                             onDebouncedChange={val =>
@@ -100,7 +100,7 @@ export default function VariantsDefault() {
                             }
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.nextDoor')} oneLine>
+                    <RmgLabel label="下一站开门方向" oneLine>
                         <RadioGroup
                             value={nextDoorDirection}
                             onChange={val =>
@@ -112,14 +112,14 @@ export default function VariantsDefault() {
                                 )
                             }
                         >
-                            <Radio value="left">{t('editor.left')}</Radio>
-                            <Radio value="right">{t('editor.right')}</Radio>
+                            <Radio value="left">左</Radio>
+                            <Radio value="right">右</Radio>
                         </RadioGroup>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.line')}>
+                    <RmgLabel label="线路名">
                         <RmgOutput>{lineName}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.linePinyin')}>
+                    <RmgLabel label="线路名拼音">
                         <RmgDebouncedInput
                             defaultValue={lineNamePinyin}
                             onDebouncedChange={val =>
@@ -132,10 +132,10 @@ export default function VariantsDefault() {
                             }
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.service')}>
+                    <RmgLabel label="列车种别">
                         <RmgOutput>{service}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.lastTrain')} oneLine>
+                    <RmgLabel label="注意换乘列车末班车时间" oneLine>
                         <Switch
                             isChecked={noteLastTrain}
                             onChange={({ target: { checked } }) =>
@@ -150,7 +150,7 @@ export default function VariantsDefault() {
                     </RmgLabel>
                     {loop !== 'none' && (
                         <>
-                            <RmgLabel label={t('editor.loopDirection')}>
+                            <RmgLabel label="环线内外圈">
                                 <RadioGroup
                                     value={loop}
                                     onChange={val =>
@@ -162,11 +162,11 @@ export default function VariantsDefault() {
                                         )
                                     }
                                 >
-                                    <Radio value="inner">{t('editor.inner')}</Radio>
-                                    <Radio value="outer">{t('editor.outer')}</Radio>
+                                    <Radio value="inner">内圈</Radio>
+                                    <Radio value="outer">外圈</Radio>
                                 </RadioGroup>
                             </RmgLabel>
-                            <RmgLabel label={t('editor.loopTerminal')} oneLine>
+                            <RmgLabel label="环线终点站" oneLine>
                                 <Switch
                                     isChecked={loopTerminal}
                                     onChange={({ target: { checked } }) =>
@@ -186,11 +186,11 @@ export default function VariantsDefault() {
             <Card sx={{ ...cardStyle, height: '250px' }} variant="outline">
                 <CardHeader width="100%" display="flex">
                     <Text as="b" flex="1">
-                        {t('editor.arrivalZH')}
+                        到达
                     </Text>
                 </CardHeader>
                 <CardBody>
-                    <RmgLabel label={t('editor.door')} oneLine>
+                    <RmgLabel label="开门方向" oneLine>
                         <RadioGroup
                             value={doorDirection}
                             onChange={val =>
@@ -202,11 +202,11 @@ export default function VariantsDefault() {
                                 )
                             }
                         >
-                            <Radio value="left">{t('editor.left')}</Radio>
-                            <Radio value="right">{t('editor.right')}</Radio>
+                            <Radio value="left">左</Radio>
+                            <Radio value="right">右</Radio>
                         </RadioGroup>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.thanks')}>
+                    <RmgLabel label="感谢乘坐">
                         <RmgDebouncedInput
                             defaultValue={thanksForTaking}
                             onDebouncedChange={val => {
@@ -230,11 +230,11 @@ export default function VariantsDefault() {
             <Card sx={{ ...cardStyle, height: '150px' }} variant="outline">
                 <CardHeader width="100%" display="flex">
                     <Text as="b" flex="1">
-                        {t('editor.midwayZH')}
+                        中途
                     </Text>
                 </CardHeader>
                 <CardBody>
-                    <RmgLabel label={t('editor.caution')} oneLine>
+                    <RmgLabel label="注意安全" oneLine>
                         <Switch
                             isChecked={caution}
                             onChange={({ target: { checked } }) =>
@@ -252,11 +252,11 @@ export default function VariantsDefault() {
             <Card sx={{ ...cardStyle, height: '450px' }} variant="outline">
                 <CardHeader width="100%" display="flex">
                     <Text as="b" flex="1">
-                        {t('editor.departureEN')}
+                        Departure
                     </Text>
                 </CardHeader>
                 <CardBody>
-                    <RmgLabel label={t('editor.welcome')}>
+                    <RmgLabel label="Welcome abroad">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroadEN}
                             onDebouncedChange={val =>
@@ -269,7 +269,7 @@ export default function VariantsDefault() {
                             }
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.welcomePinyin')}>
+                    <RmgLabel label="Welcome abroad Pinyin">
                         <RmgDebouncedInput
                             defaultValue={welcomeAbroadPinyinEN}
                             onDebouncedChange={val =>
@@ -282,10 +282,10 @@ export default function VariantsDefault() {
                             }
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.terminal')}>
+                    <RmgLabel label="Terminal name">
                         <RmgOutput>{terminalEN}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.terminalPinyin')}>
+                    <RmgLabel label="Terminal name Pinyin">
                         <RmgDebouncedInput
                             defaultValue={terminalPinyinEN}
                             onDebouncedChange={val =>
@@ -298,7 +298,7 @@ export default function VariantsDefault() {
                             }
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.nextDoor')} oneLine>
+                    <RmgLabel label="Next door direction" oneLine>
                         <RadioGroup
                             value={nextDoorDirectionEN}
                             onChange={val =>
@@ -310,14 +310,14 @@ export default function VariantsDefault() {
                                 )
                             }
                         >
-                            <Radio value="left">{t('editor.left')}</Radio>
-                            <Radio value="right">{t('editor.right')}</Radio>
+                            <Radio value="left">左</Radio>
+                            <Radio value="right">右</Radio>
                         </RadioGroup>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.line')}>
+                    <RmgLabel label="Line name">
                         <RmgOutput>{lineNameEN}</RmgOutput>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.linePinyin')}>
+                    <RmgLabel label="Line name Pinyin">
                         <RmgDebouncedInput
                             defaultValue={lineNamePinyinEN}
                             onDebouncedChange={val =>
@@ -335,11 +335,11 @@ export default function VariantsDefault() {
             <Card sx={{ ...cardStyle, height: '250px' }} variant="outline">
                 <CardHeader width="100%" display="flex">
                     <Text as="b" flex="1">
-                        {t('editor.arrivalEN')}
+                        Arrival
                     </Text>
                 </CardHeader>
                 <CardBody>
-                    <RmgLabel label={t('editor.door')} oneLine>
+                    <RmgLabel label="Door direction" oneLine>
                         <RadioGroup
                             value={doorDirectionEN}
                             onChange={val =>
@@ -351,11 +351,11 @@ export default function VariantsDefault() {
                                 )
                             }
                         >
-                            <Radio value="left">{t('editor.left')}</Radio>
-                            <Radio value="right">{t('editor.right')}</Radio>
+                            <Radio value="left">左</Radio>
+                            <Radio value="right">右</Radio>
                         </RadioGroup>
                     </RmgLabel>
-                    <RmgLabel label={t('editor.thanks')}>
+                    <RmgLabel label="Thanks for taking">
                         <RmgDebouncedInput
                             defaultValue={thanksForTakingEN}
                             onDebouncedChange={val =>
@@ -368,7 +368,7 @@ export default function VariantsDefault() {
                             }
                         />
                     </RmgLabel>
-                    <RmgLabel label={t('editor.thanksPinyin')}>
+                    <RmgLabel label="Thanks for taking Pinyin">
                         <RmgDebouncedInput
                             defaultValue={thanksForTakingPinyinEN}
                             onDebouncedChange={val =>

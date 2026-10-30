@@ -137,38 +137,5 @@
             "direct": "直達車"
         },
         "import": "匯入"
-    },
-    "editor": {
-        "currentName": "本站名",
-        "currentNamePinyin": "本站名拼音",
-        "nextName": "下一站名",
-        "nextNamePinyin": "下一站名拼音",
-        "door": "開門方向",
-        "nextDoor": "下一站開門方向",
-        "interchange": "轉乘資訊",
-        "branchTerminal": "支線終點站名",
-        "stopovers": "停靠站資訊",
-        "lastTrain": "注意轉乘列車末班車時間",
-        "caution": "注意安全",
-        "welcome": "歡迎乘坐",
-        "welcomePinyin": "歡迎乘坐拼音",
-        "terminal": "終點站名",
-        "terminalPinyin": "終點站名拼音",
-        "line": "路線名",
-        "linePinyin": "路線名拼音",
-        "service": "列車種別",
-        "loopDirection": "環線內外圈",
-        "loopTerminal": "環線終點站",
-        "thanks": "感謝乘坐",
-        "thanksPinyin": "感謝乘坐拼音",
-        "left": "左",
-        "right": "右",
-        "inner": "內圈",
-        "outer": "外圈",
-        "departureZH": "出發（普通話）",
-        "arrivalZH": "到達（普通話）",
-        "midwayZH": "中途（普通話）",
-        "departureEN": "出發（英語）",
-        "arrivalEN": "到達（英語）"
     }
 }

@@ -34,19 +34,19 @@ export default function VariantsENArrival() {
 
     return (
         <Box>
-            <RmgLabel label={t('editor.currentName')}>
+            <RmgLabel label="Current station name">
                 <RmgOutput>{name}</RmgOutput>
             </RmgLabel>
-            <RmgLabel label={t('editor.currentNamePinyin')}>
+            <RmgLabel label="Current station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={namePinyin}
                     onDebouncedChange={val => handleVariantChange('namePinyin', val)}
                 />
             </RmgLabel>
-            <RmgLabel label={t('editor.door')} oneLine>
+            <RmgLabel label="Door direction" oneLine>
                 <RadioGroup value={doorDirection} onChange={val => handleVariantChange('doorDirection', val)}>
-                    <Radio value="left">{t('editor.left')}</Radio>
-                    <Radio value="right">{t('editor.right')}</Radio>
+                    <Radio value="left">Left</Radio>
+                    <Radio value="right">Right</Radio>
                 </RadioGroup>
             </RmgLabel>
         </Box>

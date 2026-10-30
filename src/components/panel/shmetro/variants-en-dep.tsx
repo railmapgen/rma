@@ -41,27 +41,27 @@ export default function VariantsENDeparture() {
 
     return (
         <Box>
-            <RmgLabel label={t('editor.nextName')}>
+            <RmgLabel label="Next station name">
                 <RmgOutput>{next}</RmgOutput>
             </RmgLabel>
-            <RmgLabel label={t('editor.nextNamePinyin')}>
+            <RmgLabel label="Next station name pinyin">
                 <RmgDebouncedInput
                     defaultValue={nextPinyin}
                     onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
                 />
             </RmgLabel>
-            <RmgLabel label={t('editor.nextDoor')} oneLine>
+            <RmgLabel label="Next door direction" oneLine>
                 <RadioGroup value={nextDoorDirection} onChange={val => handleVariantChange('nextDoorDirection', val)}>
-                    <Radio value="left">{t('editor.left')}</Radio>
-                    <Radio value="right">{t('editor.right')}</Radio>
+                    <Radio value="left">Left</Radio>
+                    <Radio value="right">Right</Radio>
                 </RadioGroup>
             </RmgLabel>
-            <RmgLabel label={t('editor.interchange')}>
+            <RmgLabel label="Interchange info">
                 <RmgOutput>{int.join(' ')}</RmgOutput>
             </RmgLabel>
             {currentVariants.branchTerminalName && currentVariants.branchTerminalNamePinyin && (
                 <>
-                    <RmgLabel label={t('editor.branchTerminal')}>
+                    <RmgLabel label="支线终点站名">
                         <RmgOutput>{branchTerminalName}</RmgOutput>
                     </RmgLabel>
                     {/* <RmgLabel label="支线终点站名拼音">
@@ -72,7 +72,7 @@ export default function VariantsENDeparture() {
                     </RmgLabel> */}
                 </>
             )}
-            <RmgLabel label={t('editor.lastTrain')} oneLine>
+            <RmgLabel label="Note last train" oneLine>
                 <Switch
                     isChecked={noteLastTrain}
                     onChange={({ target: { checked } }) => handleVariantChange('noteLastTrain', checked)}

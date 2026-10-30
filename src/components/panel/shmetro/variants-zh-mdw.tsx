@@ -34,7 +34,7 @@ export default function VariantsZHMidway() {
 
     return (
         <Box>
-            <RmgLabel label={t('editor.caution')} oneLine>
+            <RmgLabel label="注意安全" oneLine>
                 <Switch
                     isChecked={caution}
                     onChange={({ target: { checked } }) => handleVariantChange('caution', checked)}
