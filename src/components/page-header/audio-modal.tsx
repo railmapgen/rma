@@ -39,7 +39,7 @@ const ISSUE_TEMPLATE_URL = 'https://github.com/railmapgen/rma/issues/new?templat
 
 const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
     const { isOpen, onClose } = props;
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const dispatch = useRootDispatch();
     const {
         telemetry: { project: isAllowProjectTelemetry },
@@ -144,7 +144,9 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                 <Text as="b" fontSize="4xl">
                                     {points}
                                 </Text>
-                                <Text style={{ alignSelf: 'self-end', marginLeft: '10px' }}>pts</Text>
+                                <Text style={{ alignSelf: 'self-end', marginLeft: '10px' }}>
+                                    {t('header.audioTask.table.points')}
+                                </Text>
                                 <Flex style={{ flex: 1 }} />
                                 <Text as="b" style={{ alignSelf: 'self-end' }}>
                                     {t('header.audioTask.title')}
@@ -184,9 +186,9 @@ const AudioModal = (props: { isOpen: boolean; onClose: () => void }) => {
                                         {tasks.map(({ id, status, createdAt, updatedAt, points }) => (
                                             <Tr key={id}>
                                                 <Td>{id}</Td>
-                                                <Td>{status}</Td>
-                                                <Td>{new Date(createdAt).toLocaleString()}</Td>
-                                                <Td>{new Date(updatedAt).toLocaleString()}</Td>
+                                                <Td>{t(`header.audioTask.status.${status}`)}</Td>
+                                                <Td>{new Date(createdAt).toLocaleString(i18n.resolvedLanguage)}</Td>
+                                                <Td>{new Date(updatedAt).toLocaleString(i18n.resolvedLanguage)}</Td>
                                                 <Td>{points}</Td>
                                                 <Td>
                                                     {status === AudioTaskStatus.CREATED && (

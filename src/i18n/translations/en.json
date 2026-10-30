@@ -109,8 +109,17 @@
                 "content3": "The actual points used is subject to the server.",
                 "content4": "You may cancel the task before processing to get a full points return.",
                 "create": "Create a new task"
+            },
+            "status": {
+                "CREATED": "Created",
+                "CANCELLED": "Cancelled",
+                "PROCESSING": "Processing",
+                "COMPLETED": "Completed",
+                "FAILED": "Failed"
             }
-        }
+        },
+        "popoverHeader": "You're on {{environment}} environment!",
+        "popoverBody": "This is a testing environment where we test the latest beta RMA."
     },
 
     "stationVariants": {
@@ -139,5 +148,47 @@
             "direct": "Direct"
         },
         "import": "Import"
+    },
+    "editor": {
+        "currentName": "Current station name",
+        "currentNamePinyin": "Current station name pinyin",
+        "nextName": "Next station name",
+        "nextNamePinyin": "Next station name pinyin",
+        "door": "Door direction",
+        "nextDoor": "Next door direction",
+        "interchange": "Interchange info",
+        "branchTerminal": "Branch terminal name",
+        "stopovers": "Stopping station information",
+        "lastTrain": "Note last train",
+        "caution": "Safety reminder",
+        "welcome": "Welcome aboard message",
+        "welcomePinyin": "Welcome aboard message pinyin",
+        "terminal": "Terminal name",
+        "terminalPinyin": "Terminal name Pinyin",
+        "line": "Line name",
+        "linePinyin": "Line name Pinyin",
+        "service": "Train service",
+        "loopDirection": "Loop direction",
+        "loopTerminal": "Loop terminal station",
+        "thanks": "Thank-you message",
+        "thanksPinyin": "Thank-you message pinyin",
+        "left": "Left",
+        "right": "Right",
+        "inner": "Inner loop",
+        "outer": "Outer loop",
+        "departureZH": "Departure (Mandarin)",
+        "arrivalZH": "Arrival (Mandarin)",
+        "midwayZH": "Midway (Mandarin)",
+        "departureEN": "Departure (English)",
+        "arrivalEN": "Arrival (English)",
+        "selectStage": "Select {{stage}}"
+    },
+    "termsReference": {
+        "layout": "The layout of the elements on the signage or rail map is designed by Guangzhou Metro Group, MTR Corporation or Shanghai Shentong Metro Group, depending on your selection. Obtain any required permission or licence from the relevant company before using generated images commercially.",
+        "elements": "The shapes and lines are drawn by Chito Wong and thekingofcity based on the listed companies’ design standards. They may be used for any purpose; including the software name and link is recommended.",
+        "fonts": "Due to copyright, licensing and other legal restrictions, {{app}} uses GenYoMin by ButTaiwan and Vegur instead of MTRSung and Myriad Pro for MTR-style signage. Obtain appropriate permission or licences from the font makers before using these generated images commercially.",
+        "images": "PNG or SVG images may be modified, published or used for other purposes under the conditions above.",
+        "flags": "Flag emojis shown on Windows are designed by OpenMoji, the open-source emoji and icon project. Licence: CC BY-SA 4.0.",
+        "changes": "We reserve the right to modify, add or remove these terms without prior notice. The Chinese translation is for reference; the English version prevails in case of discrepancies."
     }
 }

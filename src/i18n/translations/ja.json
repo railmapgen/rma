@@ -107,8 +107,17 @@
                 "content3": "実際に使用されるポイントはサーバーに依存します。",
                 "content4": "処理前にタスクをキャンセルすると、全額のポイントが返金されます。",
                 "create": "新しいタスクを作成"
+            },
+            "status": {
+                "CREATED": "受付済み",
+                "CANCELLED": "取消済み",
+                "PROCESSING": "処理中",
+                "COMPLETED": "完了",
+                "FAILED": "失敗"
             }
-        }
+        },
+        "popoverHeader": "{{environment}} 環境を使用しています。",
+        "popoverBody": "最新の RMA 試験版を確認するための環境です。"
     },
 
     "stationVariants": {
@@ -137,5 +146,53 @@
             "direct": "直通列車"
         },
         "import": "インポート"
-    }
+    },
+    "editor": {
+        "currentName": "現在の駅名",
+        "currentNamePinyin": "現在の駅名の拼音",
+        "nextName": "次の駅名",
+        "nextNamePinyin": "次の駅名の拼音",
+        "door": "扉の開く側",
+        "nextDoor": "次の駅で扉が開く側",
+        "interchange": "乗換案内",
+        "branchTerminal": "支線の終点駅名",
+        "stopovers": "停車駅情報",
+        "lastTrain": "乗換列車の終電時刻を案内",
+        "caution": "安全上の注意",
+        "welcome": "乗車時の挨拶",
+        "welcomePinyin": "乗車時の挨拶の拼音",
+        "terminal": "終点駅名",
+        "terminalPinyin": "終点駅名の拼音",
+        "line": "路線名",
+        "linePinyin": "路線名の拼音",
+        "service": "列車種別",
+        "loopDirection": "環状線の方向",
+        "loopTerminal": "環状線の終点駅",
+        "thanks": "降車時の挨拶",
+        "thanksPinyin": "降車時の挨拶の拼音",
+        "left": "左",
+        "right": "右",
+        "inner": "内回り",
+        "outer": "外回り",
+        "departureZH": "出発（中国語）",
+        "arrivalZH": "到着（中国語）",
+        "midwayZH": "途中（中国語）",
+        "departureEN": "出発（英語）",
+        "arrivalEN": "到着（英語）",
+        "selectStage": "{{stage}}を選択"
+    },
+    "Help": "操作案内",
+    "Close": "閉じる",
+    "Cancel Task": "処理を取り消す",
+    "Download Audio": "音声をダウンロード",
+    "Preview audio": "音声を試聴",
+    "termsReference": {
+        "layout": "案内表示や路線図の要素の配置は、選択した様式に応じて Guangzhou Metro Group、MTR Corporation、Shanghai Shentong Metro Group が設計したものです。生成した画像を商用利用する際に許可や利用許諾が必要な場合は、事前に該当する会社から取得してください。",
+        "elements": "画像内の図形や線は、上記各社の設計基準に基づき Chito Wong と thekingofcity が描画したものです。どのような目的にも使用できますが、ソフトウェアの名称とリンクを併記することを推奨します。",
+        "fonts": "著作権、利用許諾などの法的制約により、{{app}} は MTR 様式の案内表示において、MTRSung と Myriad Pro の代わりに、それぞれ ButTaiwan の GenYoMin と Vegur を使用します。生成した画像を商用利用する前に、書体の提供元から適切な許可や利用許諾を取得してください。",
+        "images": "書き出した PNG または SVG 形式の画像は、上記の条件に従って、商用利用を除き、改変、公開、その他の目的に使用できます。",
+        "flags": "Windows 上に表示される国旗の絵文字は、オープンソースの絵文字・図標プロジェクト OpenMoji が設計したものです。利用許諾：CC BY-SA 4.0。",
+        "changes": "これらの条項を予告なく変更、追加、削除する権利を留保します。中国語訳は参考用であり、英語版と中国語版に相違がある場合は英語版が優先します。"
+    },
+    "Pause audio": "音声を一時停止"
 }

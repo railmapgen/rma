@@ -36,7 +36,7 @@ export default function VariantsZHArrival() {
 
     return (
         <Box>
-            <RmgLabel label="本站名">
+            <RmgLabel label={t('editor.currentName')}>
                 <RmgOutput>{name}</RmgOutput>
             </RmgLabel>
             {/* <RmgLabel label="本站名拼音">
@@ -46,10 +46,10 @@ export default function VariantsZHArrival() {
                     onDebouncedChange={val => handleVariantChange('namePinyin', val)}
                 />
             </RmgLabel> */}
-            <RmgLabel label="开门方向" oneLine>
+            <RmgLabel label={t('editor.door')} oneLine>
                 <RadioGroup value={doorDirection} onChange={val => handleVariantChange('doorDirection', val)}>
-                    <Radio value="left">左</Radio>
-                    <Radio value="right">右</Radio>
+                    <Radio value="left">{t('editor.left')}</Radio>
+                    <Radio value="right">{t('editor.right')}</Radio>
                 </RadioGroup>
             </RmgLabel>
         </Box>

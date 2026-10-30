@@ -43,7 +43,7 @@ export default function VariantsZHDeparture() {
 
     return (
         <Box>
-            <RmgLabel label="下一站名">
+            <RmgLabel label={t('editor.nextName')}>
                 <RmgOutput>{next}</RmgOutput>
             </RmgLabel>
             {/* <RmgLabel label="下一站名拼音">
@@ -52,18 +52,18 @@ export default function VariantsZHDeparture() {
                     onDebouncedChange={val => handleVariantChange('nextPinyin', val)}
                 />
             </RmgLabel> */}
-            <RmgLabel label="下一站开门方向" oneLine>
+            <RmgLabel label={t('editor.nextDoor')} oneLine>
                 <RadioGroup value={nextDoorDirection} onChange={val => handleVariantChange('nextDoorDirection', val)}>
-                    <Radio value="left">左</Radio>
-                    <Radio value="right">右</Radio>
+                    <Radio value="left">{t('editor.left')}</Radio>
+                    <Radio value="right">{t('editor.right')}</Radio>
                 </RadioGroup>
             </RmgLabel>
-            <RmgLabel label="换乘信息">
+            <RmgLabel label={t('editor.interchange')}>
                 <RmgOutput>{int.join(' ')}</RmgOutput>
             </RmgLabel>
             {currentVariants.branchTerminalName && currentVariants.branchTerminalNamePinyin && (
                 <>
-                    <RmgLabel label="支线终点站名">
+                    <RmgLabel label={t('editor.branchTerminal')}>
                         <RmgOutput>{branchTerminalName}</RmgOutput>
                     </RmgLabel>
                     {/* <RmgLabel label="支线终点站名拼音">
@@ -75,11 +75,11 @@ export default function VariantsZHDeparture() {
                 </>
             )}
             {service !== 'local' && (
-                <RmgLabel label="停靠站信息">
+                <RmgLabel label={t('editor.stopovers')}>
                     <RmgOutput>{stopovers.join(' ')}</RmgOutput>
                 </RmgLabel>
             )}
-            <RmgLabel label="注意换乘列车末班车时间" oneLine>
+            <RmgLabel label={t('editor.lastTrain')} oneLine>
                 <Switch
                     isChecked={noteLastTrain}
                     onChange={({ target: { checked } }) => handleVariantChange('noteLastTrain', checked)}

@@ -112,7 +112,7 @@ export default function OpenActions() {
                 />
                 {environment === RmgEnv.DEV && (
                     <MenuItem icon={<MdUpload />} onClick={() => fileRMGInputRef?.current?.click()}>
-                        {t('header.open.RMG')}
+                        {t('header.open.projectRMG')}
                     </MenuItem>
                 )}
 

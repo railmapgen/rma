@@ -53,7 +53,7 @@ export default function WindowHeader() {
                 popoverBody={
                     environment === RmgEnv.PRD ? undefined : (
                         <Trans i18nKey="header.popoverBody">
-                            This is a testing environment where we test the latest beta RMP.
+                            This is a testing environment where we test the latest beta RMA.
                         </Trans>
                     )
                 }
@@ -76,7 +76,7 @@ export default function WindowHeader() {
                     <IconButton
                         size="sm"
                         variant="ghost"
-                        aria-label="Settings"
+                        aria-label={t('header.settings.title')}
                         icon={<MdSettings />}
                         onClick={() => setIsSettingsModalOpen(true)}
                     />
@@ -101,7 +101,7 @@ export default function WindowHeader() {
                     <IconButton
                         size="sm"
                         variant="ghost"
-                        aria-label="Help"
+                        aria-label={t('Help')}
                         icon={<MdHelp />}
                         onClick={() => setIsAboutModalOpen(true)}
                     />

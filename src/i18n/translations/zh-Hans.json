@@ -137,5 +137,38 @@
             "direct": "直达"
         },
         "import": "导入"
+    },
+    "editor": {
+        "currentName": "本站名",
+        "currentNamePinyin": "本站名拼音",
+        "nextName": "下一站名",
+        "nextNamePinyin": "下一站名拼音",
+        "door": "开门方向",
+        "nextDoor": "下一站开门方向",
+        "interchange": "换乘信息",
+        "branchTerminal": "支线终点站名",
+        "stopovers": "停靠站信息",
+        "lastTrain": "注意换乘列车末班车时间",
+        "caution": "注意安全",
+        "welcome": "欢迎乘坐",
+        "welcomePinyin": "欢迎乘坐拼音",
+        "terminal": "终点站名",
+        "terminalPinyin": "终点站名拼音",
+        "line": "线路名",
+        "linePinyin": "线路名拼音",
+        "service": "列车种别",
+        "loopDirection": "环线内外圈",
+        "loopTerminal": "环线终点站",
+        "thanks": "感谢乘坐",
+        "thanksPinyin": "感谢乘坐拼音",
+        "left": "左",
+        "right": "右",
+        "inner": "内圈",
+        "outer": "外圈",
+        "departureZH": "出发（普通话）",
+        "arrivalZH": "到达（普通话）",
+        "midwayZH": "中途（普通话）",
+        "departureEN": "出发（英语）",
+        "arrivalEN": "到达（英语）"
     }
 }

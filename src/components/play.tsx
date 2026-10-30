@@ -90,7 +90,7 @@ export default function Play() {
         <IconButton
             size="sm"
             variant="ghost"
-            aria-label="Settings"
+            aria-label={t(isPlaying ? 'Pause audio' : 'Preview audio')}
             icon={isPlayable ? isPlaying ? <MdPause /> : <MdPlayArrow /> : <MdWarning />}
             isDisabled={!isPlayable}
             onClick={isPlaying ? handlePause : handlePlay}
