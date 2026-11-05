@@ -2,42 +2,42 @@
     "header": {
         "about": {
             "title": "關於",
-            "rma": "地鐵線路圖放送機",
-            "railmapgen": "地鐵線路圖工具組專案",
+            "rma": "地鐵路綫圖放送機",
+            "railmapgen": "地鐵路綫圖工具組項目",
             "desc": "",
             "contributors": "貢獻者",
             "content1": "reflexion,allegretto,you",
             "content2": "2024/02/21 於上海",
             "contactUs": "聯絡我們",
-            "github": "項目倉庫",
-            "githubContent": "遇到任何問題？在這裡搜索或提出問題！",
+            "github": "項目儲存庫",
+            "githubContent": "遇到問題？在這裡搜索或提出問題！",
             "slack": "Slack 群組",
             "slackContent": "在這些 Slack 頻道中聊天！"
         },
         "donation": {
-            "title": "捐贈",
+            "title": "捐款",
             "openCollective": "Open Collective",
-            "viaUSD": "通過 Paypal 或 Visa 卡以美元捐贈。",
-            "afdian": "愛發電",
-            "viaCNY": "通過支付寶或微信支付以人民幣捐贈。"
+            "viaUSD": "通過PayPal或Visa卡捐贈美元",
+            "afdian": "爱发电",
+            "viaCNY": "通過支付寶或微信捐贈人民幣"
         },
         "paly": {
-            "previewWarning": "對預覽聲音不滿意？試試在導出音頻中使用我們最新大模型生成的聲音。"
+            "previewWarning": "對預覽聲音不滿意？試試在匯出音頻中使用我們最新大模型生成的聲音。"
         },
         "open": {
-            "config": "導入項目",
-            "projectRMG": "從 RMG 項目導入",
-            "invalidType": "無效的文件類型！只接受從RMA匯出的檔案。",
-            "unknownError": "解析上傳文件時發生未知錯誤！請重試。"
+            "config": "匯入項目",
+            "projectRMG": "從地鐵路綫圖產生器項目匯入",
+            "invalidType": "無效的檔案類型！只接受從地鐵路綫圖放送機匯出的檔案。",
+            "unknownError": "解析上載檔案時發生未知錯誤！請重試。"
         },
         "download": {
-            "config": "導出項目",
-            "image": "導出圖片",
-            "audio": "導出音頻",
+            "config": "匯出項目",
+            "image": "匯出圖片",
+            "audio": "匯出音頻",
             "format": "格式",
             "png": "PNG",
             "svg": "SVG",
-            "scale": "比例",
+            "scale": "縮放比例",
             "disabledScaleOptions": "由於瀏覽器的畫布限制，某些比例選項已被禁用。",
             "disabledScaleOptionsWorkarounds": "可能的解決方法包括使用此命令行工具從 svg 生成圖片：",
             "shareInfo1": "我將在分享此圖片時附加 ",
@@ -48,32 +48,32 @@
             "confirm": "下載"
         },
         "settings": {
-            "title": "設置",
+            "title": "設定",
             "crawl": {
                 "title": "走字螢幕",
                 "scale": "縮放比例"
             },
             "previewAudio": {
                 "title": "首選預覽語音",
-                "notModified": "使用風格偏好",
+                "notModified": "使用樣式偏好",
                 "shmetro-zh": "上海地鐵（普通話）",
                 "shmetro-en": "上海地鐵（英語）"
             },
             "telemetry": {
                 "title": "遙測",
-                "info": "為了幫助改進地鐵線路圖放送機並激勵貢獻者增強項目，通過 Google Analytics 收集匿名使用數據。這些數據僅用於增強用戶體驗和優化工具功能，絕不會與第三方共享。",
+                "info": "為了幫助改進地鐵路綫圖放送機並激勵貢獻者增強項目，通過 Google Analytics 收集匿名使用數據。這些數據僅用於增強用戶體驗和優化工具功能，絕不會與第三方共享。",
                 "essential": "基本",
-                "essentialTooltip": "在路綫圖工具組中更改此全局設置",
-                "essentialInfo": "地鐵線路圖放送機收集基本使用數據，幫助我們了解用戶如何以及何時與工具互動。請放心，絕不會收集任何個人身份信息或項目數據。",
-                "essentialLink": "點擊此鏈接查看 Google Analytics 可能收集的詳細字段。",
+                "essentialTooltip": "在地鐵路綫圖工具組中更改此全域設定",
+                "essentialInfo": "地鐵路綫圖放送機收集基本使用數據，幫助我們了解用戶如何以及何時與工具互動。請放心，絕不會收集任何個人身份信息或項目數據。",
+                "essentialLink": "點擊此連結查看 Google Analytics 可能收集的詳細字段。",
                 "additional": "附加",
-                "additionalInfo": "地鐵線路圖放送機還會收集互動數據，例如項目創建或變體修改時的輸入。這些附加數據也是匿名的，僅用於統計分析，以幫助我們改進工具。"
+                "additionalInfo": "地鐵路綫圖放送機還會收集互動數據，例如項目創建或變體修改時的輸入。這些附加數據也是匿名的，僅用於統計分析，以幫助我們改進工具。"
             }
         },
         "audioTask": {
             "title": "音頻任務",
             "desc": "我們致力於生成最自然的報站廣播。為此，我們基於大量樣本進行了深度訓練。歡迎體驗由最新機器學習大模型提供的高品質廣播！",
-            "note1": "請注意目前僅提供上海風格的報站廣播。",
+            "note1": "請注意目前僅提供上海樣式的報站廣播。",
             "note2": "由於算力限制，提交任務後請耐心等待，我們將盡力在7天內處理完畢。",
             "note3": "請及時下載保存您的作品，我們僅承諾保存30天內的數據。",
             "note4": "為了確保最好的英文廣播，請用漢字替換'station name pinyin'中所有拼音部分，例如使用'莘庄 University'而不是'Xinzhuang University'。",
@@ -81,7 +81,7 @@
             "loginFirst": "請先登入以使用大模型生成音頻。",
             "topUp": "充值",
             "table": {
-                "id": "ID",
+                "id": "識別碼",
                 "status": "狀態",
                 "createdAt": "創建時間",
                 "updatedAt": "更新時間",
@@ -97,7 +97,7 @@
             "redeem": {
                 "title": "點數兌換",
                 "desc": "您可以使用點數兌換音頻生成服務。CDKey可在以下平台購買：",
-                "input": "在此輸入您的CDKey：",
+                "input": "在此輸入兌換碼",
                 "redeem": "兌換"
             },
             "new": {
@@ -127,15 +127,16 @@
     },
 
     "import": {
-        "title": "匯入RMG作品",
-        "goodToGo": "準備完成！立即匯入此RMG作品。",
-        "routes": "選擇要匯入的路線",
+        "title": "匯入地鐵路綫圖產生器作品",
+        "goodToGo": "準備完成！立即匯入此地鐵路綫圖產生器作品。",
+        "routes": "選擇要匯入的路綫",
         "services": "選擇要匯入的班次類型",
         "service": {
-            "local": "普通車",
-            "express": "快速車",
-            "direct": "直達車"
+            "local": "普通列車",
+            "express": "快速列車",
+            "direct": "直達列車"
         },
         "import": "匯入"
-    }
+    },
+    "Rail Map Announcer": "地鐵路綫圖放送機"
 }

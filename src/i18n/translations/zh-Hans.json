@@ -17,7 +17,7 @@
         "donation": {
             "title": "捐赠",
             "openCollective": "Open Collective",
-            "viaUSD": "通过Paypal或Visa卡以美元捐赠。",
+            "viaUSD": "通过PayPal或Visa卡以美元捐赠。",
             "afdian": "爱发电",
             "viaCNY": "通过支付宝或微信支付以人民币捐赠。"
         },
@@ -26,8 +26,8 @@
         },
         "open": {
             "config": "导入项目",
-            "projectRMG": "从RMG项目导入",
-            "invalidType": "文件类型无效！只接受从RMA导出的文件。",
+            "projectRMG": "从地铁线路图生成器项目导入",
+            "invalidType": "文件类型无效！只接受从地铁线路图放送机导出的文件。",
             "unknownError": "解析上传文件时发生未知错误！请重试。"
         },
         "download": {
@@ -55,7 +55,7 @@
             },
             "previewAudio": {
                 "title": "首选预览语音",
-                "notModified": "使用风格偏好",
+                "notModified": "使用样式偏好",
                 "shmetro-zh": "上海地铁（普通话）",
                 "shmetro-en": "上海地铁（英语）"
             },
@@ -73,7 +73,7 @@
         "audioTask": {
             "title": "声音任务",
             "desc": "我们致力于生成最自然的报站广播。为此，我们基于大量样本进行深度训练。欢迎体验由最新机器学习大模型提供的高质量广播！",
-            "note1": "请注意目前仅提供上海风格的报站广播。",
+            "note1": "请注意目前仅提供上海样式的报站广播。",
             "note2": "由于算力限制，提交任务后请耐心等待，我们将尽力在7天内处理完毕。",
             "note3": "请及时下载保存您的作品，我们仅承诺保存30天内的数据。",
             "note4": "为了保证最好的英文广播，请用汉字替换'station name pinyin'中所有拼音部分，如'莘庄 University'而非'Xinzhuang University'。",
@@ -81,7 +81,7 @@
             "loginFirst": "请先登录以使用大模型生成音频。",
             "topUp": "充值",
             "table": {
-                "id": "ID",
+                "id": "标识符",
                 "status": "状态",
                 "createdAt": "创建时间",
                 "updatedAt": "更新时间",
@@ -97,7 +97,7 @@
             "redeem": {
                 "title": "点数兑换",
                 "desc": "您可以使用点数兑换音频生成服务。CDKey可在以下平台购买：",
-                "input": "在此输入您的CDKey：",
+                "input": "在此输入兑换码",
                 "redeem": "兑换"
             },
             "new": {
@@ -127,15 +127,16 @@
     },
 
     "import": {
-        "title": "导入RMG作品",
-        "goodToGo": "一切就绪！立即导入此RMG作品。",
+        "title": "导入地铁线路图生成器作品",
+        "goodToGo": "一切就绪！立即导入此地铁线路图生成器作品。",
         "routes": "选择要导入的路线",
         "services": "选择要导入的班次类型",
         "service": {
-            "local": "普通",
-            "express": "快速",
-            "direct": "直达"
+            "local": "普通列车",
+            "express": "快速列车",
+            "direct": "直达列车"
         },
         "import": "导入"
-    }
+    },
+    "Rail Map Announcer": "地铁线路图放送机"
 }
