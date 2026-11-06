@@ -1,7 +1,8 @@
 import { Heading, IconButton, Menu, MenuButton, MenuItem, MenuList, Wrap, WrapItem } from '@chakra-ui/react';
 import { RmgEnvBadge, RmgWindowHeader, useReadyConfig } from '@railmapgen/rmg-components';
 import rmgRuntime, { RmgEnv } from '@railmapgen/rmg-runtime';
-import { LANGUAGE_NAMES, LanguageCode } from '@railmapgen/rmg-translate';
+import { LANGUAGE_NAMES } from '@railmapgen/rmg-translate';
+import type { LanguageCode } from '@railmapgen/rmg-translate';
 import React from 'react';
 import { Trans, useTranslation } from 'react-i18next';
 import { MdHelp, MdSettings, MdTranslate } from 'react-icons/md';

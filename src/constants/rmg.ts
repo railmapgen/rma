@@ -1,5 +1,5 @@
 import { Theme } from '@railmapgen/rmg-palette-resources';
-import { Translation } from '@railmapgen/rmg-translate';
+import type { Translation } from '@railmapgen/rmg-translate';
 
 export type StnID = string;
 

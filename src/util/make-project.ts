@@ -1,4 +1,4 @@
-import { LanguageCode, Translation } from '@railmapgen/rmg-translate';
+import type { LanguageCode, Translation } from '@railmapgen/rmg-translate';
 import { emptyProject, Stage, VoiceName } from '../constants/constants';
 import { Direction, Name, RMGParam, Services, ShortDirection } from '../constants/rmg';
 import { getRoutes } from './graph-theory';
